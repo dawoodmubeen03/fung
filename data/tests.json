@@ -5,6 +5,7 @@
       "name": "NUST Entry Test",
       "short": "NET",
       "negativeMarking": false,
+
       "pattern": [
         { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
         { "subject": "Physics", "mcqs": 60, "marks": 60 },
@@ -12,7 +13,9 @@
         { "subject": "English", "mcqs": 20, "marks": 20 },
         { "subject": "Intelligence", "mcqs": 10, "marks": 10 }
       ],
+
       "strategy": "Focus on PTB books and speed practice.",
+
       "annualSchedule": [
         {
           "series": "NET-1",
@@ -39,6 +42,7 @@
           "testDate": "20 July, 2027"
         }
       ],
+
       "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"]
     },
 
@@ -47,13 +51,16 @@
       "name": "FAST Entry Test",
       "short": "FAST",
       "negativeMarking": true,
+
       "pattern": [
         { "subject": "Basic Math", "mcqs": 50, "marks": 50 },
         { "subject": "Advanced Math", "mcqs": 50, "marks": 50 },
         { "subject": "English", "mcqs": 30, "marks": 30 },
         { "subject": "IQ", "mcqs": 20, "marks": 20 }
       ],
-      "strategy": "Focus on analytical + time-based solving. Avoid guessing (negative marking).",
+
+      "strategy": "Avoid guessing. Focus on speed + accuracy.",
+
       "annualSchedule": [
         {
           "series": "Admission Test",
@@ -62,6 +69,7 @@
           "testDate": "20 July, 2027"
         }
       ],
+
       "centers": ["Lahore", "Islamabad", "Karachi", "Peshawar"]
     },
 
@@ -70,12 +78,15 @@
       "name": "Air University Test",
       "short": "AIR",
       "negativeMarking": false,
+
       "pattern": [
         { "subject": "Math", "mcqs": 80, "marks": 80 },
         { "subject": "Physics", "mcqs": 60, "marks": 60 },
         { "subject": "English", "mcqs": 20, "marks": 20 }
       ],
-      "strategy": "Focus on basics + conceptual clarity.",
+
+      "strategy": "Focus on basics and conceptual clarity.",
+
       "annualSchedule": [
         {
           "series": "Fall Intake",
@@ -84,6 +95,7 @@
           "testDate": "18 July, 2027"
         }
       ],
+
       "centers": ["Islamabad", "Kamra", "Multan"]
     },
 
@@ -92,12 +104,15 @@
       "name": "GIKI Entry Test",
       "short": "GIKI",
       "negativeMarking": false,
+
       "pattern": [
         { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
         { "subject": "Physics", "mcqs": 60, "marks": 60 },
         { "subject": "English", "mcqs": 20, "marks": 20 }
       ],
-      "strategy": "Conceptual questions + time control.",
+
+      "strategy": "Strong conceptual preparation required.",
+
       "annualSchedule": [
         {
           "series": "Admission Test",
@@ -106,6 +121,7 @@
           "testDate": "10 July, 2027"
         }
       ],
+
       "centers": ["Topi", "Lahore", "Karachi", "Islamabad"]
     },
 
@@ -114,12 +130,15 @@
       "name": "PIEAS Entry Test",
       "short": "PIEAS",
       "negativeMarking": true,
+
       "pattern": [
         { "subject": "Mathematics", "mcqs": 60, "marks": 60 },
         { "subject": "Physics", "mcqs": 60, "marks": 60 },
         { "subject": "Chemistry", "mcqs": 30, "marks": 30 }
       ],
-      "strategy": "Strong concepts required. Avoid random guessing.",
+
+      "strategy": "Avoid guessing. Focus on deep concepts.",
+
       "annualSchedule": [
         {
           "series": "Admission Test",
@@ -128,6 +147,7 @@
           "testDate": "12 July, 2027"
         }
       ],
+
       "centers": ["Islamabad", "Karachi", "Lahore"]
     },
 
@@ -136,11 +156,14 @@
       "name": "ITU Admission Test",
       "short": "ITU",
       "negativeMarking": false,
+
       "pattern": [
         { "subject": "Math", "mcqs": 70, "marks": 70 },
         { "subject": "English", "mcqs": 30, "marks": 30 }
       ],
-      "strategy": "Focus on logic + math basics.",
+
+      "strategy": "Focus on logical reasoning and math basics.",
+
       "annualSchedule": [
         {
           "series": "Fall Intake",
@@ -149,6 +172,7 @@
           "testDate": "22 July, 2027"
         }
       ],
+
       "centers": ["Lahore"]
     },
 
@@ -157,10 +181,13 @@
       "name": "Punjab University Admission",
       "short": "PU",
       "negativeMarking": false,
+
       "pattern": [
-        { "subject": "Intermediate Marks Based", "mcqs": 0, "marks": 0 }
+        { "subject": "Merit Based (No Test)", "mcqs": 0, "marks": 0 }
       ],
-      "strategy": "Merit is based on academic marks (no entry test for most programs).",
+
+      "strategy": "Admissions based on academic merit.",
+
       "annualSchedule": [
         {
           "series": "Admissions",
@@ -169,6 +196,7 @@
           "testDate": "N/A"
         }
       ],
+
       "centers": ["Lahore"]
     }
   ]
