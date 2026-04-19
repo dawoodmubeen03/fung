@@ -24,6 +24,16 @@
       min-height: 100vh;
       font-family: 'Space Grotesk', sans-serif;
     }
+
+    /* Hollow outline text for short name badge */
+    .hollow-badge {
+      font-size: 1rem;
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.6);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 
@@ -31,50 +41,68 @@
 
 <div class="w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
 
-  <!-- HEADER -->
-  <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-10">
-    <h1 id="test-name" class="text-3xl md:text-5xl font-black text-white uppercase">
-      Loading...
-    </h1>
+  <!-- ===== HEADER ===== -->
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-10 flex items-end gap-6">
+    <div>
+      <!-- Short name shown as hollow outline -->
+      <p class="hollow-badge mb-2" id="test-short">—</p>
+      <!-- Full name -->
+      <h1 id="test-name" class="text-3xl md:text-5xl font-black text-white">
+        Loading...
+      </h1>
+      <!-- Negative marking badge -->
+      <p id="negative-badge" class="hidden mt-3 inline-block px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full uppercase tracking-wide">
+        ⚠ Negative Marking
+      </p>
+    </div>
   </div>
 
   <div class="px-8 py-10 md:px-12 space-y-10">
 
-    <!-- PATTERN -->
+    <!-- ===== PATTERN TABLE ===== -->
     <section>
-      <h2 class="text-base font-black text-slate-900 mb-4">Test Pattern</h2>
+      <h2 class="text-base font-black text-slate-900 mb-4 uppercase tracking-widest">Test Pattern</h2>
 
-      <table class="w-full text-sm">
-        <thead class="text-slate-400 uppercase font-bold">
-          <tr>
-            <th class="text-left">Subject</th>
-            <th class="text-center">MCQs</th>
-            <th class="text-center">Marks</th>
-          </tr>
-        </thead>
-
-        <tbody id="pattern-table-body"></tbody>
-        <tfoot id="pattern-table-footer" class="font-bold text-blue-600"></tfoot>
-      </table>
+      <div class="overflow-x-auto rounded-2xl border border-slate-100">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="text-left px-4 py-3 text-slate-400 uppercase font-bold text-xs">Subject</th>
+              <th class="text-center px-4 py-3 text-slate-400 uppercase font-bold text-xs">MCQs</th>
+              <th class="text-center px-4 py-3 text-slate-400 uppercase font-bold text-xs">Marks</th>
+            </tr>
+          </thead>
+          <tbody id="pattern-table-body" class="divide-y divide-slate-50"></tbody>
+          <tfoot id="pattern-table-footer" class="bg-blue-50 font-bold text-blue-700 border-t border-blue-100"></tfoot>
+        </table>
+      </div>
     </section>
 
-    <!-- STRATEGY -->
+    <!-- ===== STRATEGY ===== -->
     <section>
-      <h2 class="text-base font-black text-slate-900 mb-4">Preparation Strategy</h2>
-      <p id="prep-guide" class="text-slate-700"></p>
+      <h2 class="text-base font-black text-slate-900 mb-4 uppercase tracking-widest">Preparation Strategy</h2>
+      <p id="prep-guide" class="text-slate-700 leading-relaxed bg-slate-50 p-5 rounded-2xl border border-slate-100"></p>
     </section>
 
-    <!-- SCHEDULE -->
+    <!-- ===== SCHEDULE ===== -->
     <section>
-      <h2 class="text-base font-black text-slate-900 mb-4">Schedule</h2>
+      <h2 class="text-base font-black text-slate-900 mb-4 uppercase tracking-widest">Annual Schedule</h2>
       <div id="dates-container" class="grid gap-3"></div>
     </section>
 
-    <!-- CENTERS -->
+    <!-- ===== CENTERS ===== -->
     <section>
-      <h2 class="text-base font-black text-slate-900 mb-4">Test Centers</h2>
+      <h2 class="text-base font-black text-slate-900 mb-4 uppercase tracking-widest">Test Centers</h2>
       <div id="centers-container" class="flex flex-wrap gap-2"></div>
     </section>
+
+    <!-- ===== BACK BUTTON ===== -->
+    <div class="pt-4">
+      <button onclick="history.back()"
+        class="flex items-center gap-2 text-blue-600 font-bold hover:underline text-sm">
+        ← Back
+      </button>
+    </div>
 
   </div>
 </div>
@@ -82,81 +110,102 @@
 <script>
 window.onload = () => {
 
+  // ── 1. Read ?id= from URL ──────────────────────────────────────────────────
   const params = new URLSearchParams(window.location.search);
-  const id = params.get('id') || "net-nust";
+  const id = params.get('id');
 
-  fetch('tests.json')
-    .then(res => res.json())
+  if (!id) {
+    document.getElementById('test-name').innerText = "No test ID provided";
+    return;
+  }
+
+  // ── 2. Fetch from /data/tests.json (matches main app path) ──────────────
+  fetch('/data/tests.json')
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
     .then(data => {
 
-      const current = data.tests.find(t => t.id === id);
+      // ── 3. Find by id field (now all entries have a proper "id") ──────────
+      const current = (data.tests || []).find(t => t.id === id);
 
       if (!current) {
         document.getElementById('test-name').innerText = "Test Not Found";
         return;
       }
 
-      // ================= HEADER =================
-      document.getElementById('test-name').innerText = current.short;
+      // ── 4. Header ─────────────────────────────────────────────────────────
+      document.getElementById('test-short').innerText = current.short || "";
+      document.getElementById('test-name').innerText  = current.name  || "Unknown";
 
-      // ================= PATTERN =================
-      let totalM = 0, totalP = 0;
+      if (current.negativeMarking) {
+        document.getElementById('negative-badge').classList.remove('hidden');
+      }
+
+      // ── 5. Pattern table ──────────────────────────────────────────────────
+      let totalMCQs = 0, totalMarks = 0;
 
       document.getElementById('pattern-table-body').innerHTML =
-        current.pattern.map(p => {
-          totalM += p.mcqs;
-          totalP += p.marks;
+        (current.pattern || []).map(p => {
+          totalMCQs  += p.mcqs  || 0;
+          totalMarks += p.marks || 0;
 
           return `
-            <tr>
-              <td class="py-2 font-semibold">${p.subject}</td>
-              <td class="text-center">${p.mcqs}</td>
-              <td class="text-center text-blue-600 font-bold">${p.marks}</td>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="px-4 py-3 font-semibold text-slate-700">${p.subject}</td>
+              <td class="px-4 py-3 text-center text-slate-500">${p.mcqs}</td>
+              <td class="px-4 py-3 text-center text-blue-600 font-bold">${p.marks}</td>
             </tr>
           `;
         }).join('');
 
-      document.getElementById('pattern-table-footer').innerHTML =
-        `<tr>
-          <td>Total</td>
-          <td class="text-center">${totalM}</td>
-          <td class="text-center">${totalP}</td>
-        </tr>`;
+      document.getElementById('pattern-table-footer').innerHTML = `
+        <tr>
+          <td class="px-4 py-3">Total</td>
+          <td class="px-4 py-3 text-center">${totalMCQs}</td>
+          <td class="px-4 py-3 text-center">${totalMarks}</td>
+        </tr>
+      `;
 
-      // ================= STRATEGY =================
-      document.getElementById('prep-guide').innerText = current.strategy;
+      // ── 6. Strategy ───────────────────────────────────────────────────────
+      document.getElementById('prep-guide').innerText = current.strategy || "—";
 
-      // ================= SCHEDULE (FIXED) =================
+      // ── 7. Schedule ───────────────────────────────────────────────────────
       document.getElementById('dates-container').innerHTML =
-        current.annualSchedule.map(d => `
-          <div class="p-5 bg-slate-50 rounded-xl border">
+        (current.annualSchedule || []).map(d => `
+          <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
 
             <p class="text-sm font-black text-blue-600 uppercase mb-3">
               ${d.series}
             </p>
 
             <div class="grid grid-cols-2 gap-y-2 text-sm">
+              <span class="text-slate-400 uppercase text-xs font-bold">Registration Opens</span>
+              <span class="text-right text-slate-700 font-medium">${d.regStarts}</span>
 
-              <span class="text-slate-400 uppercase">Registration Opens</span>
-              <span class="text-right text-slate-700">${d.regStarts}</span>
+              <span class="text-slate-400 uppercase text-xs font-bold">Deadline</span>
+              <span class="text-right text-slate-700 font-medium">${d.deadline}</span>
 
-              <span class="text-slate-400 uppercase">Deadline</span>
-              <span class="text-right text-slate-700">${d.deadline}</span>
-
-              <span class="text-slate-400 uppercase">Test Date</span>
-              <span class="text-right text-slate-700">${d.testDate}</span>
-
+              <span class="text-slate-400 uppercase text-xs font-bold">Test Date</span>
+              <span class="text-right font-bold text-blue-600">${d.testDate}</span>
             </div>
 
           </div>
         `).join('');
 
-      // ================= CENTERS =================
+      // ── 8. Centers ────────────────────────────────────────────────────────
       document.getElementById('centers-container').innerHTML =
-        current.centers.map(c =>
-          `<span class="px-3 py-1 bg-slate-100 rounded text-sm">${c}</span>`
+        (current.centers || []).map(c =>
+          `<span class="px-4 py-2 bg-slate-100 rounded-full text-sm font-medium text-slate-600">
+            📍 ${c}
+           </span>`
         ).join('');
 
+    })
+    .catch(err => {
+      console.error("Failed to load tests.json:", err);
+      document.getElementById('test-name').innerText = "Error loading data";
     });
 };
 </script>
