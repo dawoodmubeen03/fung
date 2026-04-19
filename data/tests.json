@@ -14,10 +14,30 @@
       ],
       "strategy": "Focus on PTB books and speed practice.",
       "annualSchedule": [
-        { "series": "NET-1", "regStarts": "11 Dec, 26", "deadline": "Jan", "testDate": "Feb" },
-        { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "Apr" },
-        { "series": "NET-3", "regStarts": "Apr", "deadline": "May", "testDate": "Jun" },
-        { "series": "NET-4", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
+        {
+          "series": "NET-1",
+          "regStarts": "11 December, 2026",
+          "deadline": "10 January, 2027",
+          "testDate": "15 February, 2027"
+        },
+        {
+          "series": "NET-2",
+          "regStarts": "10 February, 2027",
+          "deadline": "20 March, 2027",
+          "testDate": "15 April, 2027"
+        },
+        {
+          "series": "NET-3",
+          "regStarts": "10 April, 2027",
+          "deadline": "20 May, 2027",
+          "testDate": "18 June, 2027"
+        },
+        {
+          "series": "NET-4",
+          "regStarts": "15 May, 2027",
+          "deadline": "25 June, 2027",
+          "testDate": "20 July, 2027"
+        }
       ],
       "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"]
     },
@@ -35,7 +55,12 @@
       ],
       "strategy": "Focus on analytical + time-based solving. Avoid guessing (negative marking).",
       "annualSchedule": [
-        { "series": "Admission Test", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
+        {
+          "series": "Admission Test",
+          "regStarts": "15 May, 2027",
+          "deadline": "30 June, 2027",
+          "testDate": "20 July, 2027"
+        }
       ],
       "centers": ["Lahore", "Islamabad", "Karachi", "Peshawar"]
     },
@@ -52,7 +77,12 @@
       ],
       "strategy": "Focus on basics + conceptual clarity.",
       "annualSchedule": [
-        { "series": "Fall Intake", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
+        {
+          "series": "Fall Intake",
+          "regStarts": "20 May, 2027",
+          "deadline": "25 June, 2027",
+          "testDate": "18 July, 2027"
+        }
       ],
       "centers": ["Islamabad", "Kamra", "Multan"]
     },
@@ -69,7 +99,12 @@
       ],
       "strategy": "Conceptual questions + time control.",
       "annualSchedule": [
-        { "series": "Admission Test", "regStarts": "Mar", "deadline": "May", "testDate": "Jul" }
+        {
+          "series": "Admission Test",
+          "regStarts": "15 March, 2027",
+          "deadline": "20 May, 2027",
+          "testDate": "10 July, 2027"
+        }
       ],
       "centers": ["Topi", "Lahore", "Karachi", "Islamabad"]
     },
@@ -86,7 +121,12 @@
       ],
       "strategy": "Strong concepts required. Avoid random guessing.",
       "annualSchedule": [
-        { "series": "Admission Test", "regStarts": "Apr", "deadline": "Jun", "testDate": "Jul" }
+        {
+          "series": "Admission Test",
+          "regStarts": "10 April, 2027",
+          "deadline": "15 June, 2027",
+          "testDate": "12 July, 2027"
+        }
       ],
       "centers": ["Islamabad", "Karachi", "Lahore"]
     },
@@ -102,7 +142,12 @@
       ],
       "strategy": "Focus on logic + math basics.",
       "annualSchedule": [
-        { "series": "Fall Intake", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
+        {
+          "series": "Fall Intake",
+          "regStarts": "20 May, 2027",
+          "deadline": "30 June, 2027",
+          "testDate": "22 July, 2027"
+        }
       ],
       "centers": ["Lahore"]
     },
@@ -117,7 +162,12 @@
       ],
       "strategy": "Merit is based on academic marks (no entry test for most programs).",
       "annualSchedule": [
-        { "series": "Admissions", "regStarts": "Jun", "deadline": "Aug", "testDate": "N/A" }
+        {
+          "series": "Admissions",
+          "regStarts": "01 June, 2027",
+          "deadline": "15 August, 2027",
+          "testDate": "N/A"
+        }
       ],
       "centers": ["Lahore"]
     }
