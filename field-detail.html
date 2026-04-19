@@ -134,60 +134,57 @@
   </div>
 
   <script>
-    window.onload = () => {
-        const params = new URLSearchParams(window.location.search);
-        const name = params.get('name') || "Software Engineering";
-        document.getElementById('field-name').innerText = name;
+    let fields = [];
 
-        const mockData = {
-            "Software Engineering": {
-                intro: "Software Engineering focuses on applying engineering principles to software development in a systematic method.",
-                scope: "With the rise of AI and SaaS, software engineers are the most in-demand professionals globally.",
-                jobs: "Senior Dev, System Architect, Product Manager",
-                topUnis: ["NUST", "FAST-NUCES", "GIKI", "COMSATS", "ITU"],
-                roadmap: {
-                    y1: ["Calculus", "PF", "Applied Physics"],
-                    y2: ["DSA", "OOP", "Database Systems"],
-                    y3: ["Software Design", "OS", "Web Dev"],
-                    y4: ["FYP I & II", "Cloud Computing", "Ethics"]
-                }
-            },
-            "Electrical Engineering": {
-                intro: "Study of electricity, electronics, and electromagnetism to design power systems and devices.",
-                scope: "Vital for national infrastructure, energy sectors, and the growing EV market.",
-                jobs: "Power Engineer, Telecom Specialist, Control Systems Engineer",
-                topUnis: ["NUST", "UET Lahore", "PIEAS", "GIKI", "NED"],
-                roadmap: {
-                    y1: ["Linear Algebra", "Applied Physics", "Workshop"],
-                    y2: ["Circuit Analysis", "DLD", "Electronics"],
-                    y3: ["Power Systems", "Microprocessors", "Control"],
-                    y4: ["Design Project", "Renewable Energy", "HV Engineering"]
-                }
-            }
-        };
+    async function loadFieldData() {
+      try {
+        const response = await fetch('/data/fields.json');
+        const data = await response.json();
+        fields = data.fields || [];
+        console.log('✅ Fields loaded:', fields);
+        initializeFieldDetails();
+      } catch (err) {
+        console.error('❌ Error loading fields.json:', err);
+        fields = [];
+        initializeFieldDetails();
+      }
+    }
 
-        const field = mockData[name] || mockData["Software Engineering"];
+    function initializeFieldDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const nameParam = params.get('name');
 
-        document.getElementById('field-intro').innerText = field.intro;
-        document.getElementById('field-scope').innerText = field.scope;
-        document.getElementById('field-jobs').innerText = field.jobs;
+      const current = fields.find(f => f.name === nameParam) || fields[0];
 
-        // Render Roadmap
-        const renderList = (id, list) => {
-            document.getElementById(id).innerHTML = list.map(item => `<li>• ${item}</li>`).join('');
-        };
-        renderList('year1-list', field.roadmap.y1);
-        renderList('year2-list', field.roadmap.y2);
-        renderList('year3-list', field.roadmap.y3);
-        renderList('year4-list', field.roadmap.y4);
+      if (!current) {
+        document.body.innerHTML = '<p>Field not found</p>';
+        return;
+      }
 
-        // Render Universities
-        document.getElementById('uni-list').innerHTML = field.topUnis.map(uni => `
-            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-[11px] font-black rounded-xl border border-slate-200 uppercase tracking-tighter">
-                ${uni}
-            </span>
-        `).join('');
-    };
+      // Display data from JSON
+      document.getElementById('field-name').innerText = current.name;
+      document.getElementById('field-intro').innerText = current.intro;
+      document.getElementById('field-scope').innerText = current.scope;
+      document.getElementById('field-jobs').innerText = current.careerSnapshot?.jobRoles || '';
+
+      // Render roadmap
+      const renderList = (id, list) => {
+        document.getElementById(id).innerHTML = (list || []).map(item => `<li>• ${item}</li>`).join('');
+      };
+      renderList('year1-list', current.roadmap?.y1);
+      renderList('year2-list', current.roadmap?.y2);
+      renderList('year3-list', current.roadmap?.y3);
+      renderList('year4-list', current.roadmap?.y4);
+
+      // Render universities
+      document.getElementById('uni-list').innerHTML = (current.topUniversities || []).map(uni => `
+        <span class="px-4 py-2 bg-slate-100 text-slate-700 text-[11px] font-black rounded-xl border border-slate-200 uppercase tracking-tighter">
+          ${uni}
+        </span>
+      `).join('');
+    }
+
+    window.addEventListener('DOMContentLoaded', loadFieldData);
   </script>
 </body>
 </html>
