@@ -1789,20 +1789,29 @@ async function loadDashboardData() {
     try {
         const fetchJSON = async (path) => {
             const res = await fetch(path);
-            if (!res.ok) return [];
+            if (!res.ok) {
+                console.warn(`⚠️ Missing: ${path}`);
+                return [];
+            }
             return await res.json();
         };
 
         const uniDataRaw = await fetchJSON('/data/universities.json');
-        const testDataRaw = await fetchJSON('/data/tests.json'); // This contains {"tests": [...]}
+        const testDataRaw = await fetchJSON('/data/tests.json');
         const fieldDataRaw = await fetchJSON('/data/fields.json');
 
         universityData = uniDataRaw.universities || [];
-        // FIX: Explicitly target the .tests array from your JSON
-        testData = testDataRaw.tests || []; 
-        categoryData = fieldDataRaw.fields || [];
+        testData = testDataRaw.tests || testDataRaw || [];
+        categoryData = fieldDataRaw.fields || fieldDataRaw || [];
+
+        console.log("✅ ALL DATA:", {
+            universities: universityData,
+            tests: testData,
+            categories: categoryData
+        });
 
         renderHorizontalLists();
+
     } catch (err) {
         console.error("❌ Load error:", err);
     }
