@@ -14,10 +14,10 @@
       ],
       "strategy": "Focus heavily on PTB books. Time management is key as you have 200 MCQs for 180 minutes.",
       "annualSchedule": [
-        { "series": "NET-1", "regStarts": "Dec", "deadline": "Jan", "testDate": "February" },
-        { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "April" },
-        { "series": "NET-3", "regStarts": "Apr", "deadline": "May", "testDate": "June" },
-        { "series": "NET-4", "regStarts": "May", "deadline": "June", "testDate": "July" }
+        { "series": "NET-1", "regStarts": "12 Dec", "deadline": "12 Jan", "testDate": "12 February" },
+        { "series": "NET-2", "regStarts": "11 Feb", "deadline": "22 Mar", "testDate": "33 April" },
+        { "series": "NET-3", "regStarts": "11 Apr", "deadline": "22 May", "testDate": "23 June" },
+        { "series": "NET-4", "regStarts": "11 May", "deadline": "22 June", "testDate": "22 July" }
       ],
       "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"],
       "resources": {
