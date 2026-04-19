@@ -658,24 +658,7 @@
     opacity: 0.8;
     text-decoration: underline;
 }
-   /* Hollow Outline Text Style for Entry Test Cards */
-.hollow-text-logo {
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1.5px #2563eb; /* Your brand blue */
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-}
-
-/* Adjust the icon box to fit the text better */
+/* Logo image container for Entry Test Cards */
 .test-text-container {
     width: 80px;
     height: 60px;
@@ -683,6 +666,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.test-logo-img {
+    max-width: 80px;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 1rem;
 } 
     .uni-card img {
     width: 100%;
@@ -1869,13 +1862,23 @@ function navigateToAll(type) {
         // ===== TESTS =====
         if (type === 'tests') {
             const name = item.name || "TEST";
-            const short = name.split(' ')[0];
+            const short = item.short || name.split(' ')[0];
+            const logoUrl = item.logoUrl || '';
+
+            const logoHtml = logoUrl
+                ? `<img src="${logoUrl}" alt="${short} logo" class="test-logo-img"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+                : '';
+            const fallbackHtml = `<div class="test-text-container" style="${logoUrl ? 'display:none' : ''}">
+                        <span class="font-black text-2xl text-blue-600 uppercase">${short}</span>
+                    </div>`;
 
             return `
                 <div class="data-card bg-white w-full flex flex-col cursor-pointer"
                      onclick="window.location.href='test-detail.html?name=${encodeURIComponent(name)}'">
 
-                    <div class="hollow-text-logo text-5xl mb-4">${short}</div>
+                    ${logoHtml}
+                    ${fallbackHtml}
 
                     <h4 class="font-bold text-lg text-slate-700">${name}</h4>
 
@@ -2381,7 +2384,16 @@ function renderHorizontalLists() {
         container.innerHTML = testData.map(t => {
 
             const name = t.name || t.title || t.testName || "TEST";
-            const short = name.split(' ')[0];
+            const short = t.short || name.split(' ')[0];
+            const logoUrl = t.logoUrl || '';
+
+            const logoHtml = logoUrl
+                ? `<img src="${logoUrl}" alt="${short} logo" class="test-logo-img"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+                : '';
+            const fallbackHtml = `<div class="test-text-container" style="${logoUrl ? 'display:none' : ''}">
+                        <span class="font-black text-2xl text-blue-600 uppercase">${short}</span>
+                    </div>`;
 
             return `
             <div class="bg-white rounded-[2rem] p-5 flex flex-col justify-between 
@@ -2389,9 +2401,8 @@ function renderHorizontalLists() {
                  onclick="window.location.href='test-detail.html?name=${encodeURIComponent(name)}'">
 
                 <div>
-                    <div class="hollow-text-logo text-4xl mb-2">
-                        ${short}
-                    </div>
+                    ${logoHtml}
+                    ${fallbackHtml}
 
                     <h4 class="font-bold text-base text-slate-700">
                         ${name}

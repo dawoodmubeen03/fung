@@ -4,6 +4,7 @@
       "id": "net-nust",
       "name": "NUST Entry Test",
       "short": "NET",
+      "logoUrl": "/logos/nust-logo.png",
       "negativeMarking": false,
       "pattern": [
         { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
@@ -26,6 +27,7 @@
       "id": "fast-nu",
       "name": "FAST Entry Test",
       "short": "FAST",
+      "logoUrl": "/logos/fast-logo.png",
       "negativeMarking": true,
       "pattern": [
         { "subject": "Basic Math",    "mcqs": 50, "marks": 50 },
@@ -44,6 +46,7 @@
       "id": "itu",
       "name": "ITU Admission Test",
       "short": "ITU",
+      "logoUrl": "/logos/itu-logo.svg",
       "negativeMarking": false,
       "pattern": [
         { "subject": "Math",    "mcqs": 70, "marks": 70 },
@@ -60,6 +63,7 @@
       "id": "pieas",
       "name": "PIEAS Entry Test",
       "short": "PIEAS",
+      "logoUrl": "/logos/pieas-logo.png",
       "negativeMarking": true,
       "pattern": [
         { "subject": "Mathematics", "mcqs": 60, "marks": 60 },
@@ -77,6 +81,7 @@
       "id": "nts-nat",
       "name": "NTS NAT Test",
       "short": "NAT",
+      "logoUrl": "/logos/nts-logo.png",
       "negativeMarking": false,
       "pattern": [
         { "subject": "Verbal",       "mcqs": 30, "marks": 30 },
