@@ -365,41 +365,6 @@
         "note": "One of the most affordable engineering universities."
       },
       "applyLink": "https://www.neduet.edu.pk/admission"
-    },
-    {
-      "id": "bahria-uni",
-      "name": "Bahria University",
-      "short": "Bahria",
-      "image": "/assets/images/universities/bahria1.jpg",
-      "images": [
-        "/assets/images/universities/bahria1.jpg"
-      ],
-      "intro": "A comprehensive public sector university managed by the Pakistan Navy with campuses in major cities.",
-      "admission": {
-        "session": "Fall 2026",
-        "status": "Open",
-        "start": "June 05, 2026",
-        "deadline": "July 12, 2026"
-      },
-      "tests": ["CBT (Computer Based Test)"],
-      "programs": [
-        "Media Studies",
-        "Management Sciences",
-        "Psychology",
-        "Geology"
-      ],
-      "merit": [
-        {
-          "year": "2025 Merit List",
-          "image": "/assets/images/universities/bahria-merit1.jpg"
-        }
-      ],
-      "fee": {
-        "admissionFee": 25000,
-        "semesterFee": 110000,
-        "note": "Fee varies by campus and department."
-      },
-      "applyLink": "https://bahria.edu.pk/admissions/"
     }
   ]
 }
