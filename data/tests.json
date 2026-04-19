@@ -44,7 +44,7 @@
     },
     {
       "id": "itu",
-      "name": "ITU Admission Test",
+      "name": "ITU Entry Test",
       "short": "ITU",
       "logoUrl": "/logos/itu-logo.svg",
       "negativeMarking": false,

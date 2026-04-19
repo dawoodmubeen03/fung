@@ -687,7 +687,7 @@
 
 .test-full-name {
     font-weight: 900;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: #6b7280;
     letter-spacing: 0.1em;
     margin-top: 0.35rem;
@@ -2372,7 +2372,7 @@ function renderHorizontalLists() {
             const name = c.name || c.title || "Field";
 
             return `
-            <div class="data-card bg-white min-w-[220px] max-w-[220px] flex flex-col cursor-pointer"
+            <div class="data-card bg-white min-w-[190px] max-w-[190px] flex flex-col cursor-pointer"
                  onclick="window.location.href='field-detail.html?name=${encodeURIComponent(name)}'">
                 
                 <img src="${c.image || c.icon || '/funglogo.jpeg'}" 
@@ -2414,7 +2414,7 @@ function renderHorizontalLists() {
 
             return `
             <div class="bg-white rounded-[2rem] p-5 flex flex-col justify-between 
-                        min-w-[260px] md:min-w-[320px] h-[240px] cursor-pointer"
+                        min-w-[190px] max-w-[190px] h-[240px] cursor-pointer"
                  onclick="window.location.href='test-detail.html?name=${encodeURIComponent(name)}'">
 
                 <div class="flex flex-col items-center text-center">
