@@ -203,7 +203,7 @@
             ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
-      document.getElementById('dates-container').innerHTML = current.dates.map(d => `
+    document.getElementById('dates-container').innerHTML = current.dates.map(d => `
     <div class="flex items-center justify-between p-5 bg-slate-50 rounded-xl border border-slate-100">
         <div class="text-left">
             <p class="text-2xl font-black text-blue-600 uppercase tracking-tight">${d.title}</p>
