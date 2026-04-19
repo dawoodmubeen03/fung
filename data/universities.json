@@ -1,0 +1,405 @@
+{
+  "universities": [
+    {
+      "id": "fast-nuces",
+      "name": "FAST NUCES",
+      "short": "FAST",
+      "image": "https://fungep.app/assets/images/universities/fast1.jpg",
+      "images": [
+        "https://fungep.app/assets/images/universities/fast1.jpg",
+        "/assets/images/universities/fast2.jpg"
+      ],
+      "intro": "The leading institute for Computer Science and Software Engineering in Pakistan with multiple campuses.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Open",
+        "start": "June 15, 2026",
+        "deadline": "July 30, 2026"
+      },
+      "tests": ["FAST-NU", "SAT-I", "NAT-ICS"],
+      "programs": [
+        "Software Engineering",
+        "Computer Science",
+        "Data Science",
+        "Cyber Security"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/fast-merit1.jpg"
+        },
+        {
+          "year": "2024 Closing Merit",
+          "image": "/assets/images/universities/fast-merit2.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 35000,
+        "semesterFee": 145000,
+        "note": "Fee structure varies by program."
+      },
+      "applyLink": "https://admissions.nu.edu.pk/"
+    },
+    {
+      "id": "nust-islamabad",
+      "name": "NUST Islamabad",
+      "short": "NUST",
+      "image": "https://fungep.app/assets/images/universities/nust1.jpg",
+      "images": [
+        "https://fungep.app/assets/images/universities/nust1.jpg",
+        "/assets/images/universities/nust2.jpg"
+      ],
+      "intro": "National University of Sciences & Technology (NUST) is a premier national institution renowned for its research and engineering excellence.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Open",
+        "start": "March 10, 2026",
+        "deadline": "June 24, 2026"
+      },
+      "tests": ["NET", "SAT", "ACT"],
+      "programs": [
+        "Mechanical Engineering",
+        "Computer Engineering",
+        "Electrical Engineering",
+        "Civil Engineering"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/nust-merit1.jpg"
+        },
+        {
+          "year": "2024 Closing Merit",
+          "image": "/assets/images/universities/nust-merit2.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 35000,
+        "semesterFee": 162000,
+        "note": "Fee structure for national students."
+      },
+      "applyLink": "https://ugadmissions.nust.edu.pk/"
+    },
+    {
+      "id": "pieas",
+      "name": "PIEAS Islamabad",
+      "short": "PIEAS",
+      "image": "/assets/images/universities/pieas1.jpg",
+      "images": [
+        "/assets/images/universities/pieas1.jpg",
+        "/assets/images/universities/pieas2.jpg"
+      ],
+      "intro": "Pakistan Institute of Engineering and Applied Sciences is a top-ranked engineering university focused on nuclear and high-tech disciplines.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Coming Soon",
+        "start": "May 15, 2026",
+        "deadline": "June 30, 2026"
+      },
+      "tests": ["PIEAS Entry Test"],
+      "programs": [
+        "Nuclear Engineering",
+        "Chemical Engineering",
+        "Metallurgy & Materials",
+        "Physics"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/pieas-merit1.jpg"
+        },
+        {
+          "year": "2024 Closing Merit",
+          "image": "/assets/images/universities/pieas-merit2.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 25000,
+        "semesterFee": 95000,
+        "note": "Subject to annual revision."
+      },
+      "applyLink": "https://admissions.pieas.edu.pk/"
+    },
+    {
+      "id": "comsats-isb",
+      "name": "COMSATS University Islamabad",
+      "short": "COMSATS",
+      "image": "/assets/images/universities/comsats1.jpg",
+      "images": [
+        "/assets/images/universities/comsats1.jpg",
+        "/assets/images/universities/comsats2.jpg"
+      ],
+      "intro": "A leading public sector university known for its strong focus on Information Technology and research.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Open",
+        "start": "May 20, 2026",
+        "deadline": "July 15, 2026"
+      },
+      "tests": ["NTS NAT", "GAT"],
+      "programs": [
+        "Computer Science",
+        "Business Administration",
+        "Electrical Engineering",
+        "Psychology"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/comsats-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 22000,
+        "semesterFee": 115000,
+        "note": "Excludes hostel charges."
+      },
+      "applyLink": "https://admissions.comsats.edu.pk/"
+    },
+    {
+      "id": "air-university",
+      "name": "Air University Islamabad",
+      "short": "Air",
+      "image": "/assets/images/universities/air1.jpg",
+      "images": [
+        "/assets/images/universities/air1.jpg"
+      ],
+      "intro": "Established by the Pakistan Air Force, it excels in aviation, aerospace, and security studies.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Open",
+        "start": "June 01, 2026",
+        "deadline": "July 10, 2026"
+      },
+      "tests": ["AU Admission Test", "NAT"],
+      "programs": [
+        "Aerospace Engineering",
+        "Cyber Security",
+        "Mechanical Engineering",
+        "Mechatronics"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/air-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 25000,
+        "semesterFee": 105000,
+        "note": "Variable based on engineering vs non-engineering."
+      },
+      "applyLink": "https://portals.au.edu.pk/admissions/"
+    },
+    {
+      "id": "itu-lahore",
+      "name": "Information Technology University",
+      "short": "ITU",
+      "image": "/assets/images/universities/itu1.jpg",
+      "images": [
+        "/assets/images/universities/itu1.jpg"
+      ],
+      "intro": "A specialized institution in Lahore modeled after MIT, focusing on tech innovation and entrepreneurship.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Coming Soon",
+        "start": "June 10, 2026",
+        "deadline": "July 20, 2026"
+      },
+      "tests": ["ITU Admission Test", "SAT", "USAT"],
+      "programs": [
+        "Computer Science",
+        "Computer Engineering",
+        "Management & Technology"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/itu-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 30000,
+        "semesterFee": 130000,
+        "note": "Subsidized for high merit students."
+      },
+      "applyLink": "https://itu.edu.pk/admissions/"
+    },
+    {
+      "id": "giki-swabi",
+      "name": "Ghulam Ishaq Khan Institute",
+      "short": "GIKI",
+      "image": "/assets/images/universities/giki1.jpg",
+      "images": [
+        "/assets/images/universities/giki1.jpg",
+        "/assets/images/universities/giki2.jpg"
+      ],
+      "intro": "One of the most prestigious private engineering institutes in Pakistan, known for its residential campus and alumni network.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Open",
+        "start": "May 01, 2026",
+        "deadline": "June 20, 2026"
+      },
+      "tests": ["GIKI Admission Test", "SAT-II"],
+      "programs": [
+        "Mechanical Engineering",
+        "Computer Science",
+        "Artificial Intelligence",
+        "Materials Engineering"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/giki-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 65000,
+        "semesterFee": 450000,
+        "note": "Includes various campus facilities."
+      },
+      "applyLink": "https://admissions.giki.edu.pk/"
+    },
+    {
+      "id": "lums-lahore",
+      "name": "Lahore University of Management Sciences",
+      "short": "LUMS",
+      "image": "/assets/images/universities/lums1.jpg",
+      "images": [
+        "/assets/images/universities/lums1.jpg"
+      ],
+      "intro": "The top-tier private university in Pakistan, world-renowned for its business and liberal arts programs.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Closed",
+        "start": "November 15, 2025",
+        "deadline": "February 05, 2026"
+      },
+      "tests": ["SAT", "LUMS Common Admission Test"],
+      "programs": [
+        "Accounting & Finance",
+        "Economics",
+        "Computer Science",
+        "Law"
+      ],
+      "merit": [
+        {
+          "year": "2025 Selection Criteria",
+          "image": "/assets/images/universities/lums-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 90000,
+        "semesterFee": 580000,
+        "note": "Fee is calculated per credit hour."
+      },
+      "applyLink": "https://admissions.lums.edu.pk/"
+    },
+    {
+      "id": "iba-karachi",
+      "name": "Institute of Business Administration",
+      "short": "IBA",
+      "image": "/assets/images/universities/iba1.jpg",
+      "images": [
+        "/assets/images/universities/iba1.jpg"
+      ],
+      "intro": "The oldest business school outside North America, maintaining the highest standards in business education.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Open",
+        "start": "April 05, 2026",
+        "deadline": "June 15, 2026"
+      },
+      "tests": ["IBA Aptitude Test", "SAT", "ACT"],
+      "programs": [
+        "BBA",
+        "BS Computer Science",
+        "Social Sciences",
+        "Accounting & Finance"
+      ],
+      "merit": [
+        {
+          "year": "2025 Cut-off Scores",
+          "image": "/assets/images/universities/iba-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 70000,
+        "semesterFee": 320000,
+        "note": "Financial assistance available for 25% of students."
+      },
+      "applyLink": "https://admissions.iba.edu.pk/"
+    },
+    {
+      "id": "ned-karachi",
+      "name": "NED University of Engineering & Technology",
+      "short": "NED",
+      "image": "/assets/images/universities/ned1.jpg",
+      "images": [
+        "/assets/images/universities/ned1.jpg"
+      ],
+      "intro": "The oldest engineering institution in Pakistan, a public sector giant located in Karachi.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Coming Soon",
+        "start": "June 25, 2026",
+        "deadline": "July 25, 2026"
+      },
+      "tests": ["NED Entry Test"],
+      "programs": [
+        "Civil Engineering",
+        "Mechanical Engineering",
+        "Software Engineering",
+        "Electrical Engineering"
+      ],
+      "merit": [
+        {
+          "year": "2025 Closing Merit",
+          "image": "/assets/images/universities/ned-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 45000,
+        "semesterFee": 65000,
+        "note": "One of the most affordable engineering universities."
+      },
+      "applyLink": "https://www.neduet.edu.pk/admission"
+    },
+    {
+      "id": "bahria-uni",
+      "name": "Bahria University",
+      "short": "Bahria",
+      "image": "/assets/images/universities/bahria1.jpg",
+      "images": [
+        "/assets/images/universities/bahria1.jpg"
+      ],
+      "intro": "A comprehensive public sector university managed by the Pakistan Navy with campuses in major cities.",
+      "admission": {
+        "session": "Fall 2026",
+        "status": "Open",
+        "start": "June 05, 2026",
+        "deadline": "July 12, 2026"
+      },
+      "tests": ["CBT (Computer Based Test)"],
+      "programs": [
+        "Media Studies",
+        "Management Sciences",
+        "Psychology",
+        "Geology"
+      ],
+      "merit": [
+        {
+          "year": "2025 Merit List",
+          "image": "/assets/images/universities/bahria-merit1.jpg"
+        }
+      ],
+      "fee": {
+        "admissionFee": 25000,
+        "semesterFee": 110000,
+        "note": "Fee varies by campus and department."
+      },
+      "applyLink": "https://bahria.edu.pk/admissions/"
+    }
+  ]
+}

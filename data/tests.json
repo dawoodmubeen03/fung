@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "id": "net-nust",
+      "name": "NUST Entry Test",
+      "short": "NET",
+      "negativeMarking": false,
+      "pattern": [
+        { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
+        { "subject": "Physics", "mcqs": 60, "marks": 60 },
+        { "subject": "Chemistry/CS", "mcqs": 30, "marks": 30 },
+        { "subject": "English", "mcqs": 20, "marks": 20 },
+        { "subject": "Intelligence", "mcqs": 10, "marks": 10 }
+      ],
+      "strategy": "Focus heavily on PTB books. Time management is key as you have 200 MCQs for 180 minutes.",
+      "annualSchedule": [
+        { "series": "NET-1", "regStarts": "Dec", "deadline": "Jan", "testDate": "February" },
+        { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "April" },
+        { "series": "NET-3", "regStarts": "Apr", "deadline": "May", "testDate": "June" },
+        { "series": "NET-4", "regStarts": "May", "deadline": "June", "testDate": "July" }
+      ],
+      "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"],
+      "resources": {
+        "pastPapers": "https://drive.google.com/...",
+        "books": "https://drive.google.com/...",
+        "notes": "https://drive.google.com/..."
+      }
+    }
+  ]
+}

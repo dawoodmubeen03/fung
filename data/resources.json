@@ -1,0 +1,497 @@
+[
+  {
+    "id": "fungep-main-resources",
+    "title": "FUNGEP Official Resources",
+    "desc": "Primary study material and internal preparation resources by FUNGEP.",
+    "link": "https://drive.google.com/drive/folders/1d0KnnjC5RQO5w3GS7YG47fU9BGNx1X-e",
+    "universities": ["NUST", "FAST", "GIKI"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["fungep", "main", "internal"]
+  },
+  {
+    "id": "nust-fast-prep-guides",
+    "title": "NUST & FAST Prep Guidebooks",
+    "desc": "Main collection of guidebooks for NET and FAST NU entry test preparation.",
+    "link": "https://drive.google.com/drive/folders/1rnAzZs5xZl1M4KA4QiPra7HKWByxw-x4",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["guidebooks", "prep", "nust", "fast"]
+  },
+  {
+    "id": "general-entry-test-guides",
+    "title": "Universal Entry Test Guides",
+    "desc": "General guidebooks for various engineering and social science tests.",
+    "link": "https://drive.google.com/drive/folders/1VQQpIdI1c5dMMjC7_NdIkI4Jc_zG8z",
+    "universities": ["ALL"],
+    "tests": ["NET", "FAST", "ECAT"],
+    "keywords": ["guidebooks", "pdf"]
+  },
+  {
+    "id": "kips-prep-books",
+    "title": "KIPS Preparation Books",
+    "desc": "Complete PDF collection of KIPS entry test series.",
+    "link": "https://drive.google.com/drive/folders/17jkTfqatCaWw7FCoAa7Wa2-lDwBTAxoG",
+    "universities": ["NUST", "FAST", "UET"],
+    "tests": ["NET", "ECAT", "FAST Test"],
+    "keywords": ["kips", "books", "series"]
+  },
+  {
+    "id": "kips-net-related",
+    "title": "KIPS NET Series Notes",
+    "desc": "KIPS material specifically curated for the NUST Entry Test.",
+    "link": "https://drive.google.com/drive/folders/1GFyegwO1xNDbFJ-hVUbBvIwnDlx0QzDN",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["kips", "net", "nust"]
+  },
+  {
+    "id": "step-prep-books",
+    "title": "STEP Preparation Books",
+    "desc": "STEP (PGC) entry test preparation books and practice material.",
+    "link": "https://drive.google.com/drive/folders/1tIZ09yEhNxdr_FCKyyB8ANze7tGX3ZvH",
+    "universities": ["NUST", "FAST", "UET"],
+    "tests": ["NET", "ECAT", "FAST Test"],
+    "keywords": ["step", "pgc", "books"]
+  },
+  {
+    "id": "oetp-nust-guide",
+    "title": "OETP NUST Guide",
+    "desc": "Specialized OETP series for NUST entry test preparation.",
+    "link": "https://drive.google.com/drive/folders/1HMAIiwNl-vLRGnlCIOt9FNgKx1r4iC7J",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["oetp", "nust", "guide"]
+  },
+  {
+    "id": "toricia-prep-series",
+    "title": "Toricia Prep Series",
+    "desc": "Numerical bank and notes from the Toricia study series.",
+    "link": "https://drive.google.com/drive/folders/1ur_fXaxBRkFRxVDGsEZueGGX1-3TrWEc",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["toricia", "books", "notes"]
+  },
+  {
+    "id": "nearpeer-material",
+    "title": "Nearpeer Study Books",
+    "desc": "Collection of Nearpeer books for university entry test preparation.",
+    "link": "https://drive.google.com/drive/folders/1kEgEjcJz_wU9VeKiRXJqTqEiiFTL7VvH",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["nearpeer", "material", "books"]
+  },
+  {
+    "id": "nust-past-papers-2018-2024",
+    "title": "NUST Past Papers (2018-2024)",
+    "desc": "Massive collection of 2000+ past paper questions from 2018 to 2024.",
+    "link": "https://drive.google.com/drive/folders/1SnZcik3W1i6W6qLgjDvhCidXazyV_zR9",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["past papers", "nust", "latest"]
+  },
+  {
+    "id": "nust-past-papers-mega",
+    "title": "NUST Past Papers (Mega Folder)",
+    "desc": "Extensive collection of authentic past papers from 2015 onwards.",
+    "link": "https://drive.google.com/drive/folders/1Ubh2z0gVfxRAEgSjD5BWIxi5GuJurIfU",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["past papers", "nust", "mega"]
+  },
+  {
+    "id": "net-physics-4-years",
+    "title": "NET Physics (Last 4 Years)",
+    "desc": "Past paper questions for Physics from recent NET sessions.",
+    "link": "https://drive.google.com/file/d/1Kne_Lfy0IUbaJ7SwZwNsJBbJ1Yjs2uBS/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["physics", "past papers"]
+  },
+  {
+    "id": "nust-eng-pp-1",
+    "title": "NUST Engineering Past Paper 1",
+    "desc": "NUST Engineering entry test past paper (Set 1).",
+    "link": "https://drive.google.com/file/d/12Kj1Y7OYAU2KCBkcXHyL4ezuJO_z-ZEc/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["engineering", "past paper"]
+  },
+  {
+    "id": "nust-eng-pp-2",
+    "title": "NUST Engineering Past Paper 2",
+    "desc": "NUST Engineering entry test past paper (Set 2).",
+    "link": "https://drive.google.com/file/d/1RvOqILtyst0t2ZOukCWk-emMLTZkcRDk/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["engineering", "past paper"]
+  },
+  {
+    "id": "nust-eng-pp-4",
+    "title": "NUST Engineering Past Paper 4",
+    "desc": "NUST Engineering entry test past paper (Set 4).",
+    "link": "https://drive.google.com/file/d/1ARYOQbNhEqofSav2tm5iB4xN_duaGstL/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["engineering", "past paper"]
+  },
+  {
+    "id": "nust-eng-pp-5",
+    "title": "NUST Engineering Past Paper 5",
+    "desc": "NUST Engineering entry test past paper (Set 5).",
+    "link": "https://drive.google.com/file/d/1UIdcBQ7uutcZJgOOGhj7e487ZOuJaifK/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["engineering", "past paper"]
+  },
+  {
+    "id": "nust-bio-past-paper",
+    "title": "NUST Biosciences Past Paper",
+    "desc": "Sample past paper for the NUST Biosciences entry test.",
+    "link": "https://drive.google.com/file/d/1XVQ1UPgJToG5L8wnS8q5iATjPRtxj2sP/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["biosciences", "medical", "past paper"]
+  },
+  {
+    "id": "scientia-math-flp-1",
+    "title": "Scientia Mathematics FLP 01",
+    "desc": "100 MCQ Full Length Paper made from Past NET questions.",
+    "link": "https://drive.google.com/file/d/1Q1volATbf09JWrjtqy_GSqoSwH-SfWbC/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["math", "flp", "mcqs"]
+  },
+  {
+    "id": "scientia-math-flp-2",
+    "title": "Scientia Mathematics FLP 02",
+    "desc": "Full Length Mathematics practice paper for NET candidates.",
+    "link": "https://drive.google.com/file/d/1FZPcGpIW19csBbyMSqO2MR6d1ywMfwda/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["math", "flp"]
+  },
+  {
+    "id": "scientia-math-flp-3",
+    "title": "Scientia Mathematics FLP 03",
+    "desc": "Practice paper focusing on high-weightage NET math topics.",
+    "link": "https://drive.google.com/file/d/11FimLh36gcUsa7EotRt9ZpmLGzvQ5aUI/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["math", "flp"]
+  },
+  {
+    "id": "scientia-math-flp-4",
+    "title": "Scientia Mathematics FLP 04",
+    "desc": "Full length mathematics mock test based on past NET trends.",
+    "link": "https://drive.google.com/file/d/1jNmTvJ6FMnALghTth6vz7jDOBTb4fRbb/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["math", "flp"]
+  },
+  {
+    "id": "scientia-math-flp-5",
+    "title": "Scientia Mathematics FLP 05",
+    "desc": "Comprehensive math paper for final stage NET preparation.",
+    "link": "https://drive.google.com/file/d/1T6Jym66Cf2KL61Exk-hDNghg8tOjL9rL/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["math", "flp"]
+  },
+  {
+    "id": "scientia-math-flp-6",
+    "title": "Scientia Mathematics FLP 06",
+    "desc": "Final full length mathematics paper for NET practice.",
+    "link": "https://drive.google.com/file/d/1iWQC25jUTYC9wv8zw0wh2icFiIFZwsCC/view",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["math", "flp"]
+  },
+  {
+    "id": "step-fung-notes",
+    "title": "STEP Fung Notes Folder",
+    "desc": "Complete notes from STEP Fung sessions for various subjects.",
+    "link": "https://drive.google.com/drive/folders/12t5JOQUN6AIOvecXTTT-z3kWMPr6dauL",
+    "universities": ["NUST", "FAST", "UET"],
+    "tests": ["NET", "ECAT"],
+    "keywords": ["step", "fung", "notes"]
+  },
+  {
+    "id": "physics-net-prep",
+    "title": "NUST NET Physics Prep",
+    "desc": "Study material and notes specifically for NUST NET Physics.",
+    "link": "https://drive.google.com/drive/folders/1--7fv2Ae7L7DZJf6fvXnMUtdtBsDPDpL",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["physics", "nust", "net"]
+  },
+  {
+    "id": "physics-conceptual-mastery",
+    "title": "Physics Conceptual Mastery",
+    "desc": "Deep-dive physics notes for engineering university entrance exams.",
+    "link": "https://drive.google.com/drive/folders/1z07jr9oUv6wIFPik6wvU9fogus0FYRiB",
+    "universities": ["NUST", "FAST", "GIKI"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["physics", "concepts"]
+  },
+  {
+    "id": "physics-conceptual-notes-v1",
+    "title": "Physics Conceptual Notes (V1)",
+    "desc": "Conceptual folders for Physics preparation covering key topics.",
+    "link": "https://drive.google.com/drive/folders/1M0mPQfELPFrvSomCy-YSEWuaBYp6CC3G",
+    "universities": ["NUST", "GIKI"],
+    "tests": ["NET"],
+    "keywords": ["physics", "notes"]
+  },
+  {
+    "id": "physics-net-complete",
+    "title": "NET Physics Complete Collection",
+    "desc": "All-in-one folder for NET Physics past papers and practice.",
+    "link": "https://drive.google.com/drive/folders/1X7sVV3slZUR62rShEhABbH0Tcl1nIbeY",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["physics", "net", "complete"]
+  },
+  {
+    "id": "physics-additional-prep",
+    "title": "Physics Additional Prep",
+    "desc": "Extra physics chapters and practice papers for entry tests.",
+    "link": "https://drive.google.com/drive/folders/1ndjiAj9lMaDKwBhcBGQAEfczMHJhExFt",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET"],
+    "keywords": ["physics", "additional"]
+  },
+  {
+    "id": "physics-numerical-bank",
+    "title": "Physics Numerical Bank",
+    "desc": "A bank of solved numericals for NET and ECAT preparation.",
+    "link": "https://drive.google.com/drive/folders/1ur_fXaxBRkFRxVDGsEZueGGX1-3TrWEc",
+    "universities": ["NUST", "UET"],
+    "tests": ["NET", "ECAT"],
+    "keywords": ["physics", "numericals"]
+  },
+  {
+    "id": "physics-concept-maps",
+    "title": "Physics Concept Maps",
+    "desc": "Visual concept maps for quick revision of Physics formulas.",
+    "link": "https://drive.google.com/drive/folders/1pvzOwdDJdDtToq5yoT5r-naEcINowd1D",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["physics", "revision"]
+  },
+  {
+    "id": "physics-elec-mag",
+    "title": "Physics: Electricity & Magnetism",
+    "desc": "In-depth notes on high weightage sections in NET Physics.",
+    "link": "https://drive.google.com/drive/folders/1rjSA-LdDpU0OqHrumML4QQXowhL2USOi",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["physics", "electricity"]
+  },
+  {
+    "id": "physics-modern-handwritten",
+    "title": "Modern Physics Handwritten",
+    "desc": "Detailed handwritten notes on Modern Physics for NET.",
+    "link": "https://drive.google.com/drive/folders/1B9Y14n2FTACteZ4etwl2FBexhZOT4MX7",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["physics", "modern"]
+  },
+  {
+    "id": "nust-math-prep-v1",
+    "title": "NUST Math Preparation (V1)",
+    "desc": "Foundational and advanced math resources for the NET.",
+    "link": "https://drive.google.com/drive/folders/1W6CbKmywrsXFN535LACryGUuRNXKu8Pj",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["math", "nust"]
+  },
+  {
+    "id": "fast-math-logic",
+    "title": "FAST Math & Logic Modules",
+    "desc": "Modules designed for the FAST-NU math section.",
+    "link": "https://drive.google.com/drive/folders/1sMzJCGwxj11HG-4FJNykd1Ov1Eu6wCvu",
+    "universities": ["FAST"],
+    "tests": ["FAST Test"],
+    "keywords": ["fast", "math", "logic"]
+  },
+  {
+    "id": "math-extra-practice",
+    "title": "Additional Math Material",
+    "desc": "Extra practice questions and advanced study material.",
+    "link": "https://drive.google.com/drive/folders/1RbbHtjd0nkRiQ-rpiIY-LTJ35ZItJUU5",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["math", "practice"]
+  },
+  {
+    "id": "math-shortcut-tricks",
+    "title": "Math Shortcut Tricks",
+    "desc": "Handwritten notes on math shortcuts for saving time.",
+    "link": "https://drive.google.com/drive/folders/1eCoQN2oHW40Aw2BakwoaNRhbydJrrjQd",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["math", "shortcuts"]
+  },
+  {
+    "id": "math-advanced-integration",
+    "title": "Math: Integration & Derivatives",
+    "desc": "Specialized practice for difficult math sections.",
+    "link": "https://drive.google.com/drive/folders/1GSEb3mYbdf5ZEtraNHjqQUsj3u6ovwnq",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["math", "calculus"]
+  },
+  {
+    "id": "math-conic-sections",
+    "title": "Math: Conic Sections Prep",
+    "desc": "Detailed notes and MCQs on Conic Sections.",
+    "link": "https://drive.google.com/drive/folders/1bGaTO9PWQPZLfN8iG3giE3rysSfsDpo9",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["math", "conics"]
+  },
+  {
+    "id": "math-formulas-sheet",
+    "title": "Math Formulas Cheat Sheet",
+    "desc": "Quick-reference formula sheet for all test topics.",
+    "link": "https://drive.google.com/drive/folders/1_R5_F0UXvOnZdjvOMM8pp57ZfxMcRbhE",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["math", "formulas"]
+  },
+  {
+    "id": "cs-prep-notes",
+    "title": "Computer Science Prep Notes",
+    "desc": "Core Computer Science notes for computing entry tests.",
+    "link": "https://drive.google.com/file/d/1CFR37w65ES-Icfm256mIvonW9L-KOrq3/view",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["cs", "notes"]
+  },
+  {
+    "id": "cs-handwritten-notes",
+    "title": "Handwritten CS Notes",
+    "desc": "Student-made handwritten notes for CS Entry Tests.",
+    "link": "https://drive.google.com/drive/folders/1-7yh_Mzwvdhdcx9uYq5ErcJanvr53-A8",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["cs", "handwritten"]
+  },
+  {
+    "id": "chemistry-net-resources",
+    "title": "Chemistry NET Resources",
+    "desc": "Complete chemistry notes for NUST Applied Sciences.",
+    "link": "https://drive.google.com/drive/folders/1L9yah88mvTBaEWryd-dOQGIA0HOfe9q6",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["chemistry", "net"]
+  },
+  {
+    "id": "chemistry-handwritten",
+    "title": "Handwritten Chemistry Notes",
+    "desc": "Handwritten organic and inorganic chemistry notes.",
+    "link": "https://drive.google.com/drive/folders/1rjAT47xfoUbooHD0yjeIkoWciQoHwo2R",
+    "universities": ["NUST"],
+    "tests": ["NET"],
+    "keywords": ["chemistry", "handwritten"]
+  },
+  {
+    "id": "english-grammar-iq",
+    "title": "English Grammar & IQ",
+    "desc": "Grammar rules and IQ reasoning sets.",
+    "link": "https://drive.google.com/drive/folders/1VV1R99dIiZrdNxWUc_TPElt4-Hb0r5Pb",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["english", "iq"]
+  },
+  {
+    "id": "analytic-reasoning-prep",
+    "title": "Analytic Reasoning Material",
+    "desc": "Focused practice for the Analytic Reasoning portion.",
+    "link": "https://drive.google.com/drive/folders/1uNXLcdWF_-mC8WJJ4E22iMv69dAgOhGg",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["analytic", "logic"]
+  },
+  {
+    "id": "basic-maths-folder",
+    "title": "Basic Maths Study Material",
+    "desc": "Notes and questions for Quantitative Mathematics.",
+    "link": "https://drive.google.com/drive/folders/1JW2wNWavX_YwTzKmbVonrUB0LUh5QH0g",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["math", "basic"]
+  },
+  {
+    "id": "iq-logical-puzzles",
+    "title": "IQ & Logical Puzzles",
+    "desc": "Logical puzzles to boost reasoning performance.",
+    "link": "https://drive.google.com/drive/folders/1zLmYADmziwlwl29-8aLZTIApbpJoumt9",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["iq", "logic"]
+  },
+  {
+    "id": "iq-series-patterns",
+    "title": "IQ: Series & Patterns",
+    "desc": "Practice sets for number series and pattern completion.",
+    "link": "https://drive.google.com/drive/folders/1c4X1pGka1jxydW3HKTUwKUScQ1tNY3LW",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["iq", "series"]
+  },
+  {
+    "id": "entry-test-vocabulary",
+    "title": "Entry Test Vocab Master",
+    "desc": "Essential vocabulary lists for major university tests.",
+    "link": "https://drive.google.com/drive/folders/1H_IDU54ZwVYbWY4qbzdS1MAkj961npex",
+    "universities": ["NUST", "FAST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["vocab", "english"]
+  },
+  {
+    "id": "general-science-nts",
+    "title": "General Science (NAT/NTS)",
+    "desc": "General science study material for NTS tests.",
+    "link": "https://drive.google.com/drive/folders/14mSIg937yks-8Adzxdq3UJPZKMklqZbD",
+    "universities": ["COMSATS"],
+    "tests": ["NAT"],
+    "keywords": ["science", "nts"]
+  },
+  {
+    "id": "nust-business-social-iq",
+    "title": "NUST Business & Social IQ",
+    "desc": "IQ and Basic Math for NUST Business School.",
+    "link": "https://drive.google.com/drive/folders/1YIIKRpkISX1T2C-ijKfjWFmZZhmOKrBM",
+    "universities": ["NUST"],
+    "tests": ["NET Business"],
+    "keywords": ["business", "iq"]
+  },
+  {
+    "id": "general-knowledge-gk",
+    "title": "General Knowledge Prep",
+    "desc": "Static GK and current affairs for entrance tests.",
+    "link": "https://drive.google.com/drive/folders/1fL-y9uZiOQgNge0VRRY_H6D1yPUvzBIQ",
+    "universities": ["NUST", "LUMS"],
+    "tests": ["NET"],
+    "keywords": ["gk", "knowledge"]
+  },
+  {
+    "id": "entry-test-strategy-guide",
+    "title": "Entry Test Strategy Guide",
+    "desc": "Strategic guide on managing time and managing papers.",
+    "link": "https://drive.google.com/file/d/1qL9ask6gxa8pv9QEin3r5Sx1xBKn78iA/view",
+    "universities": ["ALL"],
+    "tests": ["ALL"],
+    "keywords": ["strategy", "tips"]
+  },
+  {
+    "id": "mcq-solving-hacks",
+    "title": "MCQ Solving Hacks",
+    "desc": "Tips to solve MCQs without full calculations.",
+    "link": "https://drive.google.com/file/d/1dxY4Qy1i8RhcteCulZ4dZ8rIV8Ic4caL/view",
+    "universities": ["FAST", "NUST"],
+    "tests": ["NET", "FAST Test"],
+    "keywords": ["hacks", "tricks"]
+  }
+]

@@ -1,0 +1,213 @@
+{
+  "fields": [
+    {
+      "id": "computer-science",
+      "name": "Computer Science",
+      "short": "CS",
+      "icon": "https://askingtips.com/dl/stock_photo/uploads/fetchpik.com-png-k2qGIzd7bi.png",
+      "intro": "The study of computation, information, and automation, focusing on algorithms and software theory.",
+      "roadmap": {
+        "y1": ["Calculus", "Programming Fundamentals", "Applied Physics"],
+        "y2": ["Data Structures", "Discrete Structures", "Digital Logic"],
+        "y3": ["Operating Systems", "Theory of Automata", "Database Systems"],
+        "y4": ["FYP", "Artificial Intelligence", "Parallel Computing"]
+      },
+      "scope": "The foundation of the entire tech industry, offering the most versatile career paths in global markets.",
+      "careerSnapshot": {
+        "jobRoles": "Software Architect, System Analyst, Research Scientist",
+        "salaryRange": "PKR 100,000 - 400,000+"
+      },
+      "topUniversities": ["FAST", "NUST", "ITU", "PUCIT", "LUMS"]
+    },
+    {
+      "id": "software-engineering",
+      "name": "Software Engineering",
+      "short": "SE",
+      "image": "https://fungep.app/assets/images/fields/se-card.png",
+      "intro": "Focuses on the systematic application of engineering principles to software development life cycles.",
+      "roadmap": {
+        "y1": ["Programming Fundamentals", "Calculus", "English"],
+        "y2": ["OOP", "Data Structures", "Software Requirements"],
+        "y3": ["Software Design", "Web Engineering", "Verification"],
+        "y4": ["FYP", "Software Project Management", "Cloud Computing"]
+      },
+      "scope": "High demand in the corporate sector for building scalable, reliable, and efficient enterprise software.",
+      "careerSnapshot": {
+        "jobRoles": "DevOps Engineer, Full Stack Developer, QA Manager",
+        "salaryRange": "PKR 90,000 - 350,000+"
+      },
+      "topUniversities": ["FAST", "NUST", "COMSATS", "GIKI"]
+    },
+    {
+      "id": "artificial-intelligence",
+      "name": "Artificial Intelligence",
+      "short": "AI",
+      "image": "https://fungep.app/assets/images/fields/ai-card.png",
+      "intro": "Specialized field focusing on creating systems capable of performing tasks that require human intelligence.",
+      "roadmap": {
+        "y1": ["Linear Algebra", "Programming Fundamentals", "Calculus"],
+        "y2": ["Data Structures", "Probability & Statistics", "AI Foundations"],
+        "y3": ["Machine Learning", "Neural Networks", "Knowledge Representation"],
+        "y4": ["FYP", "Deep Learning", "Computer Vision"]
+      },
+      "scope": "The future of technology, impacting healthcare, finance, and autonomous systems worldwide.",
+      "careerSnapshot": {
+        "jobRoles": "ML Engineer, AI Specialist, Data Scientist",
+        "salaryRange": "PKR 120,000 - 500,000+"
+      },
+      "topUniversities": ["NUST", "FAST", "ITU", "Air University"]
+    },
+    {
+      "id": "data-science",
+      "name": "Data Science",
+      "short": "DS",
+      "image": "https://fungep.app/assets/images/fields/ds-card.png",
+      "intro": "Combines statistics, mathematics, and programming to extract meaningful insights from large data sets.",
+      "roadmap": {
+        "y1": ["Calculus", "Intro to Data Science", "Programming"],
+        "y2": ["Statistics", "Database Systems", "Data Visualization"],
+        "y3": ["Statistical Modeling", "Data Warehousing", "ML"],
+        "y4": ["FYP", "Big Data Analytics", "Business Intelligence"]
+      },
+      "scope": "Critical for decision-making in tech giants and financial institutions.",
+      "careerSnapshot": {
+        "jobRoles": "Data Analyst, Data Architect, Business Lead",
+        "salaryRange": "PKR 100,000 - 350,000+"
+      },
+      "topUniversities": ["ITU", "FAST", "NUST", "NED"]
+    },
+    {
+      "id": "cyber-security",
+      "name": "Cyber Security",
+      "short": "Cyber",
+      "image": "https://fungep.app/assets/images/fields/cyber-card.png",
+      "intro": "The practice of protecting systems, networks, and programs from digital attacks.",
+      "roadmap": {
+        "y1": ["Computer Networks", "Programming", "Digital Logic"],
+        "y2": ["Cryptography", "Network Security", "OS"],
+        "y3": ["Ethical Hacking", "Digital Forensics", "Malware Analysis"],
+        "y4": ["FYP", "Security Governance", "Cloud Security"]
+      },
+      "scope": "Growing importance due to increasing cyber threats globally; high pay in specialized defense roles.",
+      "careerSnapshot": {
+        "jobRoles": "Security Analyst, Penetration Tester, SOC Engineer",
+        "salaryRange": "PKR 110,000 - 450,000+"
+      },
+      "topUniversities": ["Air University", "NUST", "FAST", "ITU"]
+    },
+    {
+      "id": "electrical-engineering",
+      "name": "Electrical Engineering",
+      "short": "EE",
+      "image": "https://fungep.app/assets/images/fields/ee-card.png",
+      "intro": "Focuses on the study of electricity, electronics, and electromagnetism for power and communication.",
+      "roadmap": {
+        "y1": ["Linear Algebra", "Applied Physics", "Workshop"],
+        "y2": ["Circuit Analysis", "DLD", "Signals & Systems"],
+        "y3": ["Power Systems", "Control Systems", "Microprocessors"],
+        "y4": ["FYP", "Renewable Energy", "HV Engineering"]
+      },
+      "scope": "Backbone of infrastructure, power grids, and the booming EV industry.",
+      "careerSnapshot": {
+        "jobRoles": "Power Engineer, Telecom Lead, Control Engineer",
+        "salaryRange": "PKR 70,000 - 250,000+"
+      },
+      "topUniversities": ["UET Lahore", "NUST", "PIEAS", "NED"]
+    },
+    {
+      "id": "mechanical-engineering",
+      "name": "Mechanical Engineering",
+      "short": "ME",
+      "image": "https://fungep.app/assets/images/fields/me-card.png",
+      "intro": "Application of physics and materials science for the design and manufacturing of mechanical systems.",
+      "roadmap": {
+        "y1": ["Calculus", "Engineering Drawing", "Statics"],
+        "y2": ["Thermodynamics", "Dynamics", "Mechanics of Materials"],
+        "y3": ["Heat Transfer", "Machine Design", "Fluid Mechanics"],
+        "y4": ["FYP", "Manufacturing", "Refrigeration & AC"]
+      },
+      "scope": "Crucial for automotive, aerospace, and heavy machinery industries.",
+      "careerSnapshot": {
+        "jobRoles": "Production Engineer, Design Engineer, Plant Manager",
+        "salaryRange": "PKR 65,000 - 220,000+"
+      },
+      "topUniversities": ["NUST", "GIKI", "UET Lahore", "PIEAS"]
+    },
+    {
+      "id": "computer-engineering",
+      "name": "Computer Engineering",
+      "short": "CE",
+      "image": "https://fungep.app/assets/images/fields/ce-card.png",
+      "intro": "Combines Electrical Engineering and Computer Science to develop computer hardware and software.",
+      "roadmap": {
+        "y1": ["Programming", "Calculus", "Physics"],
+        "y2": ["DLD", "Data Structures", "Microprocessors"],
+        "y3": ["Computer Architecture", "Embedded Systems", "OS"],
+        "y4": ["FYP", "VLSI Design", "Robotics"]
+      },
+      "scope": "Specialized roles in hardware design, firmware, and IoT development.",
+      "careerSnapshot": {
+        "jobRoles": "Firmware Engineer, Hardware Architect, IoT Lead",
+        "salaryRange": "PKR 85,000 - 320,000+"
+      },
+      "topUniversities": ["NUST", "FAST", "GIKI", "UET"]
+    },
+    {
+      "id": "civil-engineering",
+      "name": "Civil Engineering",
+      "short": "Civil",
+      "image": "https://fungep.app/assets/images/fields/civil-card.png",
+      "intro": "Design, construction, and maintenance of the physical and naturally built environment.",
+      "roadmap": {
+        "y1": ["Surveying", "Calculus", "Engineering Drawing"],
+        "y2": ["Structural Mechanics", "Fluid Mechanics", "Geology"],
+        "y3": ["Steel Structures", "Hydrology", "Geo-Technical Eng"],
+        "y4": ["FYP", "Transportation", "Construction Management"]
+      },
+      "scope": "Massive scope in national construction projects, dams, and urban development.",
+      "careerSnapshot": {
+        "jobRoles": "Site Engineer, Structural Designer, Project Manager",
+        "salaryRange": "PKR 60,000 - 200,000+"
+      },
+      "topUniversities": ["NUST", "UET Lahore", "NED", "UET Taxila"]
+    },
+    {
+      "id": "bba",
+      "name": "Business Administration",
+      "short": "BBA",
+      "image": "https://fungep.app/assets/images/fields/bba-card.png",
+      "intro": "Comprehensive study of business management, marketing, and leadership.",
+      "roadmap": {
+        "y1": ["Principles of Management", "Accounting", "Microeconomics"],
+        "y2": ["Marketing Management", "HRM", "Macroeconomics"],
+        "y3": ["Financial Management", "Consumer Behavior", "Operations"],
+        "y4": ["Final Project", "Strategic Management", "Entrepreneurship"]
+      },
+      "scope": "Wide range of careers in corporate management, banking, and startups.",
+      "careerSnapshot": {
+        "jobRoles": "Brand Manager, HR Head, Business Consultant",
+        "salaryRange": "PKR 60,000 - 250,000+"
+      },
+      "topUniversities": ["IBA", "LUMS", "NUST (NBS)", "FAST"]
+    },
+    {
+      "id": "accounting-finance",
+      "name": "Accounting & Finance",
+      "short": "AF",
+      "image": "https://fungep.app/assets/images/fields/af-card.png",
+      "intro": "Focuses on financial reporting, auditing, and corporate finance strategies.",
+      "roadmap": {
+        "y1": ["Financial Accounting", "Math for Business", "IT"],
+        "y2": ["Cost Accounting", "Corporate Finance", "Business Law"],
+        "y3": ["Audit & Assurance", "Taxation", "Investment Banking"],
+        "y4": ["Final Project", "Financial Modeling", "Portfolio Management"]
+      },
+      "scope": "High career growth in banking, auditing firms, and financial consultancies.",
+      "careerSnapshot": {
+        "jobRoles": "Financial Analyst, Auditor, Investment Banker",
+        "salaryRange": "PKR 70,000 - 300,000+"
+      },
+      "topUniversities": ["IBA", "LUMS", "FAST", "NUST"]
+    }
+  ]
+}
