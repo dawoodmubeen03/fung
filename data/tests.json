@@ -5,139 +5,90 @@
       "name": "NUST Entry Test",
       "short": "NET",
       "negativeMarking": false,
-
       "pattern": [
         { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
-        { "subject": "Physics", "mcqs": 60, "marks": 60 },
-        { "subject": "Chemistry/CS", "mcqs": 30, "marks": 30 },
-        { "subject": "English", "mcqs": 20, "marks": 20 },
-        { "subject": "Intelligence", "mcqs": 10, "marks": 10 }
+        { "subject": "Physics",     "mcqs": 60, "marks": 60 },
+        { "subject": "Chemistry/CS","mcqs": 30, "marks": 30 },
+        { "subject": "English",     "mcqs": 20, "marks": 20 },
+        { "subject": "Intelligence","mcqs": 10, "marks": 10 }
       ],
-
       "strategy": "Focus on PTB books. Speed and practice are key.",
-
       "annualSchedule": [
         { "series": "NET-1", "regStarts": "Dec", "deadline": "Jan", "testDate": "Feb" },
         { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "Apr" },
         { "series": "NET-3", "regStarts": "Apr", "deadline": "May", "testDate": "Jun" },
         { "series": "NET-4", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
       ],
-
       "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"],
-
-      "resources": {
-        "pastPapers": "#",
-        "books": "#",
-        "notes": "#"
-      }
+      "resources": { "pastPapers": "#", "books": "#", "notes": "#" }
     },
-
     {
       "id": "fast-nu",
       "name": "FAST Entry Test",
       "short": "FAST",
       "negativeMarking": true,
-
       "pattern": [
-        { "subject": "Basic Math", "mcqs": 50, "marks": 50 },
+        { "subject": "Basic Math",    "mcqs": 50, "marks": 50 },
         { "subject": "Advanced Math", "mcqs": 50, "marks": 50 },
-        { "subject": "English", "mcqs": 30, "marks": 30 },
-        { "subject": "IQ", "mcqs": 20, "marks": 20 }
+        { "subject": "English",       "mcqs": 30, "marks": 30 },
+        { "subject": "IQ",            "mcqs": 20, "marks": 20 }
       ],
-
       "strategy": "Avoid guessing. Negative marking present.",
-
       "annualSchedule": [
         { "series": "Admission Test", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
       ],
-
       "centers": ["Lahore", "Islamabad", "Karachi"],
-
-      "resources": {
-        "pastPapers": "#",
-        "books": "#",
-        "notes": "#"
-      }
+      "resources": { "pastPapers": "#", "books": "#", "notes": "#" }
     },
-
     {
       "id": "itu",
       "name": "ITU Admission Test",
       "short": "ITU",
       "negativeMarking": false,
-
       "pattern": [
-        { "subject": "Math", "mcqs": 70, "marks": 70 },
+        { "subject": "Math",    "mcqs": 70, "marks": 70 },
         { "subject": "English", "mcqs": 30, "marks": 30 }
       ],
-
       "strategy": "Focus on logic + math basics.",
-
       "annualSchedule": [
         { "series": "Fall Intake", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
       ],
-
       "centers": ["Lahore"],
-
-      "resources": {
-        "pastPapers": "#",
-        "books": "#",
-        "notes": "#"
-      }
+      "resources": { "pastPapers": "#", "books": "#", "notes": "#" }
     },
-
     {
       "id": "pieas",
       "name": "PIEAS Entry Test",
       "short": "PIEAS",
       "negativeMarking": true,
-
       "pattern": [
         { "subject": "Mathematics", "mcqs": 60, "marks": 60 },
-        { "subject": "Physics", "mcqs": 60, "marks": 60 },
-        { "subject": "Chemistry", "mcqs": 30, "marks": 30 }
+        { "subject": "Physics",     "mcqs": 60, "marks": 60 },
+        { "subject": "Chemistry",   "mcqs": 30, "marks": 30 }
       ],
-
       "strategy": "Strong conceptual preparation required.",
-
       "annualSchedule": [
         { "series": "Admission Test", "regStarts": "Apr", "deadline": "Jun", "testDate": "Jul" }
       ],
-
       "centers": ["Islamabad", "Karachi", "Lahore"],
-
-      "resources": {
-        "pastPapers": "#",
-        "books": "#",
-        "notes": "#"
-      }
+      "resources": { "pastPapers": "#", "books": "#", "notes": "#" }
     },
-
     {
       "id": "nts-nat",
       "name": "NTS NAT Test",
       "short": "NAT",
       "negativeMarking": false,
-
       "pattern": [
-        { "subject": "Verbal", "mcqs": 30, "marks": 30 },
+        { "subject": "Verbal",       "mcqs": 30, "marks": 30 },
         { "subject": "Quantitative", "mcqs": 30, "marks": 30 },
-        { "subject": "Analytical", "mcqs": 30, "marks": 30 }
+        { "subject": "Analytical",   "mcqs": 30, "marks": 30 }
       ],
-
       "strategy": "Monthly test. Focus on basic concepts.",
-
       "annualSchedule": [
         { "series": "Monthly Test", "regStarts": "Monthly", "deadline": "Varies", "testDate": "Monthly" }
       ],
-
       "centers": ["Nationwide"],
-
-      "resources": {
-        "pastPapers": "#",
-        "books": "#",
-        "notes": "#"
-      }
+      "resources": { "pastPapers": "#", "books": "#", "notes": "#" }
     }
   ]
 }
