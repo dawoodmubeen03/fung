@@ -1,7 +1,7 @@
 {
   "tests": [
     {
-      "name": "net-nust",
+      "id": "net-nust",
       "name": "NUST Entry Test",
       "short": "NET",
       "negativeMarking": false,
@@ -33,7 +33,7 @@
     },
 
     {
-      "name": "fast-nu",
+      "id": "fast-nu",
       "name": "FAST Entry Test",
       "short": "FAST",
       "negativeMarking": true,
