@@ -286,13 +286,6 @@
 
       // ── Resources (uses resources object) ────────────────────────────────
       const res = current.resources || {};
-      const resourceLinks = [
-        { label: "Past Papers", href: res.pastPapers },
-        { label: "Guide Books", href: res.books },
-        { label: "Notes",       href: res.notes }
-      ].filter(r => r.href && r.href !== "#");   // hide placeholder "#" links if you want; remove filter to show all
-
-      // Always show all three badges (even if href="#")
       document.getElementById('resource-container').innerHTML = [
         { label: "Past Papers", href: res.pastPapers || "#" },
         { label: "Guide Books", href: res.books || "#" },
