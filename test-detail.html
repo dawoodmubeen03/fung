@@ -275,7 +275,7 @@
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
         // 6. Render Schedule Cards
-        document.getElementById('dates-container').innerHTML = current.annualSchedule.map(d => {
+        document.getElementById('dates-container').innerHTML = current.dates.map(d => {
             const formatD = (m) => m === "Monthly" || m === "Varies" ? m : `15 ${m}, 2026`;
             return `
             <div class="flex items-center justify-between p-5 bg-slate-50 rounded-xl border border-slate-100">
