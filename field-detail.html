@@ -165,19 +165,19 @@
       document.getElementById('field-name').innerText = current.name;
       document.getElementById('field-intro').innerText = current.intro;
       document.getElementById('field-scope').innerText = current.scope;
-      document.getElementById('field-jobs').innerText = current.careerSnapshot.jobRoles;
+      document.getElementById('field-jobs').innerText = current.careerSnapshot?.jobRoles || '';
 
       // Render roadmap
       const renderList = (id, list) => {
-        document.getElementById(id).innerHTML = list.map(item => `<li>• ${item}</li>`).join('');
+        document.getElementById(id).innerHTML = (list || []).map(item => `<li>• ${item}</li>`).join('');
       };
-      renderList('year1-list', current.roadmap.y1);
-      renderList('year2-list', current.roadmap.y2);
-      renderList('year3-list', current.roadmap.y3);
-      renderList('year4-list', current.roadmap.y4);
+      renderList('year1-list', current.roadmap?.y1);
+      renderList('year2-list', current.roadmap?.y2);
+      renderList('year3-list', current.roadmap?.y3);
+      renderList('year4-list', current.roadmap?.y4);
 
       // Render universities
-      document.getElementById('uni-list').innerHTML = current.topUniversities.map(uni => `
+      document.getElementById('uni-list').innerHTML = (current.topUniversities || []).map(uni => `
         <span class="px-4 py-2 bg-slate-100 text-slate-700 text-[11px] font-black rounded-xl border border-slate-200 uppercase tracking-tighter">
           ${uni}
         </span>
