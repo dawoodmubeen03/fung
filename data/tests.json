@@ -1,29 +1,40 @@
 {
-  "tests": [
-    {
-      "id": "net-nust",
-      "name": "NUST Entry Test",
-      "short": "NET",
-      "negativeMarking": false,
-
-      "pattern": [
-        { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
-        { "subject": "Physics", "mcqs": 60, "marks": 60 },
-        { "subject": "Chemistry/CS", "mcqs": 30, "marks": 30 },
-        { "subject": "English", "mcqs": 20, "marks": 20 },
-        { "subject": "Intelligence", "mcqs": 10, "marks": 10 }
-      ],
-
-      "strategy": "Focus on PTB books and speed practice.",
-
-      "annualSchedule": [
-        { "series": "NET-1", "regStarts": "Dec", "deadline": "Jan", "testDate": "Feb" },
-        { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "Apr" },
-        { "series": "NET-3", "regStarts": "Apr", "deadline": "May", "testDate": "Jun" },
-        { "series": "NET-4", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
-      ],
-
-      "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"]
-    }
-  ]
+  "NET": {
+    "subjects": [
+      { "s": "Mathematics", "m": 80, "p": 80 },
+      { "s": "Physics", "m": 60, "p": 60 },
+      { "s": "Chemistry / CS", "m": 30, "p": 30 },
+      { "s": "English", "m": 20, "p": 20 },
+      { "s": "Intelligence", "m": 10, "p": 10 }
+    ],
+    "guide": "Focus heavily on Punjab Textbook Board (PTB) books. NET is a speed test with 200 questions. No negative marking means you should attempt everything. Practice time management to finish in 180 minutes.",
+    "neg": false,
+    "dates": [
+      { 
+        "title": "NET-1", 
+        "start": "01 Dec, 2025", 
+        "deadline": "10 Jan, 2026", 
+        "test": "12 Feb, 2026" 
+      },
+      { 
+        "title": "NET-2", 
+        "start": "15 Feb, 2026", 
+        "deadline": "20 Mar, 2026", 
+        "test": "10 Apr, 2026" 
+      },
+      { 
+        "title": "NET-3", 
+        "start": "12 Apr, 2026", 
+        "deadline": "15 May, 2026", 
+        "test": "25 May, 2026" 
+      },
+      { 
+        "title": "NET-4", 
+        "start": "20 May, 2026", 
+        "deadline": "15 June, 2026", 
+        "test": "05 July, 2026" 
+      }
+    ],
+    "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"]
+  }
 }
