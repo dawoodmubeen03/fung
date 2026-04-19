@@ -14,7 +14,7 @@
       ],
       "strategy": "Focus on PTB books and speed practice.",
       "annualSchedule": [
-        { "series": "NET-1", "regStarts": "Dec", "deadline": "Jan", "testDate": "Feb" },
+        { "series": "NET-1", "regStarts": "11 Dec, 26", "deadline": "Jan", "testDate": "Feb" },
         { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "Apr" },
         { "series": "NET-3", "regStarts": "Apr", "deadline": "May", "testDate": "Jun" },
         { "series": "NET-4", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
