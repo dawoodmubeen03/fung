@@ -47,7 +47,7 @@
     <div style="width:600px;height:600px;opacity:.3;top:5%;left:-200px;animation-delay:.5s"></div>
   </div>
 
-  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
+  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden text-left">
 
     <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-10 md:px-12">
         <div class="mb-6">
@@ -58,7 +58,7 @@
             </button>
         </div>
         
-        <div class="text-left">
+        <div>
             <span class="text-blue-200 text-[10px] font-bold uppercase tracking-[0.25em] block mb-2">Entrance Test Details</span>
             <h1 id="test-name" class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase">
               Entry Test
@@ -69,12 +69,12 @@
     <div class="px-8 py-10 md:px-12 space-y-10">
       
       <section>
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-3 text-left">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-3">
             <h2 class="text-base font-black text-slate-900 flex items-center gap-2">
                 <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">1</span>
                 Test Pattern
             </h2>
-            <div id="neg-marking-badge" class="md:text-right"></div>
+            <div id="neg-marking-badge"></div>
         </div>
 
         <div class="overflow-hidden border border-slate-100 rounded-2xl shadow-sm">
@@ -96,7 +96,7 @@
 
       <div class="border-t border-slate-100"></div>
 
-      <section class="text-left">
+      <section>
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">2</span>
           Preparation Strategy
@@ -108,7 +108,7 @@
 
       <div class="border-t border-slate-100"></div>
 
-      <section class="text-left">
+      <section>
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">3</span>
           Study Resources
@@ -127,17 +127,17 @@
 
       <div class="border-t border-slate-100"></div>
 
-      <section class="text-left">
+      <section>
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">4</span>
           Schedule (Annual Series)
         </h2>
-        <div class="grid gap-3" id="dates-container"></div>
+        <div class="grid gap-4" id="dates-container"></div>
       </section>
 
       <div class="border-t border-slate-100"></div>
 
-      <section class="text-left">
+      <section>
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">5</span>
           Test Centers
@@ -191,6 +191,7 @@
 
         const current = testData[name] || testData["NET"];
 
+        // Fill Pattern Table
         let totalM = 0, totalP = 0;
         document.getElementById('pattern-table-body').innerHTML = current.subjects.map(i => {
             totalM += i.m; totalP += i.p;
@@ -199,32 +200,42 @@
         
         document.getElementById('pattern-table-footer').innerHTML = `<td class="px-4 py-4 md:px-6">Grand Total</td><td class="text-center">${totalM}</td><td class="text-center">${totalP}</td>`;
 
+        // Neg Marking
         document.getElementById('neg-marking-badge').innerHTML = current.neg 
             ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
+        // Render Dates (Image Style)
         document.getElementById('dates-container').innerHTML = current.dates.map(d => `
-            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
-                <p class="text-sm font-black text-blue-600 uppercase tracking-widest mb-4">
-                    ${d.title}
-                </p>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-500 font-bold text-[10px] uppercase tracking-wide">Registration Opens</span>
-                        <span class="text-slate-800 font-bold">→ ${d.start}</span>
+            <div class="p-6 bg-slate-50/80 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                <div class="mb-4">
+                  <p class="text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mb-1">
+                      ${d.title}
+                  </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex flex-col">
+                        <span class="text-slate-400 font-bold text-[9px] uppercase tracking-widest mb-1">Registration Opens</span>
+                        <span class="text-slate-800 font-black text-sm tracking-tight">${d.start}</span>
                     </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-500 font-bold text-[10px] uppercase tracking-wide">Deadline</span>
-                        <span class="text-slate-800 font-bold">→ ${d.deadline}</span>
+                    
+                    <div class="flex flex-col">
+                        <span class="text-slate-400 font-bold text-[9px] uppercase tracking-widest mb-1">Registration Deadline</span>
+                        <span class="text-slate-800 font-black text-sm tracking-tight">${d.deadline}</span>
                     </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-500 font-bold text-[10px] uppercase tracking-wide">Test Date</span>
-                        <span class="text-slate-800 font-bold">→ ${d.test}</span>
+
+                    <div class="flex flex-col">
+                        <span class="text-slate-400 font-bold text-[9px] uppercase tracking-widest mb-1">Test Date</span>
+                        <span class="text-slate-800 font-black text-sm tracking-tight">${d.test}</span>
                     </div>
                 </div>
+                
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
         `).join('');
 
+        // Centers
         document.getElementById('centers-container').innerHTML = current.centers.map(c => `
             <span class="px-3 py-1.5 bg-slate-100 text-slate-600 text-[11px] font-bold rounded-lg border border-slate-200">${c}</span>
         `).join('');
