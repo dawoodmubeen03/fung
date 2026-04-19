@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | FUNGEP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Space Grotesk', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #00adef 0%, #0076e5 100%);
+      min-height: 100vh;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    #bg-circles div {
+      position: fixed;
+      background: #ffffff;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: pulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to   { transform: scale(1.08); }
+    }
+
+    .card-scroll::-webkit-scrollbar { width: 4px; }
+    .card-scroll::-webkit-scrollbar-track { background: transparent; }
+    .card-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeInUp 0.6s ease-out both; }
+  </style>
+</head>
+<body class="flex items-start justify-center px-4 py-12 md:py-20">
+
+  <!-- Background Circles -->
+  <div id="bg-circles" aria-hidden="true">
+    <div style="width:300px;height:300px;opacity:.4;top:20%;left:-100px;animation-delay:0s"></div>
+    <div style="width:600px;height:600px;opacity:.3;top:5%;left:-200px;animation-delay:.5s"></div>
+    <div style="width:900px;height:900px;opacity:.2;top:-10%;left:-300px;animation-delay:1s"></div>
+    <div style="width:1200px;height:1200px;opacity:.08;top:-20%;left:-400px;animation-delay:1.5s"></div>
+  </div>
+
+  <!-- Card -->
+  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl shadow-black/20 overflow-hidden">
+
+    <!-- Card Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8 md:px-12 md:py-10">
+      <div class="flex items-center justify-between mb-3">
+       <a href="/"
+   class="flex items-center gap-2 text-blue-100 hover:text-white text-xs font-bold uppercase tracking-widest transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back
+        </a>
+        <span class="text-blue-200 text-[10px] font-bold uppercase tracking-[0.25em]">Legal</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+        Privacy Policy
+      </h1>
+      <p class="text-blue-200 text-sm mt-2 font-medium">Last updated: December 26, 2024</p>
+    </div>
+
+    <!-- Content -->
+    <div class="px-8 py-10 md:px-12 space-y-8 text-slate-700 text-sm leading-relaxed">
+
+      <!-- 1 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">1</span>
+          Introduction
+        </h2>
+        <p>FUNGEP ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you access or use our platform. By using FUNGEP, you agree to the collection and use of information in accordance with this policy.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 2 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">2</span>
+          Information We Collect
+        </h2>
+
+        <div>
+          <p class="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">2.1 Information You Provide</p>
+          <p>When you use FUNGEP, we may collect personal information that you voluntarily provide to us. This includes account information such as your name, email address, profile picture, and unique user ID when you sign in using Google authentication. We also collect user-submitted content, including MCQs, answer options, review text, subject names, test names, and any other academic content you choose to submit. All submissions are stored in our database and may be reviewed by administrators before publication.</p>
+        </div>
+
+        <div>
+          <p class="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">2.2 Automatically Collected Information</p>
+          <p>We may automatically collect certain information when you visit or interact with FUNGEP. This may include usage data such as pages visited, time spent on the platform, actions performed, and interaction patterns. We may also collect device information including browser type, operating system, IP address, and basic diagnostic data. Cookies and session technologies may be used to maintain your login session, remember preferences, and improve overall user experience.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 3 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">3</span>
+          How We Use Your Information
+        </h2>
+        <p>We use your information to provide and maintain the FUNGEP platform, authenticate users securely through Google Sign-In, review and moderate submitted content, display approved content publicly, improve platform functionality, develop new features, communicate important updates, and ensure the security and integrity of our services. We may also use information to prevent fraud, abuse, or unauthorized access.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 4 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">4</span>
+          Information Sharing
+        </h2>
+        <p>We do not sell, rent, or trade your personal information to third parties. However, certain information may be shared in limited circumstances. Approved user-submitted content may be displayed publicly along with your name. We may share information with trusted third-party service providers such as Firebase (Google Cloud) for database and authentication services and hosting providers for infrastructure support. Information may also be disclosed if required by law or to protect our legal rights.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 5 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">5</span>
+          Data Security
+        </h2>
+        <p>We implement industry-standard security measures designed to protect your personal information. These measures include encrypted HTTPS connections, secure authentication via Google OAuth, restricted administrative access, and controlled database permissions. While we strive to protect your data, no method of transmission over the internet is completely secure, and we cannot guarantee absolute security.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 6 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">6</span>
+          Your Rights
+        </h2>
+        <p>You have the right to request access to the personal data we hold about you, request corrections to inaccurate information, request deletion of your account and associated data, and withdraw consent where applicable. If you wish to exercise any of these rights, you may contact us using the details provided below. We will respond to legitimate requests within a reasonable timeframe.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 7 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">7</span>
+          Data Retention
+        </h2>
+        <p>We retain your personal information for as long as your account remains active or as necessary to provide our services. If you request account deletion, we will remove your personal data within a reasonable period unless we are legally required to retain certain information.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 8 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">8</span>
+          Third-Party Services
+        </h2>
+        <p>FUNGEP uses third-party services to operate effectively. These include Google OAuth for authentication and Firebase (Google Cloud) for database storage and backend services. These third-party providers have their own privacy policies governing how they handle your information. We encourage users to review their policies for further details.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 9 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">9</span>
+          Children's Privacy
+        </h2>
+        <p>FUNGEP is intended for users aged 13 and above. We do not knowingly collect personal information from children under the age of 13. If we become aware that such information has been collected, we will take appropriate steps to delete it promptly.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 10 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">10</span>
+          International Users
+        </h2>
+        <p>Your information may be stored or processed on servers located outside your country through our cloud service providers. By using FUNGEP, you consent to the transfer and processing of your information in accordance with this Privacy Policy.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 11 -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">11</span>
+          Changes to Privacy Policy
+        </h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal obligations. Any updates will be posted on this page with a revised "Last updated" date. Continued use of FUNGEP after such changes constitutes your acceptance of the updated policy.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- 12 — Contact highlighted -->
+      <div>
+       <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center flex-shrink-0">12</span>
+          Contact
+        </h2>
+        <p class="text-slate-600">If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us at:</p>
+        <a href="mailto:fungep03@gmail.com"
+           class="inline-flex items-center gap-2 mt-3 text-blue-600 font-bold hover:underline text-sm">
+          📧 fungep03@gmail.com
+        </a>
+      </div>
+
+      <!-- Bottom back button -->
+      <div class="pt-2 text-center">
+       <button onclick="window.history.back()"
+        class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to FUNGEP
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

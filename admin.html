@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUNGEP Admin</title>
+  
+  <script defer src="/_vercel/analytics/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; background: #f8fafc; }
+    canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- Animated Background -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <canvas id="admin-bg-canvas" class="w-full h-full"></canvas>
+</div>
+  
+  <!-- LOGIN SCREEN -->
+  <div id="admin-login" class="min-h-screen flex items-center justify-center">
+    <div class="bg-white p-10 rounded-3xl shadow-2xl text-center max-w-sm w-full mx-4">
+      <div class="text-4xl font-black text-blue-600 mb-2">FUNGEP</div>
+      <p class="text-slate-500 text-sm mb-8">Admin Dashboard</p>
+      <button onclick="adminGoogleLogin()"
+        class="w-full flex items-center justify-center gap-3 py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
+        <svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span class="font-bold text-slate-700">Continue with Google</span>
+      </button>
+      <p id="admin-login-error" class="hidden mt-4 text-red-500 text-sm font-bold">
+        Access denied. You are not an admin.
+      </p>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+ <div id="admin-dashboard" class="hidden min-h-screen backdrop-blur-xl">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-lg px-6 py-4 flex justify-between items-center sticky top-0 z-10">
+  <div class="text-2xl font-black text-blue-600">FUNGEP Admin</div>
+
+  <div class="flex items-center gap-4">
+
+    <button id="refresh-btn" onclick="refreshDashboard()"
+      class="px-4 py-2 bg-blue-50 text-blue-600 rounded-xl font-bold text-sm hover:bg-blue-100 transition-all">
+      🔄 Refresh
+    </button>
+
+    <span id="admin-user-name" class="text-sm font-bold text-slate-600"></span>
+
+    <button onclick="adminLogout()" 
+      class="px-4 py-2 bg-red-50 text-red-500 rounded-xl font-bold text-sm hover:bg-red-100 transition-all">
+      Logout
+    </button>
+
+  </div>
+</header>
+
+    <!-- Tabs -->
+    <div class="max-w-6xl mx-auto px-6 pt-8 pb-20">
+
+<!-- Analytics Summary -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+
+  <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+              rounded-3xl p-6 shadow-xl">
+    <p class="text-xs font-bold text-slate-500">Total MCQs</p>
+    <h2 id="stat-total-mcqs" class="text-2xl font-black text-blue-600 mt-2">0</h2>
+  </div>
+
+  <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+              rounded-3xl p-6 shadow-xl">
+    <p class="text-xs font-bold text-slate-500">Total Reviews</p>
+    <h2 id="stat-total-reviews" class="text-2xl font-black text-blue-600 mt-2">0</h2>
+  </div>
+
+  <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+              rounded-3xl p-6 shadow-xl">
+    <p class="text-xs font-bold text-slate-500">Pending Items</p>
+    <h2 id="stat-pending" class="text-2xl font-black text-yellow-500 mt-2">0</h2>
+  </div>
+
+  <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+              rounded-3xl p-6 shadow-xl">
+    <p class="text-xs font-bold text-slate-500">Approved Items</p>
+    <h2 id="stat-approved" class="text-2xl font-black text-green-600 mt-2">0</h2>
+  </div>
+
+</div>
+
+      
+   
+      
+      <div class="flex gap-4 mb-8 border-b border-slate-200">
+        <button id="tab-mcqs-btn" onclick="switchTab('mcqs')"
+          class="pb-3 px-1 text-sm font-black text-blue-600 border-b-2 border-blue-600">
+          MCQs Pending
+          <span id="mcq-pending-count" class="ml-2 bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">0</span>
+        </button>
+        <button id="tab-reviews-btn" onclick="switchTab('reviews')"
+          class="pb-3 px-1 text-sm font-black text-slate-400 border-b-2 border-transparent">
+          Reviews Pending
+          <span id="review-pending-count" class="ml-2 bg-slate-300 text-white text-xs px-2 py-0.5 rounded-full">0</span>
+        </button>
+
+        <button id="tab-approved-mcqs-btn" onclick="switchTab('approved-mcqs')"
+  class="pb-3 px-1 text-sm font-black text-slate-400 border-b-2 border-transparent">
+  Approved MCQs
+</button>
+
+<button id="tab-approved-reviews-btn" onclick="switchTab('approved-reviews')"
+  class="pb-3 px-1 text-sm font-black text-slate-400 border-b-2 border-transparent">
+  Approved Reviews
+</button>
+        
+        <button id="tab-notifications-btn" onclick="switchTab('notifications')"
+  class="pb-3 px-1 text-sm font-black text-slate-400 border-b-2 border-transparent">
+  📢 Send Notification
+</button>
+        
+      </div>
+   <div id="tab-approved-mcqs" class="hidden space-y-4"></div>
+<div id="tab-approved-reviews" class="hidden space-y-4"></div>
+      <!-- Notifications Tab -->
+<div id="tab-notifications" class="hidden">
+
+  <!-- Send New Notification -->
+  <div class="bg-white/90 backdrop-blur-xl border border-slate-200 rounded-3xl p-6 shadow-xl mb-6">
+    <h3 class="text-lg font-black text-slate-800 mb-4">📢 Send New Notification</h3>
+    <div class="space-y-4">
+      <div>
+        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Title</label>
+        <input id="notif-title" type="text" placeholder="e.g. NUST Test Dates Announced"
+          class="w-full rounded-2xl border-2 border-slate-100 p-4 bg-slate-50 font-bold text-slate-700 outline-none focus:border-blue-500 transition-all">
+      </div>
+      <div>
+        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Message Body</label>
+        <textarea id="notif-body" rows="3" placeholder="Write your notification message..."
+          class="w-full rounded-2xl border-2 border-slate-100 p-4 bg-slate-50 text-slate-700 outline-none focus:border-blue-500 transition-all resize-none"></textarea>
+      </div>
+      <div>
+        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Link (optional)</label>
+        <input id="notif-link" type="text" placeholder="https://fungep.app/..."
+          class="w-full rounded-2xl border-2 border-slate-100 p-4 bg-slate-50 font-bold text-slate-700 outline-none focus:border-blue-500 transition-all">
+      </div>
+      <button onclick="sendNotification()"
+        class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-base hover:bg-blue-700 transition-all shadow-lg">
+        🚀 Save & Send Notification
+      </button>
+      <div id="notif-success" class="hidden text-center p-4 bg-green-50 text-green-700 font-bold rounded-2xl border border-green-100">
+        ✅ Notification saved!
+      </div>
+    </div>
+  </div>
+
+  <!-- Existing Notifications -->
+  <h3 class="text-lg font-black text-slate-700 mb-4">Sent Notifications</h3>
+  <div id="notif-list" class="space-y-4">
+    <p class="text-slate-400 text-center py-8">Loading...</p>
+  </div>
+</div>
+      <!-- MCQs Tab -->
+      <div id="tab-mcqs" class="space-y-4"></div>
+
+      <!-- Reviews Tab -->
+      <div id="tab-reviews" class="hidden space-y-4"></div>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ⚠️ PASTE YOUR FIREBASE CONFIG HERE
+  const firebaseConfig = {
+  apiKey: "AIzaSyDbLR2hQmHDXA81Zeg7tFSJ9x0KTk09ik4",
+  authDomain: "fungep03.firebaseapp.com",
+  databaseURL: "https://fungep03-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "fungep03",
+  storageBucket: "fungep03.firebasestorage.app",
+  messagingSenderId: "316611162020",
+  appId: "1:316611162020:web:22e53102b93396e64a9b31",
+  measurementId: "G-N5M74P3YBJ"
+};
+firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    // ============= AUTH =============
+async function adminGoogleLogin() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  const result = await auth.signInWithPopup(provider);
+  const uid = result.user.uid;
+
+  const doc = await db.collection('admins').doc(uid).get();
+
+  if (!doc.exists) {
+    await auth.signOut();
+    document.getElementById('admin-login-error').classList.remove('hidden');
+    return;
+  }
+
+  document.getElementById('admin-user-name').innerText =
+    result.user.displayName;
+
+  document.getElementById('admin-login').classList.add('hidden');
+  document.getElementById('admin-dashboard').classList.remove('hidden');
+
+  loadPendingMCQs();
+  loadPendingReviews();
+  loadAnalyticsStats();
+}
+
+    function adminLogout() {
+      auth.signOut().then(() => {
+        document.getElementById('admin-login').classList.remove('hidden');
+        document.getElementById('admin-dashboard').classList.add('hidden');
+      });
+    }
+
+ auth.onAuthStateChanged(async user => {
+  if (!user) return;
+
+  const doc = await db.collection('admins')
+    .doc(user.uid)
+    .get();
+
+  if (!doc.exists) {
+    auth.signOut();
+    return;
+  }
+
+  document.getElementById('admin-user-name').innerText =
+    user.displayName;
+
+  document.getElementById('admin-login').classList.add('hidden');
+  document.getElementById('admin-dashboard').classList.remove('hidden');
+
+  loadPendingMCQs();
+  loadPendingReviews();
+   loadAnalyticsStats();
+});
+
+    // ============= TABS =============
+function switchTab(tab) {
+  const tabs = ['mcqs', 'reviews', 'approved-mcqs', 'approved-reviews', 'notifications'];
+  tabs.forEach(t => {
+    document.getElementById(`tab-${t}`).classList.toggle('hidden', t !== tab);
+    const btn = document.getElementById(`tab-${t}-btn`);
+    if (btn) {
+      btn.classList.toggle('text-blue-600', t === tab);
+      btn.classList.toggle('border-blue-600', t === tab);
+      btn.classList.toggle('text-slate-400', t !== tab);
+      btn.classList.toggle('border-transparent', t !== tab);
+    }
+  });
+  if (tab === 'approved-mcqs') loadApprovedMCQs();
+  if (tab === 'approved-reviews') loadApprovedReviews();
+  if (tab === 'notifications') loadAdminNotifications();
+}
+    // ============= MCQs =============
+    async function loadPendingMCQs() {
+      const container = document.getElementById('tab-mcqs');
+      container.innerHTML = '<p class="text-slate-400 text-center py-8">Loading...</p>';
+
+      const snap = await db.collection('mcqs')
+        .where('status', '==', 'pending')
+        .orderBy('createdAt', 'desc')
+        .get();
+
+      document.getElementById('mcq-pending-count').innerText = snap.size;
+      container.innerHTML = '';
+
+      if (snap.empty) {
+        container.innerHTML = '<p class="text-slate-400 text-center py-8 font-bold">No pending MCQs 🎉</p>';
+        return;
+      }
+
+      snap.forEach(doc => {
+        const m = doc.data();
+        const optionsHTML = m.hasOptions ? `
+          <div class="grid grid-cols-2 gap-2 mt-3">
+            ${['A','B','C','D'].map(opt => `
+              <div class="px-3 py-2 rounded-xl text-xs
+                          ${m.correctOption === opt ? 'bg-green-100 text-green-700 font-bold border border-green-300' : 'bg-slate-50 text-slate-600 border border-slate-100'}">
+                <b>${opt}.</b> ${m['option'+opt] || '—'}
+              </div>
+            `).join('')}
+          </div>` : '';
+
+        container.innerHTML += `
+  <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+              rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all">
+            <div class="flex justify-between items-start flex-wrap gap-2 mb-3">
+              <div>
+                <span class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">${m.testName}</span>
+                <span class="ml-2 text-xs font-bold text-slate-500">${m.subject}</span>
+              </div>
+              <span class="text-xs text-slate-400">by ${m.submittedByName} (${m.submittedBy})</span>
+            </div>
+
+            <p class="text-slate-800 font-medium mb-2">${m.question}</p>
+            ${optionsHTML}
+
+            <div class="flex gap-3 mt-5">
+              <button onclick="approveItem('mcqs', '${doc.id}', this)"
+             class="flex-1 py-3 bg-green-500 text-white rounded-xl font-bold 
+       hover:scale-105 hover:bg-green-600 transition-all text-sm">
+                ✅ Approve
+              </button>
+              <button onclick="rejectItem('mcqs', '${doc.id}', this)"
+               class="flex-1 py-3 bg-red-100 text-red-500 rounded-xl font-bold 
+       hover:scale-105 hover:bg-red-200 transition-all text-sm">
+                ❌ Reject
+              </button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // ============= REVIEWS =============
+    async function loadPendingReviews() {
+      const container = document.getElementById('tab-reviews');
+      container.innerHTML = '<p class="text-slate-400 text-center py-8">Loading...</p>';
+
+      const snap = await db.collection('reviews')
+        .where('status', '==', 'pending')
+        .orderBy('createdAt', 'desc')
+        .get();
+
+      document.getElementById('review-pending-count').innerText = snap.size;
+      container.innerHTML = '';
+
+      if (snap.empty) {
+        container.innerHTML = '<p class="text-slate-400 text-center py-8 font-bold">No pending reviews 🎉</p>';
+        return;
+      }
+
+      snap.forEach(doc => {
+        const r = doc.data();
+        
+   container.innerHTML += `
+  <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+              rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all">
+            <div class="flex justify-between items-center mb-3 flex-wrap gap-2">
+              <span class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">${r.testName}</span>
+              <span class="text-xs text-slate-400">by ${r.submittedByName} (${r.submittedBy})</span>
+            </div>
+
+            <p class="text-slate-700 leading-relaxed">${r.reviewText}</p>
+
+            <div class="flex gap-3 mt-5">
+              <button onclick="approveItem('reviews', '${doc.id}', this)"
+               class="flex-1 py-3 bg-green-500 text-white rounded-xl font-bold 
+       hover:scale-105 hover:bg-green-600 transition-all text-sm">
+                ✅ Approve
+              </button>
+              <button onclick="rejectItem('reviews', '${doc.id}', this)"
+              class="flex-1 py-3 bg-red-100 text-red-500 rounded-xl font-bold 
+       hover:scale-105 hover:bg-red-200 transition-all text-sm">
+                ❌ Reject
+              </button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // ============= APPROVE / REJECT =============
+ async function approveItem(collection, id, btn) {
+
+  btn.disabled = true;
+  btn.innerText = '✓';
+
+  try {
+    await db.collection(collection).doc(id).update({ status: 'approved' });
+
+    btn.closest('.shadow-xl').remove();
+
+    document.getElementById('stat-approved').innerText =
+      parseInt(document.getElementById('stat-approved').innerText) + 1;
+
+    document.getElementById('stat-pending').innerText =
+      parseInt(document.getElementById('stat-pending').innerText) - 1;
+
+  } catch(e) {
+    console.error(e);
+  }
+}
+
+ async function rejectItem(collection, id, btn) {
+
+  btn.disabled = true;
+  btn.innerText = '✕';
+
+  try {
+    await db.collection(collection).doc(id).update({ status: 'rejected' });
+
+    btn.closest('.shadow-xl').remove();
+
+    document.getElementById('stat-pending').innerText =
+      parseInt(document.getElementById('stat-pending').innerText) - 1;
+
+  } catch(e) {
+    console.error(e);
+  }
+}
+
+    // ============= ANIMATED BACKGROUND =============
+const canvas = document.getElementById("admin-bg-canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let circles = [];
+
+for (let i = 0; i < 40; i++) {
+  circles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 4 + 2,
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5
+  });
+}
+
+
+async function loadApprovedMCQs() {
+
+  const container = document.getElementById('tab-approved-mcqs');
+  container.innerHTML = '<p class="text-slate-400 text-center py-8">Loading...</p>';
+
+  const snap = await db.collection('mcqs')
+    .where('status', '==', 'approved')
+
+    .get();
+
+  container.innerHTML = '';
+
+  if (snap.empty) {
+    container.innerHTML = '<p class="text-slate-400 text-center py-8 font-bold">No approved MCQs.</p>';
+    return;
+  }
+
+  snap.forEach(doc => {
+    const m = doc.data();
+
+    container.innerHTML += `
+      <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+                  rounded-3xl p-6 shadow-xl">
+
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-black text-green-600 bg-green-50 px-3 py-1 rounded-full">
+            ${m.testName}
+          </span>
+          <span class="text-xs text-slate-400">${m.subject}</span>
+        </div>
+
+        <p class="text-slate-800 font-medium mb-4">${m.question}</p>
+
+        <button onclick="deleteApprovedMCQ('${doc.id}', this)"
+          class="w-full py-3 bg-red-100 text-red-500 rounded-xl font-bold 
+                 hover:bg-red-200 transition-all text-sm">
+          🗑 Delete Permanently
+        </button>
+
+      </div>
+    `;
+  });
+}
+
+    async function loadApprovedReviews() {
+
+  const container = document.getElementById('tab-approved-reviews');
+  container.innerHTML = '<p class="text-slate-400 text-center py-8">Loading...</p>';
+
+  const snap = await db.collection('reviews')
+    .where('status', '==', 'approved')
+
+    .get();
+
+  container.innerHTML = '';
+
+  if (snap.empty) {
+    container.innerHTML = '<p class="text-slate-400 text-center py-8 font-bold">No approved reviews.</p>';
+    return;
+  }
+
+  snap.forEach(doc => {
+    const r = doc.data();
+
+    container.innerHTML += `
+      <div class="bg-white/90 backdrop-blur-xl border border-slate-200 
+                  rounded-3xl p-6 shadow-xl">
+
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-black text-green-600 bg-green-50 px-3 py-1 rounded-full">
+            ${r.testName}
+          </span>
+        </div>
+
+        <p class="text-slate-700 leading-relaxed mb-4">${r.reviewText}</p>
+
+        <button onclick="deleteApprovedReview('${doc.id}', this)"
+          class="w-full py-3 bg-red-100 text-red-500 rounded-xl font-bold 
+                 hover:bg-red-200 transition-all text-sm">
+          🗑 Delete Permanently
+        </button>
+
+      </div>
+    `;
+  });
+}
+
+async function deleteApprovedMCQ(id, btn) {
+
+  btn.disabled = true;
+  btn.innerText = 'Deleting...';
+
+  try {
+    await db.collection('mcqs').doc(id).delete();
+
+    btn.closest('.shadow-xl').remove();
+
+    document.getElementById('stat-total-mcqs').innerText =
+      parseInt(document.getElementById('stat-total-mcqs').innerText) - 1;
+
+    document.getElementById('stat-approved').innerText =
+      parseInt(document.getElementById('stat-approved').innerText) - 1;
+
+  } catch (e) {
+    console.error(e);
+  }
+}
+    
+async function deleteApprovedReview(id, btn) {
+
+  btn.disabled = true;
+  btn.innerText = 'Deleting...';
+
+  try {
+    await db.collection('reviews').doc(id).delete();
+
+    btn.closest('.shadow-xl').remove();
+
+    document.getElementById('stat-total-reviews').innerText =
+      parseInt(document.getElementById('stat-total-reviews').innerText) - 1;
+
+    document.getElementById('stat-approved').innerText =
+      parseInt(document.getElementById('stat-approved').innerText) - 1;
+
+  } catch (e) {
+    console.error(e);
+  }
+}
+    
+async function loadAnalyticsStats() {
+
+  const mcqsSnap = await db.collection('mcqs').get();
+  const reviewsSnap = await db.collection('reviews').get();
+
+  const approvedMCQs = mcqsSnap.docs.filter(d => d.data().status === 'approved').length;
+  const approvedReviews = reviewsSnap.docs.filter(d => d.data().status === 'approved').length;
+
+  const pendingMCQs = mcqsSnap.docs.filter(d => d.data().status === 'pending').length;
+  const pendingReviews = reviewsSnap.docs.filter(d => d.data().status === 'pending').length;
+
+  document.getElementById('stat-total-mcqs').innerText = approvedMCQs;
+  document.getElementById('stat-total-reviews').innerText = approvedReviews;
+
+  document.getElementById('stat-pending').innerText = pendingMCQs + pendingReviews;
+  document.getElementById('stat-approved').innerText = approvedMCQs + approvedReviews;
+}
+
+    
+function animateBackground() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  circles.forEach(c => {
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, c.radius, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(37, 99, 235, 0.15)";
+    ctx.fill();
+
+    c.x += c.dx;
+    c.y += c.dy;
+
+    if (c.x < 0 || c.x > canvas.width) c.dx *= -1;
+    if (c.y < 0 || c.y > canvas.height) c.dy *= -1;
+  });
+
+  requestAnimationFrame(animateBackground);
+}
+
+animateBackground();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+    async function refreshDashboard() {
+
+  const btn = document.getElementById('refresh-btn');
+  btn.innerText = 'Refreshing...';
+  btn.disabled = true;
+
+  try {
+    await Promise.all([
+      loadPendingMCQs(),
+      loadPendingReviews(),
+      loadAnalyticsStats()
+    ]);
+
+    // Only refresh approved if currently visible
+    if (!document.getElementById('tab-approved-mcqs').classList.contains('hidden'))
+      await loadApprovedMCQs();
+
+    if (!document.getElementById('tab-approved-reviews').classList.contains('hidden'))
+      await loadApprovedReviews();
+
+  } catch (e) {
+    console.error(e);
+  }
+
+  btn.innerText = '🔄 Refresh';
+  btn.disabled = false;
+}
+
+
+    // ============= NOTIFICATIONS =============
+
+async function sendNotification() {
+  const title = document.getElementById('notif-title').value.trim();
+  const body = document.getElementById('notif-body').value.trim();
+  const link = document.getElementById('notif-link').value.trim();
+
+  if (!title || !body) {
+    alert("Title and message required");
+    return;
+  }
+
+  try {
+    // 1️⃣ Save in Firestore
+    const docRef = await db.collection('notifications').add({
+      title,
+      body,
+      link: link || "",
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    console.log("Saved:", docRef.id);
+
+    // 2️⃣ CALL YOUR SERVER (for push)
+    await fetch("http://localhost:3000/sendNotification", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title,
+        body,
+        link
+      })
+    });
+
+    document.getElementById('notif-success').classList.remove('hidden');
+
+  } catch (e) {
+    console.error("Error:", e);
+    alert("Failed to send notification");
+  }
+}
+    
+async function loadAdminNotifications() {
+  const container = document.getElementById('notif-list');
+  container.innerHTML = '<p class="text-slate-400 text-center py-8">Loading...</p>';
+
+  const snap = await db.collection('notifications')
+    .orderBy('createdAt', 'desc')
+    .get();
+
+  container.innerHTML = '';
+
+  if (snap.empty) {
+    container.innerHTML = '<p class="text-slate-400 text-center py-8 font-bold">No notifications sent yet.</p>';
+    return;
+  }
+
+  snap.forEach(doc => {
+    const n = doc.data();
+    const date = new Date(n.createdAt).toLocaleDateString('en-PK', {
+      day: 'numeric', month: 'short', year: 'numeric'
+    });
+
+    container.innerHTML += `
+      <div class="bg-white/90 backdrop-blur-xl border border-slate-200 rounded-3xl p-6 shadow-xl">
+        <div class="flex justify-between items-start mb-2">
+          <h4 class="font-bold text-slate-900">${n.title}</h4>
+          <span class="text-xs text-slate-400 font-bold">${date}</span>
+        </div>
+        <p class="text-slate-600 text-sm">${n.body}</p>
+        ${n.link ? `<a href="${n.link}" target="_blank" class="text-xs text-blue-500 font-bold mt-1 block">${n.link}</a>` : ''}
+        <button onclick="deleteNotification('${doc.id}', this)"
+          class="mt-4 w-full py-3 bg-red-100 text-red-500 rounded-xl font-bold hover:bg-red-200 transition-all text-sm">
+          🗑 Delete
+        </button>
+      </div>
+    `;
+  });
+}
+
+async function deleteNotification(id, btn) {
+  btn.disabled = true;
+  btn.innerText = 'Deleting...';
+  await db.collection('notifications').doc(id).delete();
+  btn.closest('.shadow-xl').remove();
+}
+
+    
+    
+  </script>
+</body>
+</html>

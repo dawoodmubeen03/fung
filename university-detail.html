@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Details | FUNGEP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Space Grotesk', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: linear-gradient(135deg, #00adef 0%, #0076e5 100%); min-height: 100vh; font-family: 'Space Grotesk', sans-serif; }
+    #bg-circles div { position: fixed; background: #ffffff; border-radius: 50%; pointer-events: none; animation: pulse 3s ease-in-out infinite alternate; }
+    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
+    .fade-up { animation: fadeInUp 0.6s ease-out both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Slider Styles */
+    .slider-container { position: relative; width: 100%; border-radius: 1.5rem; overflow: hidden; background: #f1f5f9; }
+    .uni-slider { height: 250px; }
+    @media (min-width: 768px) { .uni-slider { height: 380px; } }
+    .merit-slider { height: 300px; }
+    @media (min-width: 768px) { .merit-slider { height: 450px; } }
+    .slides-track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .slide-img { min-width: 100%; width: 100%; height: 100%; object-fit: cover; }
+
+    .nav-btn {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3); color: white;
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        z-index: 30; cursor: pointer; transition: all 0.3s;
+    }
+  </style>
+</head>
+<body class="flex items-start justify-center px-4 py-12 md:py-20">
+
+  <div id="bg-circles" aria-hidden="true">
+    <div style="width:300px;height:300px;opacity:.4;top:20%;left:-100px;animation-delay:0s"></div>
+    <div style="width:600px;height:600px;opacity:.3;top:5%;left:-200px;animation-delay:.5s"></div>
+    <div style="width:900px;height:900px;opacity:.2;top:-10%;left:-300px;animation-delay:1s"></div>
+  </div>
+
+  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
+
+    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8 md:px-12 md:py-10">
+      <div class="flex items-center justify-between mb-3">
+        <button onclick="window.history.back()" class="flex items-center gap-2 text-blue-100 hover:text-white text-xs font-bold uppercase tracking-widest transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back
+        </button>
+        <span class="text-blue-200 text-[10px] font-bold uppercase tracking-[0.25em]">Institution</span>
+      </div>
+      <h1 id="header-uni-name" class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase">University Name</h1>
+    </div>
+
+    <div class="px-8 py-10 md:px-12 space-y-10">
+      
+      <div class="slider-container uni-slider group shadow-lg">
+        <button onclick="changeSlide('uni', -1)" class="nav-btn left-4 opacity-0 group-hover:opacity-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+        <div id="uni-track" class="slides-track">
+            <img id="main-slide" class="slide-img" src="" alt="Main">
+            <img class="slide-img" src="https://images.unsplash.com/photo-1541339907198-e08756eaa589?q=80&w=800" alt="Campus">
+            <img class="slide-img" src="https://images.unsplash.com/photo-1523050853063-880c693466a7?q=80&w=800" alt="Building">
+        </div>
+        <button onclick="changeSlide('uni', 1)" class="nav-btn right-4 opacity-0 group-hover:opacity-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">1</span>
+          University Introduction
+        </h2>
+        <p id="uni-desc" class="text-slate-700 text-sm leading-relaxed">Loading institution overview...</p>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-base font-black text-slate-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">2</span>
+                Admission Timeline
+            </h2>
+            <div class="flex gap-2">
+                <span class="px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-full uppercase tracking-wider shadow-sm">Fall 2026</span>
+                <span class="px-3 py-1 bg-green-500 text-white text-[10px] font-black rounded-full uppercase tracking-wider shadow-sm animate-pulse">Open</span>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 bg-blue-50/50 rounded-2xl border border-blue-100">
+    <p class="text-[10px] text-blue-400 font-bold uppercase tracking-widest mb-1">Admissions Start</p>
+    <p id="admit-start" class="text-slate-800 font-black text-lg">--</p> </div>
+<div class="p-5 bg-red-50 rounded-2xl border border-red-100">
+    <p class="text-[10px] text-red-400 font-bold uppercase tracking-widest mb-1">Deadline to Apply</p>
+    <p id="admit-deadline" class="text-red-700 font-black text-lg">--</p> </div>
+        </div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">3</span>
+          Required Entry Tests
+        </h2>
+        <div id="test-badges" class="flex flex-wrap gap-2"></div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">4</span>
+          Programs Offered
+        </h2>
+       <div id="programs-box" class="flex flex-wrap gap-2"></div>
+          
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">5</span>
+          Previous Merit Lists
+        </h2>
+        <div class="slider-container merit-slider group shadow-xl border-4 border-slate-50">
+            <button onclick="changeSlide('merit', -1)" class="nav-btn left-4 opacity-0 group-hover:opacity-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg></button>
+            <div id="merit-track" class="slides-track">
+                <div class="min-w-full relative">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800" class="w-full h-full object-cover">
+                    <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-xl font-black text-blue-600 shadow-lg">2025 Closing Merit</div>
+                </div>
+                <div class="min-w-full relative">
+                    <img src="https://images.unsplash.com/photo-1454165833767-027ffea9e778?q=80&w=800" class="w-full h-full object-cover">
+                    <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-xl font-black text-blue-600 shadow-lg">2024 Closing Merit</div>
+                </div>
+            </div>
+            <button onclick="changeSlide('merit', 1)" class="nav-btn right-4 opacity-0 group-hover:opacity-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-base font-black text-slate-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">6</span>
+                Estimated Fee Structure
+            </h2>
+            <span class="px-3 py-1 bg-slate-200 text-slate-600 text-[10px] font-black rounded-full uppercase tracking-wider">Estimated</span>
+        </div>
+        
+        <div class="overflow-hidden border border-slate-100 rounded-2xl mb-3">
+            <table class="w-full text-left text-xs">
+                <thead class="bg-slate-50 text-slate-400 uppercase font-black">
+                    <tr><th class="px-4 py-3">Category</th><th class="px-4 py-3">PKR</th></tr>
+                </thead>
+                <tbody class="text-slate-600 divide-y divide-slate-100">
+                    <tr>
+  <td class="px-4 py-3">Admission Fee</td>
+  <td id="fee-admission" class="px-4 py-3 font-bold"></td>
+</tr>
+
+<tr>
+  <td class="px-4 py-3">Semester Tuition</td>
+  <td id="fee-semester" class="px-4 py-3 font-bold"></td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="text-[11px] text-slate-400 italic">Note: Fee structure varies from program to program and is subject to university policy.</p>
+      </section>
+
+      <div class="pt-6">
+      <button id="apply-btn"
+                class="w-full py-5 bg-blue-600 text-white rounded-2xl font-black text-sm uppercase tracking-[0.2em] hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30 active:scale-95">
+            Apply Online Now
+        </button>
+      </div>
+
+      <div class="text-center pt-2">
+        <button onclick="window.history.back()" class="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-all flex items-center justify-center gap-2 mx-auto">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back to FUNGEP
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+let indices = { uni: 0, merit: 0 };
+const tracks = { uni: 'uni-track', merit: 'merit-track' };
+
+function changeSlide(type, n) {
+    const track = document.getElementById(tracks[type]);
+    if (!track) return;
+    const total = track.children.length;
+    indices[type] = (indices[type] + n + total) % total;
+    track.style.transform = `translateX(-${indices[type] * 100}%)`;
+}
+
+setInterval(() => changeSlide('uni', 1), 4000);
+setInterval(() => changeSlide('merit', 1), 5500);
+
+window.onload = async () => {
+    const params = new URLSearchParams(window.location.search);
+    const uniId = params.get('id');
+
+    // 1. Check if ID exists in URL
+    if (!uniId || uniId === 'undefined') {
+        document.getElementById('header-uni-name').innerText = "University ID Missing";
+        return;
+    }
+
+    try {
+        // 2. Fetch fresh data (using a timestamp to bypass browser cache)
+        const res = await fetch(`./data/universities.json?v=${new Date().getTime()}`);
+        const data = await res.json();
+        
+        // 3. Find the specific university object
+        const uni = data.universities.find(u => u.id === uniId);
+
+        if (uni) {
+            // --- POPULATE DATA ---
+
+            // Basic Text Info
+            document.getElementById('header-uni-name').innerText = uni.name;
+            document.getElementById('uni-desc').innerText = uni.intro;
+
+            // Main Header Image
+const track = document.getElementById('uni-track');
+
+if (uni.images && uni.images.length > 0) {
+    track.innerHTML = uni.images.map(img => `
+        <img class="slide-img"
+             src="${img}"
+             alt="${uni.name}"
+             onerror="this.src='/funglogo.jpeg'">
+    `).join('');
+} else {
+    track.innerHTML = `
+        <img class="slide-img"
+       src=".${uni.image}"
+             onerror="this.src='/funglogo.jpeg'">
+    `;
+}
+
+indices.uni = 0;
+            // Admission Timeline (The fix for unique dates)
+            if (uni.admission) {
+                // Ensure these IDs exist in your HTML (as per Step 1 of the guide)
+                const startEl = document.getElementById('admit-start');
+                const deadlineEl = document.getElementById('admit-deadline');
+                
+                if(startEl) startEl.innerText = uni.admission.start;
+                if(deadlineEl) deadlineEl.innerText = uni.admission.deadline;
+
+                // Optional: Update the "Fall 2026" badge if you have a session element
+                const sessionBadge = document.querySelector('.bg-blue-600.text-white.text-\\[10px\\]');
+                if(sessionBadge) sessionBadge.innerText = uni.admission.session;
+            }
+
+            // Entry Test Badges
+            document.getElementById('test-badges').innerHTML = uni.tests.map(t => 
+                `<span class="px-4 py-2 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-wider shadow-md">${t}</span>`
+            ).join('');
+
+            // Programs Offered
+            document.getElementById('programs-box').innerHTML = uni.programs.map(p => 
+                `<span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold text-slate-600">${p}</span>`
+            ).join('');
+
+            // Previous Merit Slider
+       const meritTrack = document.getElementById('merit-track');
+
+if (uni.merit && uni.merit.length > 0) {
+    meritTrack.innerHTML = uni.merit.map(m => `
+        <div class="min-w-full relative">
+            <img src="${m.image}"
+                 class="w-full h-full object-cover"
+                 onerror="this.src='/funglogo.jpeg'">
+                 
+            <div class="absolute bottom-6 left-6 
+                        bg-white/90 px-4 py-2 rounded-xl 
+                        font-black text-blue-600">
+                ${m.year}
+            </div>
+        </div>
+    `).join('');
+}
+
+indices.merit = 0;
+
+            // Fee Structure (with number formatting)
+            if (uni.fee) {
+                document.getElementById('fee-admission').innerText = uni.fee.admissionFee.toLocaleString();
+                document.getElementById('fee-semester').innerText = uni.fee.semesterFee.toLocaleString();
+            }
+
+            // Apply Button Logic
+            document.getElementById('apply-btn').onclick = () => {
+                if(uni.applyLink) window.open(uni.applyLink, '_blank');
+            };
+
+        } else {
+            document.getElementById('header-uni-name').innerText = "University Not Found";
+        }
+    } catch (e) {
+        console.error("Critical Error Loading JSON:", e);
+        document.getElementById('header-uni-name').innerText = "Error Loading Data";
+    }
+};
+  </script>
+  
+</body>
+</html>

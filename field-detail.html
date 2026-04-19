@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Details | FUNGEP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Space Grotesk', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: linear-gradient(135deg, #00adef 0%, #0076e5 100%); min-height: 100vh; font-family: 'Space Grotesk', sans-serif; }
+    #bg-circles div { position: fixed; background: #ffffff; border-radius: 50%; pointer-events: none; animation: pulse 3s ease-in-out infinite alternate; }
+    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
+    .fade-up { animation: fadeInUp 0.6s ease-out both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="flex items-start justify-center px-4 py-12 md:py-20">
+
+  <div id="bg-circles" aria-hidden="true">
+    <div style="width:300px;height:300px;opacity:.4;top:20%;left:-100px;animation-delay:0s"></div>
+    <div style="width:600px;height:600px;opacity:.3;top:5%;left:-200px;animation-delay:.5s"></div>
+  </div>
+
+  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
+
+    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-10 md:px-12">
+      <div class="mb-6">
+        <button onclick="window.history.back()" class="flex items-center gap-2 text-blue-100 hover:text-white text-xs font-bold uppercase tracking-widest transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back
+        </button>
+      </div>
+      
+      <div class="text-left">
+          <span class="text-blue-200 text-[10px] font-bold uppercase tracking-[0.25em] mb-2 block">Academic Discipline</span>
+          <h1 id="field-name" class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase">
+            Loading...
+          </h1>
+      </div>
+    </div>
+
+    <div class="px-8 py-10 md:px-12 space-y-10">
+      
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">1</span>
+          Program Introduction
+        </h2>
+        <p id="field-intro" class="text-slate-700 text-sm leading-relaxed font-medium">Loading...</p>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">2</span>
+          4-Year Journey
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p class="text-[10px] text-blue-600 font-black uppercase mb-2">Year 1</p>
+                    <ul id="year1-list" class="text-[11px] text-slate-600 space-y-1"></ul>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p class="text-[10px] text-blue-600 font-black uppercase mb-2">Year 2</p>
+                    <ul id="year2-list" class="text-[11px] text-slate-600 space-y-1"></ul>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p class="text-[10px] text-blue-600 font-black uppercase mb-2">Year 3</p>
+                    <ul id="year3-list" class="text-[11px] text-slate-600 space-y-1"></ul>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p class="text-[10px] text-blue-600 font-black uppercase mb-2">Year 4</p>
+                    <ul id="year4-list" class="text-[11px] text-slate-600 space-y-1"></ul>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">3</span>
+          Scope & Future
+        </h2>
+        <p id="field-scope" class="text-slate-700 text-sm leading-relaxed">Loading...</p>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">4</span>
+          Career Snapshot
+        </h2>
+        <div class="p-5 bg-blue-50/50 rounded-2xl border border-blue-100">
+            <p class="text-[10px] text-blue-400 font-bold uppercase tracking-widest mb-1">Top Job Roles</p>
+            <p id="field-jobs" class="text-slate-800 font-bold">Loading...</p>
+        </div>
+      </section>
+
+      <div class="border-t border-slate-100"></div>
+
+      <section>
+        <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">5</span>
+          Top Universities
+        </h2>
+        <div id="uni-list" class="flex flex-wrap gap-2">
+            </div>
+      </section>
+
+      <div class="pt-6">
+        <button onclick="window.open('https://chat.whatsapp.com/IOPGMzbeoeKL1gdubz439B', '_blank')"
+                class="w-full py-5 bg-blue-600 text-white rounded-2xl font-black text-sm uppercase tracking-[0.2em] hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30 active:scale-95">
+            Join Discussion Group
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.onload = () => {
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name') || "Software Engineering";
+        document.getElementById('field-name').innerText = name;
+
+        const mockData = {
+            "Software Engineering": {
+                intro: "Software Engineering focuses on applying engineering principles to software development in a systematic method.",
+                scope: "With the rise of AI and SaaS, software engineers are the most in-demand professionals globally.",
+                jobs: "Senior Dev, System Architect, Product Manager",
+                topUnis: ["NUST", "FAST-NUCES", "GIKI", "COMSATS", "ITU"],
+                roadmap: {
+                    y1: ["Calculus", "PF", "Applied Physics"],
+                    y2: ["DSA", "OOP", "Database Systems"],
+                    y3: ["Software Design", "OS", "Web Dev"],
+                    y4: ["FYP I & II", "Cloud Computing", "Ethics"]
+                }
+            },
+            "Electrical Engineering": {
+                intro: "Study of electricity, electronics, and electromagnetism to design power systems and devices.",
+                scope: "Vital for national infrastructure, energy sectors, and the growing EV market.",
+                jobs: "Power Engineer, Telecom Specialist, Control Systems Engineer",
+                topUnis: ["NUST", "UET Lahore", "PIEAS", "GIKI", "NED"],
+                roadmap: {
+                    y1: ["Linear Algebra", "Applied Physics", "Workshop"],
+                    y2: ["Circuit Analysis", "DLD", "Electronics"],
+                    y3: ["Power Systems", "Microprocessors", "Control"],
+                    y4: ["Design Project", "Renewable Energy", "HV Engineering"]
+                }
+            }
+        };
+
+        const field = mockData[name] || mockData["Software Engineering"];
+
+        document.getElementById('field-intro').innerText = field.intro;
+        document.getElementById('field-scope').innerText = field.scope;
+        document.getElementById('field-jobs').innerText = field.jobs;
+
+        // Render Roadmap
+        const renderList = (id, list) => {
+            document.getElementById(id).innerHTML = list.map(item => `<li>• ${item}</li>`).join('');
+        };
+        renderList('year1-list', field.roadmap.y1);
+        renderList('year2-list', field.roadmap.y2);
+        renderList('year3-list', field.roadmap.y3);
+        renderList('year4-list', field.roadmap.y4);
+
+        // Render Universities
+        document.getElementById('uni-list').innerHTML = field.topUnis.map(uni => `
+            <span class="px-4 py-2 bg-slate-100 text-slate-700 text-[11px] font-black rounded-xl border border-slate-200 uppercase tracking-tighter">
+                ${uni}
+            </span>
+        `).join('');
+    };
+  </script>
+</body>
+</html>

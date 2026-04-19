@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script defer src="/_vercel/analytics/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUNGEP — Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%; height: 100%;
+      font-family: 'Nunito', sans-serif;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    /* ── EXACT FUNGEP BACKGROUND ── */
+    #container {
+      background: linear-gradient(135deg, #00adef 0%, #0076e5 100%);
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh; width: 100%;
+      z-index: -10;
+      overflow: hidden;
+    }
+
+    #circle-small,
+    #circle-medium,
+    #circle-large,
+    #circle-xlarge,
+    #circle-xxlarge {
+      animation: circle-pulse 3s ease-in-out infinite alternate;
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+    #circle-small   { width: 300px;  height: 300px;  opacity: 0.4; top: 20%; left: -100px; }
+    #circle-medium  { width: 600px;  height: 600px;  opacity: 0.3; top: 5%;  left: -200px; animation-delay: 0.5s; }
+    #circle-large   { width: 900px;  height: 900px;  opacity: 0.2; top: -10%; left: -300px; animation-delay: 1s; }
+    #circle-xlarge  { width: 1200px; height: 1200px; opacity: 0.1; top: -20%; left: -400px; animation-delay: 1.5s; }
+    #circle-xxlarge { width: 1500px; height: 1500px; opacity: 0.05; top: -30%; left: -500px; animation-delay: 2s; }
+
+    @keyframes circle-pulse {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    /* ── LAYOUT ── */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      z-index: 20;
+    }
+    .topbar-left {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .topbar-right {
+      display: flex; gap: 2rem;
+    }
+    .topbar-right a {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .topbar-right a:hover { color: #ffffff; }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 5;
+      gap: 0;
+    }
+
+    /* ── BIG LOGO ── */
+    .big-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5.5rem, 15vw, 12rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      background: linear-gradient(
+        90deg,
+        #ffffff  0%,
+        #dbeafe  7%,
+        #bfdbfe  13%,
+        #7dd3fc  19%,
+        #00adef  28%,
+        #2563eb  42%,
+        #1d4ed8  52%,
+        #1e3a8a  62%,
+        #ffffff  72%,
+        #dbeafe  79%,
+        #bfdbfe  85%,
+        #7dd3fc  91%,
+        #00adef  100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 300% auto;
+      filter: drop-shadow(0 2px 30px rgba(255,255,255,0.2));
+      user-select: none;
+      animation: logoIn 0.75s cubic-bezier(0.16,1,0.3,1) both,
+                 shimmer 9s linear 1s infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+    @keyframes logoIn {
+      from { opacity: 0; transform: translateY(28px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ── TAGLINE ── */
+    .tagline {
+      font-size: clamp(0.5rem, 1vw, 0.68rem);
+      font-weight: 800;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 1.1rem;
+      margin-bottom: 3.2rem;
+      animation: fadeUp 0.7s 0.18s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .tagline span { color: rgba(255,255,255,0.25); margin: 0 0.7em; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── GOOGLE BUTTON ── */
+    .google-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: #ffffff;
+      color: #0a1628;
+      border: none;
+      border-radius: 1.1rem;
+      padding: 1.15rem 3rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      width: 390px;
+      box-shadow:
+        0 8px 40px rgba(0,0,0,0.2),
+        0 2px 12px rgba(0,0,0,0.15);
+      transition: all 0.25s cubic-bezier(.4,0,.2,1);
+      animation: fadeUp 0.7s 0.32s cubic-bezier(0.16,1,0.3,1) both;
+      position: relative;
+      overflow: hidden;
+    }
+    .google-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 16px 56px rgba(0,0,0,0.25),
+        0 4px 20px rgba(0,0,0,0.18);
+    }
+    .google-btn:active { transform: scale(0.98); }
+
+    .google-btn .g-icon { width: 22px; height: 22px; flex-shrink: 0; }
+
+    .google-btn .arr {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      margin-left: 2px;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .google-btn:hover .arr { transform: translateX(5px); color: #2563eb; }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      margin-top: 1.5rem;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+      animation: fadeUp 0.7s 0.44s both;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .back-link:hover { color: #ffffff; }
+
+    /* ── BOTTOM TICKER ── */
+    .ticker {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding: 1.1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 20;
+      background: rgba(0,80,180,0.08);
+      backdrop-filter: blur(4px);
+    }
+    .ticker-item {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      white-space: nowrap;
+    }
+    .ticker-item svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .ticker-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 0 1.2rem;
+      max-width: 70px;
+    }
+
+    @media (max-width: 520px) {
+      .google-btn { width: 88vw; padding: 1rem 1.5rem; font-size: 0.8rem; }
+      .ticker { display: none; }
+      .topbar { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- EXACT FUNGEP BACKGROUND -->
+  <div id="container">
+    <div id="circle-small"></div>
+    <div id="circle-medium"></div>
+    <div id="circle-large"></div>
+    <div id="circle-xlarge"></div>
+    <div id="circle-xxlarge"></div>
+  </div>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span class="topbar-left">FUNG-SYS // V1.0</span>
+    <div class="topbar-right">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1 class="big-logo">FUNGEP</h1>
+
+    <p class="tagline">
+      Seniors Leading
+      <span>•</span>
+      Juniors Succeeding
+      <span>•</span>
+      Pakistan's #1 Admission Platform
+    </p>
+
+  <button class="google-btn" id="googleLoginBtn">
+      <svg class="g-icon" viewBox="0 0 24 24">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      Continue with Google
+      <span class="arr">›</span>
+    </button>
+
+<a href="/" class="back-link">← Back to Home</a>
+  </div>
+
+  <!-- BOTTOM TICKER -->
+  <div class="ticker">
+    <div class="ticker-item">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
+      </svg>
+      Universities
+    </div>
+    <div class="ticker-line"></div>
+    <div class="ticker-item">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2"/>
+      </svg>
+      MCQ Bank
+    </div>
+    <div class="ticker-line"></div>
+    <div class="ticker-item">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+      </svg>
+      Student Reviews
+    </div>
+    <div class="ticker-line"></div>
+    <div class="ticker-item">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+      </svg>
+      Aggregate Calculator
+    </div>
+    <div class="ticker-line"></div>
+    <div class="ticker-item">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+      Community
+    </div>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+<script src="/firebase-auth.js"></script>
+
+<script>
+document.getElementById("googleLoginBtn").addEventListener("click", function() {
+
+  if (!firebase.apps.length) {
+    alert("Firebase not initialized yet.");
+    return;
+  }
+
+  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then(() => {
+      window.location.replace("/#dashboard");
+    })
+    .catch(error => {
+      console.error(error);
+      alert(error.message);
+    });
+
+});
+</script>
+  
+</body>
+</html>

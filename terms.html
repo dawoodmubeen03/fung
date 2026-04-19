@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions | FUNGEP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Space Grotesk', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #00adef 0%, #0076e5 100%);
+      min-height: 100vh;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Animated background circles */
+    #bg-circles div {
+      position: fixed;
+      background: #ffffff;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: pulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to   { transform: scale(1.08); }
+    }
+
+    .card-scroll::-webkit-scrollbar { width: 4px; }
+    .card-scroll::-webkit-scrollbar-track { background: transparent; }
+    .card-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeInUp 0.6s ease-out both; }
+  </style>
+</head>
+<body class="flex items-start justify-center px-4 py-12 md:py-20">
+
+  <!-- Background Circles -->
+  <div id="bg-circles" aria-hidden="true">
+    <div style="width:300px;height:300px;opacity:.4;top:20%;left:-100px;animation-delay:0s"></div>
+    <div style="width:600px;height:600px;opacity:.3;top:5%;left:-200px;animation-delay:.5s"></div>
+    <div style="width:900px;height:900px;opacity:.2;top:-10%;left:-300px;animation-delay:1s"></div>
+    <div style="width:1200px;height:1200px;opacity:.08;top:-20%;left:-400px;animation-delay:1.5s"></div>
+  </div>
+
+  <!-- Card -->
+  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl shadow-black/20 overflow-hidden">
+
+    <!-- Card Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8 md:px-12 md:py-10">
+      <div class="flex items-center justify-between mb-3">
+        <!-- Back / Home button -->
+        <button onclick="window.history.back()"
+        class="flex items-center gap-2 text-blue-100 hover:text-white text-xs font-bold uppercase tracking-widest transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back
+        </a>
+        <span class="text-blue-200 text-[10px] font-bold uppercase tracking-[0.25em]">Legal</span>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+        Terms & Conditions
+      </h1>
+      <p class="text-blue-200 text-sm mt-2 font-medium">Last updated: December 26, 2024</p>
+    </div>
+
+    <!-- Content -->
+    <div class="px-8 py-10 md:px-12 space-y-8 text-slate-700 text-sm leading-relaxed">
+
+      <!-- Section -->
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">1</span>
+          Acceptance of Terms
+        </h2>
+        <p>By accessing or using FUNGEP, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, you must not use the platform. Your continued use of FUNGEP constitutes your acceptance of these terms and any future updates.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">2</span>
+          Description of Service
+        </h2>
+        <p>FUNGEP is an educational platform that allows users to submit, review, and access multiple-choice questions (MCQs) and academic reviews related to various entrance tests and subjects. The platform includes features such as Google-based authentication, user content submission, administrative moderation, and public display of approved content. FUNGEP reserves the right to modify, suspend, or discontinue any part of the service at any time without prior notice.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">3</span>
+          User Accounts
+        </h2>
+        <p>To access certain features of FUNGEP, users must sign in using Google authentication. By creating an account, you agree to provide accurate and complete information. You are responsible for maintaining the security of your account and for all activities that occur under your account. FUNGEP reserves the right to suspend or terminate accounts that violate these Terms or engage in unauthorized activity.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">4</span>
+          User Conduct
+        </h2>
+        <p>Users agree to use FUNGEP responsibly and ethically. You must not submit false, misleading, plagiarized, offensive, or harmful content. Users are prohibited from attempting to disrupt the platform, gain unauthorized access, use automated bots, spam submissions, impersonate others, or engage in any activity that could damage the platform or its users. FUNGEP administrators reserve the right to review, approve, reject, or remove any content at their discretion.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">5</span>
+          Intellectual Property
+        </h2>
+        <p>All original platform content, including design, branding, features, and functionality, is the intellectual property of FUNGEP and may not be copied, reproduced, or distributed without permission. By submitting content to FUNGEP, users grant the platform a non-exclusive, worldwide, royalty-free license to review, edit, publish, and display their submissions. Users remain responsible for ensuring that their submissions do not violate the intellectual property rights of others.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">6</span>
+          Termination
+        </h2>
+        <p>FUNGEP reserves the right to suspend or terminate user accounts at any time, with or without notice, if a user violates these Terms or engages in behavior deemed harmful to the platform. Upon termination, access to your account and related data may be removed.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">7</span>
+          Disclaimer of Warranties
+        </h2>
+        <p>FUNGEP is provided on an "as is" and "as available" basis. We do not guarantee that the platform will be error-free, uninterrupted, secure, or completely accurate. User-submitted content is reviewed but may still contain inaccuracies. FUNGEP does not guarantee academic results, admission outcomes, or exam performance based on the use of this platform.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">8</span>
+          Limitation of Liability
+        </h2>
+        <p>To the maximum extent permitted by law, FUNGEP shall not be liable for any indirect, incidental, consequential, or special damages arising from the use or inability to use the platform. This includes, but is not limited to, loss of data, loss of opportunity, or reliance on user-submitted content.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <div>
+        <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">9</span>
+          Changes to Terms
+        </h2>
+        <p>FUNGEP reserves the right to modify these Terms and Conditions at any time. Updated versions will be posted on this page with a revised "Last updated" date. Continued use of the platform after changes are posted constitutes acceptance of the updated Terms.</p>
+      </div>
+
+      <div class="border-t border-slate-100"></div>
+
+      <!-- Contact — highlighted -->
+      <div>
+         <h2 class="text-base font-black text-slate-900 mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">10</span>
+          Contact
+        </h2>
+        <p class="text-slate-600">If you have any questions regarding these Terms and Conditions, you may contact us at:</p>
+        <a href="mailto:fungep03@gmail.com"
+           class="inline-flex items-center gap-2 mt-3 text-blue-600 font-bold hover:underline text-sm">
+          📧 fungep03@gmail.com
+        </a>
+      </div>
+
+      <!-- Bottom back button -->
+      <div class="pt-2 text-center">
+<button onclick="window.history.back()"
+        class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to FUNGEP
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
