@@ -47,7 +47,7 @@
     <div style="width:600px;height:600px;opacity:.3;top:5%;left:-200px;animation-delay:.5s"></div>
   </div>
 
-  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden text-left">
+  <div class="fade-up relative z-10 w-full max-w-3xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
 
     <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-10 md:px-12">
         <div class="mb-6">
@@ -58,7 +58,7 @@
             </button>
         </div>
         
-        <div>
+        <div class="text-left">
             <span class="text-blue-200 text-[10px] font-bold uppercase tracking-[0.25em] block mb-2">Entrance Test Details</span>
             <h1 id="test-name" class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase">
               Entry Test
@@ -69,12 +69,12 @@
     <div class="px-8 py-10 md:px-12 space-y-10">
       
       <section>
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-3">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-3 text-left">
             <h2 class="text-base font-black text-slate-900 flex items-center gap-2">
                 <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">1</span>
                 Test Pattern
             </h2>
-            <div id="neg-marking-badge"></div>
+            <div id="neg-marking-badge" class="md:text-right"></div>
         </div>
 
         <div class="overflow-hidden border border-slate-100 rounded-2xl shadow-sm">
@@ -96,7 +96,7 @@
 
       <div class="border-t border-slate-100"></div>
 
-      <section>
+      <section class="text-left">
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">2</span>
           Preparation Strategy
@@ -108,7 +108,7 @@
 
       <div class="border-t border-slate-100"></div>
 
-      <section>
+      <section class="text-left">
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">3</span>
           Study Resources
@@ -127,17 +127,17 @@
 
       <div class="border-t border-slate-100"></div>
 
-      <section>
+      <section class="text-left">
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">4</span>
           Schedule (Annual Series)
         </h2>
-        <div class="grid gap-4" id="dates-container"></div>
+        <div class="grid gap-3" id="dates-container"></div>
       </section>
 
       <div class="border-t border-slate-100"></div>
 
-      <section>
+      <section class="text-left">
         <h2 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">5</span>
           Test Centers
@@ -180,10 +180,10 @@
                 guide: "Focus heavily on Punjab Textbook Board (PTB) books. NET is a speed test with 200 questions. No negative marking means you should attempt everything. Practice time management to finish in 180 minutes.",
                 neg: false,
                 dates: [
-                    { title: "NET-1", start: "01 Dec, 2025", deadline: "10 Jan, 2026", test: "12 Feb, 2026" },
-                    { title: "NET-2", start: "15 Feb, 2026", deadline: "20 Mar, 2026", test: "10 Apr, 2026" },
-                    { title: "NET-3", start: "12 Apr, 2026", deadline: "15 May, 2026", test: "25 May, 2026" },
-                    { title: "NET-4", start: "20 May, 2026", deadline: "15 June, 2026", test: "05 July, 2026" }
+                    { title: "NET-1", start: "Dec", deadline: "Jan", test: "Feb" },
+                    { title: "NET-2", start: "Feb", deadline: "Mar", test: "Apr" },
+                    { title: "NET-3", start: "Apr", deadline: "May", test: "May" },
+                    { title: "NET-4", start: "May", deadline: "June", test: "July" }
                 ],
                 centers: ["Islamabad", "Karachi", "Quetta", "Gilgit"]
             }
@@ -191,7 +191,6 @@
 
         const current = testData[name] || testData["NET"];
 
-        // Fill Pattern Table
         let totalM = 0, totalP = 0;
         document.getElementById('pattern-table-body').innerHTML = current.subjects.map(i => {
             totalM += i.m; totalP += i.p;
@@ -200,42 +199,23 @@
         
         document.getElementById('pattern-table-footer').innerHTML = `<td class="px-4 py-4 md:px-6">Grand Total</td><td class="text-center">${totalM}</td><td class="text-center">${totalP}</td>`;
 
-        // Neg Marking
         document.getElementById('neg-marking-badge').innerHTML = current.neg 
             ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
-        // Render Dates (Image Style)
         document.getElementById('dates-container').innerHTML = current.dates.map(d => `
-            <div class="p-6 bg-slate-50/80 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
-                <div class="mb-4">
-                  <p class="text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mb-1">
-                      ${d.title}
-                  </p>
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="text-left">
+                    <p class="text-[10px] font-black text-blue-600 uppercase tracking-tighter">${d.title}</p>
+                    <p class="text-sm font-bold text-slate-800">Test Date: ${d.test}</p>
                 </div>
-
-                <div class="space-y-4">
-                    <div class="flex flex-col">
-                        <span class="text-slate-400 font-bold text-[9px] uppercase tracking-widest mb-1">Registration Opens</span>
-                        <span class="text-slate-800 font-black text-sm tracking-tight">${d.start}</span>
-                    </div>
-                    
-                    <div class="flex flex-col">
-                        <span class="text-slate-400 font-bold text-[9px] uppercase tracking-widest mb-1">Registration Deadline</span>
-                        <span class="text-slate-800 font-black text-sm tracking-tight">${d.deadline}</span>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <span class="text-slate-400 font-bold text-[9px] uppercase tracking-widest mb-1">Test Date</span>
-                        <span class="text-slate-800 font-black text-sm tracking-tight">${d.test}</span>
-                    </div>
+                <div class="text-right">
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Registration Deadline</p>
+                    <p class="text-xs font-black text-slate-700">${d.deadline}</p>
                 </div>
-                
-                <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
         `).join('');
 
-        // Centers
         document.getElementById('centers-container').innerHTML = current.centers.map(c => `
             <span class="px-3 py-1.5 bg-slate-100 text-slate-600 text-[11px] font-bold rounded-lg border border-slate-200">${c}</span>
         `).join('');
