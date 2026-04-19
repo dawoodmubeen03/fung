@@ -21,7 +21,6 @@
     @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
     .fade-up { animation: fadeInUp 0.6s ease-out both; }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    
     .resource-badge {
         display: inline-flex;
         align-items: center;
@@ -57,7 +56,6 @@
               Back
             </button>
         </div>
-        
         <div class="text-left">
             <span class="text-blue-200 text-[10px] font-bold uppercase tracking-[0.25em] block mb-2">Entrance Test Details</span>
             <h1 id="test-name" class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase">
@@ -113,16 +111,7 @@
           <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-black flex items-center justify-center">3</span>
           Study Resources
         </h2>
-        <div id="resource-container" class="flex flex-wrap gap-3">
-             <a href="#" target="_blank" class="resource-badge group">
-                <span class="text-[11px] font-black uppercase tracking-tight text-slate-600 group-hover:text-blue-600">Past Papers</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" class="w-4 h-4" alt="Drive">
-            </a>
-            <a href="#" target="_blank" class="resource-badge group">
-                <span class="text-[11px] font-black uppercase tracking-tight text-slate-600 group-hover:text-blue-600">Guide Books</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" class="w-4 h-4" alt="Drive">
-            </a>
-        </div>
+        <div id="resource-container" class="flex flex-wrap gap-3"></div>
       </section>
 
       <div class="border-t border-slate-100"></div>
@@ -163,87 +152,178 @@
   </div>
 
   <script>
+    // ── Full test database (matches your JSON exactly) ────────────────────────
+    const tests = [
+      {
+        id: "net-nust",
+        name: "NUST Entry Test",
+        short: "NET",
+        negativeMarking: false,
+        pattern: [
+          { subject: "Mathematics",  mcqs: 80, marks: 80 },
+          { subject: "Physics",      mcqs: 60, marks: 60 },
+          { subject: "Chemistry/CS", mcqs: 30, marks: 30 },
+          { subject: "English",      mcqs: 20, marks: 20 },
+          { subject: "Intelligence", mcqs: 10, marks: 10 }
+        ],
+        strategy: "Focus heavily on Punjab Textbook Board (PTB) books. NET is a speed test with 200 questions. No negative marking means you should attempt everything. Practice time management to finish in 180 minutes.",
+        annualSchedule: [
+          { series: "NET-1", regStarts: "Dec", deadline: "Jan", testDate: "Feb" },
+          { series: "NET-2", regStarts: "Feb", deadline: "Mar", testDate: "Apr" },
+          { series: "NET-3", regStarts: "Apr", deadline: "May", testDate: "Jun" },
+          { series: "NET-4", regStarts: "May", deadline: "Jun", testDate: "Jul" }
+        ],
+        centers: ["Islamabad", "Karachi", "Quetta", "Gilgit"],
+        resources: { pastPapers: "#", books: "#", notes: "#" }
+      },
+      {
+        id: "fast-nu",
+        name: "FAST Entry Test",
+        short: "FAST",
+        negativeMarking: true,
+        pattern: [
+          { subject: "Basic Math",    mcqs: 50, marks: 50 },
+          { subject: "Advanced Math", mcqs: 50, marks: 50 },
+          { subject: "English",       mcqs: 30, marks: 30 },
+          { subject: "IQ",            mcqs: 20, marks: 20 }
+        ],
+        strategy: "Avoid guessing due to negative marking. Focus on accuracy over speed. Each wrong answer deducts marks, so only attempt questions you're confident about.",
+        annualSchedule: [
+          { series: "Admission Test", regStarts: "May", deadline: "Jun", testDate: "Jul" }
+        ],
+        centers: ["Lahore", "Islamabad", "Karachi"],
+        resources: { pastPapers: "#", books: "#", notes: "#" }
+      },
+      {
+        id: "itu",
+        name: "ITU Admission Test",
+        short: "ITU",
+        negativeMarking: false,
+        pattern: [
+          { subject: "Math",    mcqs: 70, marks: 70 },
+          { subject: "English", mcqs: 30, marks: 30 }
+        ],
+        strategy: "Focus on logic and math basics. No negative marking so attempt all questions. Brush up on analytical reasoning and basic algebra.",
+        annualSchedule: [
+          { series: "Fall Intake", regStarts: "May", deadline: "Jun", testDate: "Jul" }
+        ],
+        centers: ["Lahore"],
+        resources: { pastPapers: "#", books: "#", notes: "#" }
+      },
+      {
+        id: "pieas",
+        name: "PIEAS Entry Test",
+        short: "PIEAS",
+        negativeMarking: true,
+        pattern: [
+          { subject: "Mathematics", mcqs: 60, marks: 60 },
+          { subject: "Physics",     mcqs: 60, marks: 60 },
+          { subject: "Chemistry",   mcqs: 30, marks: 30 }
+        ],
+        strategy: "Strong conceptual preparation is required. Negative marking applies so avoid random guessing. Cover FSc syllabus thoroughly and practice PIEAS past papers.",
+        annualSchedule: [
+          { series: "Admission Test", regStarts: "Apr", deadline: "Jun", testDate: "Jul" }
+        ],
+        centers: ["Islamabad", "Karachi", "Lahore"],
+        resources: { pastPapers: "#", books: "#", notes: "#" }
+      },
+      {
+        id: "nts-nat",
+        name: "NTS NAT Test",
+        short: "NAT",
+        negativeMarking: false,
+        pattern: [
+          { subject: "Verbal",       mcqs: 30, marks: 30 },
+          { subject: "Quantitative", mcqs: 30, marks: 30 },
+          { subject: "Analytical",   mcqs: 30, marks: 30 }
+        ],
+        strategy: "Monthly test available throughout the year. Focus on basic verbal, quantitative, and analytical concepts. No negative marking — attempt every question.",
+        annualSchedule: [
+          { series: "Monthly Test", regStarts: "Monthly", deadline: "Varies", testDate: "Monthly" }
+        ],
+        centers: ["Nationwide"],
+        resources: { pastPapers: "#", books: "#", notes: "#" }
+      }
+    ];
+
     window.onload = () => {
-        const params = new URLSearchParams(window.location.search);
-        const name = params.get('name') || "NET";
-        document.getElementById('test-name').innerText = name;
+      const params  = new URLSearchParams(window.location.search);
+      // Match by ?id=net-nust  OR  legacy ?name=NET
+      const idParam   = params.get('id');
+      const nameParam = params.get('name');
 
-        const testData = {
-            "NET": {
-                subjects: [
-                    { s: "Mathematics", m: 80, p: 80 },
-                    { s: "Physics", m: 60, p: 60 },
-                    { s: "Chemistry / CS", m: 30, p: 30 },
-                    { s: "English", m: 20, p: 20 },
-                    { s: "Intelligence", m: 10, p: 10 }
-                ],
-                guide: "Focus heavily on Punjab Textbook Board (PTB) books. NET is a speed test with 200 questions. No negative marking means you should attempt everything. Practice time management to finish in 180 minutes.",
-                neg: false,
-                dates: [
-                    { title: "NET-1", start: "Dec", deadline: "Jan", test: "Feb" },
-                    { title: "NET-2", start: "Feb", deadline: "Mar", test: "Apr" },
-                    { title: "NET-3", start: "Apr", deadline: "May", test: "May" },
-                    { title: "NET-4", start: "May", deadline: "June", test: "July" }
-                ],
-                centers: ["Islamabad", "Karachi", "Quetta", "Gilgit"]
-            }
-        };
+      const current = idParam
+        ? tests.find(t => t.id === idParam)
+        : tests.find(t => t.short === nameParam) || tests[0];
 
-       const current = testData.find(t => t.short.toUpperCase() === testShortName.toUpperCase()) || testData[0];
-        document.getElementById('test-name').innerText = current.name;
+      // ── Header ──────────────────────────────────────────────────────────────
+      document.getElementById('test-name').innerText = current.name;
 
-        // Render Pattern Table
-        let totalM = 0, totalP = 0;
-        document.getElementById('pattern-table-body').innerHTML = current.pattern.map(i => {
-            totalM += i.mcqs; totalP += i.marks;
-            return `<tr><td class="px-4 py-4 md:px-6 font-bold text-slate-800">${i.subject}</td><td class="text-center font-medium">${i.mcqs}</td><td class="text-center font-bold text-blue-600">${i.marks}</td></tr>`;
-        }).join('');
-        
-        document.getElementById('pattern-table-footer').innerHTML = `<td class="px-4 py-4 md:px-6">Grand Total</td><td class="text-center">${totalM}</td><td class="text-center">${totalP}</td>`;
+      // ── Pattern table (uses pattern[], not dates[]) ──────────────────────
+      let totalMcqs = 0, totalMarks = 0;
+      document.getElementById('pattern-table-body').innerHTML = current.pattern.map(row => {
+        totalMcqs  += row.mcqs;
+        totalMarks += row.marks;
+        return `<tr>
+          <td class="px-4 py-4 md:px-6 font-bold text-slate-800">${row.subject}</td>
+          <td class="px-4 py-4 md:px-6 text-center font-medium">${row.mcqs}</td>
+          <td class="px-4 py-4 md:px-6 text-center font-bold text-blue-600">${row.marks}</td>
+        </tr>`;
+      }).join('');
 
-        // Render Negative Marking Badge
-        document.getElementById('neg-marking-badge').innerHTML = current.negativeMarking 
-            ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
-            : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
+      document.getElementById('pattern-table-footer').innerHTML =
+        `<td class="px-4 py-4 md:px-6">Grand Total</td>
+         <td class="px-4 py-4 md:px-6 text-center">${totalMcqs}</td>
+         <td class="px-4 py-4 md:px-6 text-center">${totalMarks}</td>`;
 
-        // Render Schedule Cards
-        document.getElementById('dates-container').innerHTML = current.annualSchedule.map(d => {
-            const formatLongDate = (val, day) => {
-                if (val === "Monthly" || val === "Varies") return val;
-                const months = { "Dec": "December", "Jan": "January", "Feb": "February", "Mar": "March", "Apr": "April", "May": "May", "Jun": "June", "Jul": "July" };
-                return `${day} ${months[val] || val}, 2026`;
-            };
+      // ── Negative marking badge ────────────────────────────────────────────
+      document.getElementById('neg-marking-badge').innerHTML = current.negativeMarking
+        ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
+        : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
-            return `
-            <div class="flex items-center justify-between p-5 bg-slate-50 rounded-xl border border-slate-100">
-                <div class="text-left">
-                    <p class="text-3xl font-black text-blue-600 uppercase tracking-tighter leading-none">${d.series}</p>
-                </div>
-                <div class="text-right space-y-2">
-                    <div>
-                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest leading-none">Registrations Start</p>
-                        <p class="text-xs font-bold text-slate-500">${formatLongDate(d.regStarts, "01")}</p>
-                    </div>
-                    <div>
-                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest leading-none">Test Date</p>
-                        <p class="text-sm font-bold text-slate-500">${formatLongDate(d.testDate, "15")}</p>
-                    </div>
-                    <div>
-                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest leading-none">Deadline</p>
-                        <p class="text-xs font-bold text-slate-500">${formatLongDate(d.deadline, "10")}</p>
-                    </div>
-                </div>
-            </div>`;
-        }).join('');
+      // ── Strategy ─────────────────────────────────────────────────────────
+      document.getElementById('prep-guide').innerText = current.strategy;
 
-        // Render Centers
-        document.getElementById('centers-container').innerHTML = current.centers.map(c => `
-            <span class="px-3 py-1.5 bg-slate-100 text-slate-600 text-[11px] font-bold rounded-lg border border-slate-200">${c}</span>
-        `).join('');
+      // ── Resources (uses resources object) ────────────────────────────────
+      const res = current.resources || {};
+      const resourceLinks = [
+        { label: "Past Papers", href: res.pastPapers },
+        { label: "Guide Books", href: res.books },
+        { label: "Notes",       href: res.notes }
+      ].filter(r => r.href && r.href !== "#");   // hide placeholder "#" links if you want; remove filter to show all
 
-        // Strategy text
-        document.getElementById('prep-guide').innerText = current.strategy;
+      // Always show all three badges (even if href="#")
+      document.getElementById('resource-container').innerHTML = [
+        { label: "Past Papers", href: res.pastPapers || "#" },
+        { label: "Guide Books", href: res.books || "#" },
+        { label: "Notes",       href: res.notes  || "#" }
+      ].map(r => `
+        <a href="${r.href}" target="_blank" class="resource-badge group">
+          <span class="text-[11px] font-black uppercase tracking-tight text-slate-600 group-hover:text-blue-600">${r.label}</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" class="w-4 h-4" alt="Drive">
+        </a>
+      `).join('');
+
+      // ── Annual Schedule (uses annualSchedule[]) ───────────────────────────
+      document.getElementById('dates-container').innerHTML = current.annualSchedule.map(d => `
+        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <div class="text-left">
+            <p class="text-[10px] font-black text-blue-600 uppercase tracking-tighter">${d.series}</p>
+            <p class="text-sm font-bold text-slate-800">Test Date: ${d.testDate}</p>
+            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter mt-0.5">Reg. Opens: ${d.regStarts}</p>
+          </div>
+          <div class="text-right">
+            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Registration Deadline</p>
+            <p class="text-xs font-black text-slate-700">${d.deadline}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // ── Centers ───────────────────────────────────────────────────────────
+      document.getElementById('centers-container').innerHTML = current.centers.map(c => `
+        <span class="px-3 py-1.5 bg-slate-100 text-slate-600 text-[11px] font-bold rounded-lg border border-slate-200">${c}</span>
+      `).join('');
     };
-</script>
+  </script>
 </body>
 </html>
