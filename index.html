@@ -685,13 +685,14 @@
     display: block;
 }
 
-.test-short-name {
+.test-full-name {
     font-weight: 900;
     font-size: 0.75rem;
-    color: #3b82f6;
+    color: #6b7280;
     letter-spacing: 0.1em;
     margin-top: 0.35rem;
     text-align: center;
+    text-transform: uppercase;
 }
     .uni-card img {
     width: 100%;
@@ -2413,18 +2414,17 @@ function renderHorizontalLists() {
 
             return `
             <div class="bg-white rounded-[2rem] p-5 flex flex-col justify-between 
-                        min-w-[260px] md:min-w-[320px] h-[200px] cursor-pointer"
+                        min-w-[260px] md:min-w-[320px] h-[240px] cursor-pointer"
                  onclick="window.location.href='test-detail.html?name=${encodeURIComponent(name)}'">
 
                 <div class="flex flex-col items-center text-center">
                     <div class="test-logo-header">
                         ${logoHtml}
                         ${fallbackHtml}
-                        <span class="test-short-name">${short.toUpperCase()}</span>
                     </div>
 
-                    <h4 class="font-bold text-base text-slate-700">
-                        ${name}
+                    <h4 class="test-full-name">
+                        ${name.toUpperCase()}
                     </h4>
                 </div>
 
