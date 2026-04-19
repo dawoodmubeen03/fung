@@ -192,7 +192,7 @@
         const current = testData[name] || testData["NET"];
 
         let totalM = 0, totalP = 0;
-        document.getElementById('pattern-table-body').innerHTML = current.subjects.map(i => {
+        document.getElementById('pattern-table-body').innerHTML = current.dates.map(i => {
             totalM += i.m; totalP += i.p;
             return `<tr><td class="px-4 py-4 md:px-6 font-bold text-slate-800">${i.s}</td><td class="text-center font-medium">${i.m}</td><td class="text-center font-bold text-blue-600">${i.p}</td></tr>`;
         }).join('');
