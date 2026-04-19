@@ -203,26 +203,26 @@
             ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
-  document.getElementById('dates-container').innerHTML = current.dates.map(d => `
+document.getElementById('dates-container').innerHTML = current.annualSchedule.map(d => `
   <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
 
-    <!-- TOP TITLE -->
-    <p class="text-xs font-black text-blue-600 uppercase tracking-widest mb-3">
-      ${d.title}
+    <!-- BLUE TITLE ONLY -->
+    <p class="text-sm font-black text-blue-600 uppercase tracking-widest mb-3">
+      ${d.series}
     </p>
 
-    <!-- GRID CONTENT -->
+    <!-- GRID -->
     <div class="grid grid-cols-2 gap-y-2 text-sm">
 
-      <!-- LEFT: LABELS -->
-      <span class="text-slate-400 font-bold text-[11px] uppercase">Registration Opens</span>
-      <span class="text-right font-bold text-slate-800">${d.start}</span>
+      <!-- LABELS (GRAY) -->
+      <span class="text-slate-400 font-semibold text-[11px] uppercase">Registration Opens</span>
+      <span class="text-right text-slate-700 font-semibold">${d.regStarts}</span>
 
-      <span class="text-slate-400 font-bold text-[11px] uppercase">Deadline</span>
-      <span class="text-right font-bold text-slate-800">${d.deadline}</span>
+      <span class="text-slate-400 font-semibold text-[11px] uppercase">Deadline</span>
+      <span class="text-right text-slate-700 font-semibold">${d.deadline}</span>
 
-      <span class="text-blue-600 font-bold text-[11px] uppercase">Test Date</span>
-      <span class="text-right font-black text-blue-600">${d.test}</span>
+      <span class="text-slate-400 font-semibold text-[11px] uppercase">Test Date</span>
+      <span class="text-right text-slate-700 font-semibold">${d.testDate}</span>
 
     </div>
 
