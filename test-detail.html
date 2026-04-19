@@ -152,114 +152,44 @@
   </div>
 
   <script>
-    // ── Full test database (matches your JSON exactly) ────────────────────────
-    const tests = [
-      {
-        id: "net-nust",
-        name: "NUST Entry Test",
-        short: "NET",
-        negativeMarking: false,
-        pattern: [
-          { subject: "Mathematics",  mcqs: 80, marks: 80 },
-          { subject: "Physics",      mcqs: 60, marks: 60 },
-          { subject: "Chemistry/CS", mcqs: 30, marks: 30 },
-          { subject: "English",      mcqs: 20, marks: 20 },
-          { subject: "Intelligence", mcqs: 10, marks: 10 }
-        ],
-        strategy: "Focus heavily on Punjab Textbook Board (PTB) books. NET is a speed test with 200 questions. No negative marking means you should attempt everything. Practice time management to finish in 180 minutes.",
-        annualSchedule: [
-          { series: "NET-1", regStarts: "Dec", deadline: "Jan", testDate: "Feb" },
-          { series: "NET-2", regStarts: "Feb", deadline: "Mar", testDate: "Apr" },
-          { series: "NET-3", regStarts: "Apr", deadline: "May", testDate: "Jun" },
-          { series: "NET-4", regStarts: "May", deadline: "Jun", testDate: "Jul" }
-        ],
-        centers: ["Islamabad", "Karachi", "Quetta", "Gilgit"],
-        resources: { pastPapers: "#", books: "#", notes: "#" }
-      },
-      {
-        id: "fast-nu",
-        name: "FAST Entry Test",
-        short: "FAST",
-        negativeMarking: true,
-        pattern: [
-          { subject: "Basic Math",    mcqs: 50, marks: 50 },
-          { subject: "Advanced Math", mcqs: 50, marks: 50 },
-          { subject: "English",       mcqs: 30, marks: 30 },
-          { subject: "IQ",            mcqs: 20, marks: 20 }
-        ],
-        strategy: "Avoid guessing due to negative marking. Focus on accuracy over speed. Each wrong answer deducts marks, so only attempt questions you're confident about.",
-        annualSchedule: [
-          { series: "Admission Test", regStarts: "May", deadline: "Jun", testDate: "Jul" }
-        ],
-        centers: ["Lahore", "Islamabad", "Karachi"],
-        resources: { pastPapers: "#", books: "#", notes: "#" }
-      },
-      {
-        id: "itu",
-        name: "ITU Admission Test",
-        short: "ITU",
-        negativeMarking: false,
-        pattern: [
-          { subject: "Math",    mcqs: 70, marks: 70 },
-          { subject: "English", mcqs: 30, marks: 30 }
-        ],
-        strategy: "Focus on logic and math basics. No negative marking so attempt all questions. Brush up on analytical reasoning and basic algebra.",
-        annualSchedule: [
-          { series: "Fall Intake", regStarts: "May", deadline: "Jun", testDate: "Jul" }
-        ],
-        centers: ["Lahore"],
-        resources: { pastPapers: "#", books: "#", notes: "#" }
-      },
-      {
-        id: "pieas",
-        name: "PIEAS Entry Test",
-        short: "PIEAS",
-        negativeMarking: true,
-        pattern: [
-          { subject: "Mathematics", mcqs: 60, marks: 60 },
-          { subject: "Physics",     mcqs: 60, marks: 60 },
-          { subject: "Chemistry",   mcqs: 30, marks: 30 }
-        ],
-        strategy: "Strong conceptual preparation is required. Negative marking applies so avoid random guessing. Cover FSc syllabus thoroughly and practice PIEAS past papers.",
-        annualSchedule: [
-          { series: "Admission Test", regStarts: "Apr", deadline: "Jun", testDate: "Jul" }
-        ],
-        centers: ["Islamabad", "Karachi", "Lahore"],
-        resources: { pastPapers: "#", books: "#", notes: "#" }
-      },
-      {
-        id: "nts-nat",
-        name: "NTS NAT Test",
-        short: "NAT",
-        negativeMarking: false,
-        pattern: [
-          { subject: "Verbal",       mcqs: 30, marks: 30 },
-          { subject: "Quantitative", mcqs: 30, marks: 30 },
-          { subject: "Analytical",   mcqs: 30, marks: 30 }
-        ],
-        strategy: "Monthly test available throughout the year. Focus on basic verbal, quantitative, and analytical concepts. No negative marking — attempt every question.",
-        annualSchedule: [
-          { series: "Monthly Test", regStarts: "Monthly", deadline: "Varies", testDate: "Monthly" }
-        ],
-        centers: ["Nationwide"],
-        resources: { pastPapers: "#", books: "#", notes: "#" }
-      }
-    ];
+    let tests = [];
 
-    window.onload = () => {
-      const params  = new URLSearchParams(window.location.search);
-      // Match by ?id=net-nust  OR  legacy ?name=NET
-      const idParam   = params.get('id');
+    // Load test data from JSON
+    async function loadTestData() {
+      try {
+        const response = await fetch('/data/tests.json');
+        const data = await response.json();
+        tests = data.tests || data || [];
+        console.log('✅ Tests loaded:', tests);
+        initializeTestDetails();
+      } catch (err) {
+        console.error('❌ Error loading tests.json:', err);
+        // Fallback to empty array
+        tests = [];
+        initializeTestDetails();
+      }
+    }
+
+    function initializeTestDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const idParam = params.get('id');
       const nameParam = params.get('name');
 
       const current = idParam
         ? tests.find(t => t.id === idParam)
-        : tests.find(t => t.short === nameParam) || tests[0];
+        : nameParam
+        ? tests.find(t => t.short === nameParam || t.name === nameParam)
+        : tests[0];
+
+      if (!current) {
+        document.body.innerHTML = '<div class="flex items-center justify-center h-screen"><p class="text-2xl text-slate-600">Test not found</p></div>';
+        return;
+      }
 
       // ── Header ──────────────────────────────────────────────────────────────
       document.getElementById('test-name').innerText = current.name;
 
-      // ── Pattern table (uses pattern[], not dates[]) ──────────────────────
+      // ── Pattern table ────────────────────────────────────────────────────
       let totalMcqs = 0, totalMarks = 0;
       document.getElementById('pattern-table-body').innerHTML = current.pattern.map(row => {
         totalMcqs  += row.mcqs;
@@ -284,7 +214,7 @@
       // ── Strategy ─────────────────────────────────────────────────────────
       document.getElementById('prep-guide').innerText = current.strategy;
 
-      // ── Resources (uses resources object) ────────────────────────────────
+      // ── Resources ────────────────────────────────────────────────────────
       const res = current.resources || {};
       document.getElementById('resource-container').innerHTML = [
         { label: "Past Papers", href: res.pastPapers || "#" },
@@ -297,7 +227,7 @@
         </a>
       `).join('');
 
-      // ── Annual Schedule (uses annualSchedule[]) ───────────────────────────
+      // ── Annual Schedule ──────────────────────────────────────────────────
       document.getElementById('dates-container').innerHTML = current.annualSchedule.map(d => `
         <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100">
           <div class="text-left">
@@ -312,11 +242,15 @@
         </div>
       `).join('');
 
-      // ── Centers ───────────────────────────────────────────────────────────
+      // ── Centers ──────────────────────────────────────────────────────────
       document.getElementById('centers-container').innerHTML = current.centers.map(c => `
         <span class="px-3 py-1.5 bg-slate-100 text-slate-600 text-[11px] font-bold rounded-lg border border-slate-200">${c}</span>
       `).join('');
-    };
-  </script>
+    }
+
+    // Load tests on page load
+  
+    window.addEventListener('DOMContentLoaded', loadTestData);
+    </script>
 </body>
 </html>
