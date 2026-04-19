@@ -1,75 +1,175 @@
 {
-  "NET": {
-    "subjects": [
-      { "s": "Mathematics", "m": 80, "p": 80 },
-      { "s": "Physics", "m": 60, "p": 60 },
-      { "s": "Chemistry / CS", "m": 30, "p": 30 },
-      { "s": "English", "m": 20, "p": 20 },
-      { "s": "Intelligence", "m": 10, "p": 10 }
-    ],
-    "guide": "Focus heavily on Punjab Textbook Board (PTB) books. NET is a speed test with 200 questions. No negative marking means you should attempt everything. Practice time management to finish in 180 minutes.",
-    "neg": false,
-    "dates": [
-      { "title": "NET-1", "start": "01 Dec, 2025", "deadline": "10 Jan, 2026", "test": "12 Feb, 2026" },
-      { "title": "NET-2", "start": "15 Feb, 2026", "deadline": "20 Mar, 2026", "test": "10 Apr, 2026" },
-      { "title": "NET-3", "start": "12 Apr, 2026", "deadline": "15 May, 2026", "test": "25 May, 2026" },
-      { "title": "NET-4", "start": "20 May, 2026", "deadline": "15 June, 2026", "test": "05 July, 2026" }
-    ],
-    "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"]
-  },
-  "FAST": {
-    "subjects": [
-      { "s": "Adv. Mathematics", "m": 50, "p": 50 },
-      { "s": "Basic Mathematics", "m": 20, "p": 20 },
-      { "s": "English", "m": 10, "p": 10 },
-      { "s": "IQ / Analytical", "m": 20, "p": 20 }
-    ],
-    "guide": "FAST entry test is conceptual and time-pressured. Note: Negative marking (0.25) applies. Focus on Advanced Math and IQ. Practice KIPS or STEP practice books.",
-    "neg": true,
-    "dates": [
-      { "title": "Round 1", "start": "01 June, 2026", "deadline": "05 July, 2026", "test": "15 July, 2026" }
-    ],
-    "centers": ["Islamabad", "Lahore", "Karachi", "Peshawar", "Chiniot-Sargodha"]
-  },
-  "ECAT": {
-    "subjects": [
-      { "s": "Mathematics", "m": 30, "p": 120 },
-      { "s": "Physics", "m": 30, "p": 120 },
-      { "s": "Chemistry / CS", "m": 30, "p": 120 },
-      { "s": "English", "m": 10, "p": 40 }
-    ],
-    "guide": "The standard test for Punjab engineering universities (UET). High difficulty in Physics. Negative marking exists (+4 for correct, -1 for wrong).",
-    "neg": true,
-    "dates": [
-      { "title": "UET Cycle", "start": "10 Feb, 2026", "deadline": "05 Mar, 2026", "test": "15 Mar, 2026" }
-    ],
-    "centers": ["Lahore", "Faisalabad", "Multan", "Taxila", "Bahawalpur"]
-  },
-  "GIKI": {
-    "subjects": [
-      { "s": "Mathematics", "m": 30, "p": 60 },
-      { "s": "Physics", "m": 30, "p": 60 }
-    ],
-    "guide": "GIKI test is purely based on Mathematics and Physics. Questions are highly conceptual. No English or Chemistry involved for Engineering programs.",
-    "neg": true,
-    "dates": [
-      { "title": "Annual Intake", "start": "15 April, 2026", "deadline": "10 June, 2026", "test": "25 June, 2026" }
-    ],
-    "centers": ["Rawalpindi", "Lahore", "Karachi", "Peshawar", "Multan"]
-  },
-  "MDCAT": {
-    "subjects": [
-      { "s": "Biology", "m": 68, "p": 68 },
-      { "s": "Chemistry", "m": 54, "p": 54 },
-      { "s": "Physics", "m": 54, "p": 54 },
-      { "s": "English", "m": 18, "p": 18 },
-      { "s": "Logical Reasoning", "m": 6, "p": 6 }
-    ],
-    "guide": "National Medical & Dental College Admission Test. Focus strictly on PMDC syllabus. Biology carries the most weight. High competition; aim for 180+ marks.",
-    "neg": false,
-    "dates": [
-      { "title": "Session 2026", "start": "01 July, 2026", "deadline": "15 Aug, 2026", "test": "22 Sept, 2026" }
-    ],
-    "centers": ["All Major Cities", "Provincial Capitals"]
-  }
+  "tests": [
+    {
+      "id": "net-nust",
+      "name": "NUST Entry Test",
+      "short": "NET",
+      "negativeMarking": false,
+      "pattern": [
+        { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
+        { "subject": "Physics", "mcqs": 60, "marks": 60 },
+        { "subject": "Chemistry/CS", "mcqs": 30, "marks": 30 },
+        { "subject": "English", "mcqs": 20, "marks": 20 },
+        { "subject": "Intelligence", "mcqs": 10, "marks": 10 }
+      ],
+      "strategy": "Focus on PTB books and speed practice.",
+      "annualSchedule": [
+        {
+          "series": "NET-1",
+          "regStarts": "11 December, 2026",
+          "deadline": "10 January, 2027",
+          "testDate": "15 February, 2027"
+        },
+        {
+          "series": "NET-2",
+          "regStarts": "10 February, 2027",
+          "deadline": "20 March, 2027",
+          "testDate": "15 April, 2027"
+        },
+        {
+          "series": "NET-3",
+          "regStarts": "10 April, 2027",
+          "deadline": "20 May, 2027",
+          "testDate": "18 June, 2027"
+        },
+        {
+          "series": "NET-4",
+          "regStarts": "15 May, 2027",
+          "deadline": "25 June, 2027",
+          "testDate": "20 July, 2027"
+        }
+      ],
+      "centers": ["Islamabad", "Karachi", "Quetta", "Gilgit"]
+    },
+
+    {
+      "id": "fast-nu",
+      "name": "FAST Entry Test",
+      "short": "FAST",
+      "negativeMarking": true,
+      "pattern": [
+        { "subject": "Basic Math", "mcqs": 50, "marks": 50 },
+        { "subject": "Advanced Math", "mcqs": 50, "marks": 50 },
+        { "subject": "English", "mcqs": 30, "marks": 30 },
+        { "subject": "IQ", "mcqs": 20, "marks": 20 }
+      ],
+      "strategy": "Focus on analytical + time-based solving. Avoid guessing (negative marking).",
+      "annualSchedule": [
+        {
+          "series": "Admission Test",
+          "regStarts": "15 May, 2027",
+          "deadline": "30 June, 2027",
+          "testDate": "20 July, 2027"
+        }
+      ],
+      "centers": ["Lahore", "Islamabad", "Karachi", "Peshawar"]
+    },
+
+    {
+      "id": "air-university",
+      "name": "Air University Test",
+      "short": "AIR",
+      "negativeMarking": false,
+      "pattern": [
+        { "subject": "Math", "mcqs": 80, "marks": 80 },
+        { "subject": "Physics", "mcqs": 60, "marks": 60 },
+        { "subject": "English", "mcqs": 20, "marks": 20 }
+      ],
+      "strategy": "Focus on basics + conceptual clarity.",
+      "annualSchedule": [
+        {
+          "series": "Fall Intake",
+          "regStarts": "20 May, 2027",
+          "deadline": "25 June, 2027",
+          "testDate": "18 July, 2027"
+        }
+      ],
+      "centers": ["Islamabad", "Kamra", "Multan"]
+    },
+
+    {
+      "id": "giki",
+      "name": "GIKI Entry Test",
+      "short": "GIKI",
+      "negativeMarking": false,
+      "pattern": [
+        { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
+        { "subject": "Physics", "mcqs": 60, "marks": 60 },
+        { "subject": "English", "mcqs": 20, "marks": 20 }
+      ],
+      "strategy": "Conceptual questions + time control.",
+      "annualSchedule": [
+        {
+          "series": "Admission Test",
+          "regStarts": "15 March, 2027",
+          "deadline": "20 May, 2027",
+          "testDate": "10 July, 2027"
+        }
+      ],
+      "centers": ["Topi", "Lahore", "Karachi", "Islamabad"]
+    },
+
+    {
+      "id": "pieas",
+      "name": "PIEAS Entry Test",
+      "short": "PIEAS",
+      "negativeMarking": true,
+      "pattern": [
+        { "subject": "Mathematics", "mcqs": 60, "marks": 60 },
+        { "subject": "Physics", "mcqs": 60, "marks": 60 },
+        { "subject": "Chemistry", "mcqs": 30, "marks": 30 }
+      ],
+      "strategy": "Strong concepts required. Avoid random guessing.",
+      "annualSchedule": [
+        {
+          "series": "Admission Test",
+          "regStarts": "10 April, 2027",
+          "deadline": "15 June, 2027",
+          "testDate": "12 July, 2027"
+        }
+      ],
+      "centers": ["Islamabad", "Karachi", "Lahore"]
+    },
+
+    {
+      "id": "itu",
+      "name": "ITU Admission Test",
+      "short": "ITU",
+      "negativeMarking": false,
+      "pattern": [
+        { "subject": "Math", "mcqs": 70, "marks": 70 },
+        { "subject": "English", "mcqs": 30, "marks": 30 }
+      ],
+      "strategy": "Focus on logic + math basics.",
+      "annualSchedule": [
+        {
+          "series": "Fall Intake",
+          "regStarts": "20 May, 2027",
+          "deadline": "30 June, 2027",
+          "testDate": "22 July, 2027"
+        }
+      ],
+      "centers": ["Lahore"]
+    },
+
+    {
+      "id": "pu",
+      "name": "Punjab University Admission",
+      "short": "PU",
+      "negativeMarking": false,
+      "pattern": [
+        { "subject": "Intermediate Marks Based", "mcqs": 0, "marks": 0 }
+      ],
+      "strategy": "Merit is based on academic marks (no entry test for most programs).",
+      "annualSchedule": [
+        {
+          "series": "Admissions",
+          "regStarts": "01 June, 2027",
+          "deadline": "15 August, 2027",
+          "testDate": "N/A"
+        }
+      ],
+      "centers": ["Lahore"]
+    }
+  ]
 }
