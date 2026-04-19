@@ -347,93 +347,69 @@
         padding: 1.25rem !important;
     }
 }
-    /* --- CROSSING MARQUEE ANIMATION --- */
-.marquee-section {
-    position: relative;
+    /* --- HORIZONTAL SCROLLING UNIVERSITY NAMES --- */
+.uni-scroll-section {
     width: 100%;
-    height: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    pointer-events: none;
-}
-.marquee-section {
-    position: relative;
-    width: calc(100% + 3rem); /* 24px + 24px = 48px = 3rem */
-    margin-left: -1.5rem;     /* cancel left padding */
-    margin-right: -1.5rem;    /* cancel right padding */
-}
-.marquee-bar {
-    position: absolute;
-    width: 200vw; 
-    height: 60px;
-    background: rgba(255, 255, 255, 0.98);
-    display: flex;
-    align-items: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    overflow: hidden;
-    pointer-events: auto;
+    padding: 1.5rem 0;
+    margin: 2rem 0;
 }
 
-.bar-top { transform: rotate(8deg); z-index: 10; }
-.bar-bottom { transform: rotate(-8deg); z-index: 9; }
+.uni-scroll-row {
+    overflow: hidden;
+    width: 100%;
+    margin: 0.6rem 0;
+}
 
-.marquee-content {
+.uni-scroll-track {
     display: flex;
     white-space: nowrap;
-    min-width: 100%;
+    width: max-content;
 }
 
-.marquee-text {
-    font-size: 1.4rem;
+.uni-scroll-track .uni-name {
+    font-size: 2rem;
     font-weight: 900;
-    color: #2563eb; /* Modern Blue */
+    color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: 0.25em;
-    padding: 0 3rem;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 1.5rem;
+    cursor: default;
+    transition: color 0.2s ease;
+    display: inline-block;
 }
 
-/* Scroll Animations */
-.scroll-left { animation: scroll-left 35s linear infinite; }
-.scroll-right { animation: scroll-right 35s linear infinite; }
-
-@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-@keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
-
-  @media (max-width: 768px) {
-
-    .marquee-section {
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-    }
-
+.uni-scroll-track .uni-name:hover {
+    color: #2563eb;
 }
-    @media (max-width: 768px) {
 
-    .marquee-bar {
-        height: 50px;
-        width: 350vw;
+.uni-scroll-track .uni-sep {
+    font-size: 2rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.4);
+    display: inline-block;
+    padding: 0.25rem 0;
+}
+
+.uni-scroll-left  { animation: uni-scroll-left  30s linear infinite; }
+.uni-scroll-right { animation: uni-scroll-right 30s linear infinite; }
+
+@keyframes uni-scroll-left  { 0% { transform: translateX(0); }    100% { transform: translateX(-50%); } }
+@keyframes uni-scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+@media (max-width: 768px) {
+    .uni-scroll-section {
+        padding: 1rem 0;
+        margin: 1.5rem 0;
     }
-
-    .bar-top {
-        transform: rotate(14deg);
-        top: 48%;
+    .uni-scroll-track .uni-name {
+        font-size: 1.15rem;
+        padding: 0.2rem 0.9rem;
+        letter-spacing: 0.05em;
     }
-
-    .bar-bottom {
-        transform: rotate(-14deg);
-        top: 52%;
+    .uni-scroll-track .uni-sep {
+        font-size: 1.15rem;
     }
-
-    .marquee-text {
-        font-size: 0.9rem;
-        letter-spacing: 0.15em;
-    }
-
 }
     
 .planner-text-small {
@@ -957,21 +933,67 @@
 
         
             
-<!-- ATTACHED FULL-BLEED CROSSING MARQUEE -->
-<div class="marquee-section">
-    <!-- Bar 1 (Scrolling Right) -->
-    <div class="marquee-bar bar-top">
-        <div class="marquee-content scroll-right">
-            <!-- Note: Text is repeated to ensure a seamless loop -->
-            <div class="marquee-text">FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA • FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA</div>
-            <div class="marquee-text">FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA • FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA</div>
+<!-- ANIMATED SCROLLING UNIVERSITY NAMES -->
+<div class="uni-scroll-section">
+    <!-- Row 1: Scrolls Left -->
+    <div class="uni-scroll-row">
+        <div class="uni-scroll-track uni-scroll-left">
+            <span class="uni-name">NUST</span><span class="uni-sep">•</span>
+            <span class="uni-name">FAST</span><span class="uni-sep">•</span>
+            <span class="uni-name">UET</span><span class="uni-sep">•</span>
+            <span class="uni-name">GIKI</span><span class="uni-sep">•</span>
+            <span class="uni-name">COMSATS</span><span class="uni-sep">•</span>
+            <span class="uni-name">ITU</span><span class="uni-sep">•</span>
+            <span class="uni-name">PIEAS</span><span class="uni-sep">•</span>
+            <span class="uni-name">IBA</span><span class="uni-sep">•</span>
+            <span class="uni-name">LUMS</span><span class="uni-sep">•</span>
+            <span class="uni-name">NED</span><span class="uni-sep">•</span>
+            <span class="uni-name">PU</span><span class="uni-sep">•</span>
+            <span class="uni-name">AIR UNIVERSITY</span><span class="uni-sep">•</span>
+            <!-- duplicate for seamless loop -->
+            <span class="uni-name">NUST</span><span class="uni-sep">•</span>
+            <span class="uni-name">FAST</span><span class="uni-sep">•</span>
+            <span class="uni-name">UET</span><span class="uni-sep">•</span>
+            <span class="uni-name">GIKI</span><span class="uni-sep">•</span>
+            <span class="uni-name">COMSATS</span><span class="uni-sep">•</span>
+            <span class="uni-name">ITU</span><span class="uni-sep">•</span>
+            <span class="uni-name">PIEAS</span><span class="uni-sep">•</span>
+            <span class="uni-name">IBA</span><span class="uni-sep">•</span>
+            <span class="uni-name">LUMS</span><span class="uni-sep">•</span>
+            <span class="uni-name">NED</span><span class="uni-sep">•</span>
+            <span class="uni-name">PU</span><span class="uni-sep">•</span>
+            <span class="uni-name">AIR UNIVERSITY</span><span class="uni-sep">•</span>
         </div>
     </div>
-    <!-- Bar 2 (Scrolling Left) -->
-    <div class="marquee-bar bar-bottom">
-        <div class="marquee-content scroll-left">
-            <div class="marquee-text">FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA • FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA</div>
-            <div class="marquee-text">FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA • FAST • NUST • GIKI • COMSATS • UET • ITU • PU • PIEAS • IBA</div>
+    <!-- Row 2: Scrolls Right -->
+    <div class="uni-scroll-row">
+        <div class="uni-scroll-track uni-scroll-right">
+            <!-- duplicate first (offset start) for seamless loop -->
+            <span class="uni-name">SZABIST</span><span class="uni-sep">•</span>
+            <span class="uni-name">MUET</span><span class="uni-sep">•</span>
+            <span class="uni-name">QAU</span><span class="uni-sep">•</span>
+            <span class="uni-name">BZU</span><span class="uni-sep">•</span>
+            <span class="uni-name">IST</span><span class="uni-sep">•</span>
+            <span class="uni-name">UMT</span><span class="uni-sep">•</span>
+            <span class="uni-name">SEECS</span><span class="uni-sep">•</span>
+            <span class="uni-name">NUST-IMS</span><span class="uni-sep">•</span>
+            <span class="uni-name">KU</span><span class="uni-sep">•</span>
+            <span class="uni-name">UCP</span><span class="uni-sep">•</span>
+            <span class="uni-name">IUB</span><span class="uni-sep">•</span>
+            <span class="uni-name">GCU</span><span class="uni-sep">•</span>
+            <!-- original set -->
+            <span class="uni-name">SZABIST</span><span class="uni-sep">•</span>
+            <span class="uni-name">MUET</span><span class="uni-sep">•</span>
+            <span class="uni-name">QAU</span><span class="uni-sep">•</span>
+            <span class="uni-name">BZU</span><span class="uni-sep">•</span>
+            <span class="uni-name">IST</span><span class="uni-sep">•</span>
+            <span class="uni-name">UMT</span><span class="uni-sep">•</span>
+            <span class="uni-name">SEECS</span><span class="uni-sep">•</span>
+            <span class="uni-name">NUST-IMS</span><span class="uni-sep">•</span>
+            <span class="uni-name">KU</span><span class="uni-sep">•</span>
+            <span class="uni-name">UCP</span><span class="uni-sep">•</span>
+            <span class="uni-name">IUB</span><span class="uni-sep">•</span>
+            <span class="uni-name">GCU</span><span class="uni-sep">•</span>
         </div>
     </div>
 </div>
