@@ -179,12 +179,6 @@
                 ],
                 guide: "Focus heavily on Punjab Textbook Board (PTB) books. NET is a speed test with 200 questions. No negative marking means you should attempt everything. Practice time management to finish in 180 minutes.",
                 neg: false,
-                dates: [
-                    { title: "NET-1", start: "Dec", deadline: "Jan", test: "Feb" },
-                    { title: "NET-2", start: "Feb", deadline: "Mar", test: "Apr" },
-                    { title: "NET-3", start: "Apr", deadline: "May", test: "May" },
-                    { title: "NET-4", start: "May", deadline: "June", test: "July" }
-                ],
                 centers: ["Islamabad", "Karachi", "Quetta", "Gilgit"]
             }
         };
@@ -203,25 +197,25 @@
             ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
-document.getElementById('dates-container').innerHTML = current.dates.map(d => `
+document.getElementById('dates-container').innerHTML = current.annualSchedule.map(d => `
   <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
 
     <!-- BLUE TITLE -->
     <p class="text-sm font-black text-blue-600 uppercase tracking-widest mb-3">
-      ${d.title}
+      ${d.series}
     </p>
 
     <!-- GRID -->
     <div class="grid grid-cols-2 gap-y-2 text-sm">
 
       <span class="text-slate-400 font-semibold text-[11px] uppercase">Registration Opens</span>
-      <span class="text-right text-slate-700 font-semibold">${d.start}</span>
+      <span class="text-right text-slate-700 font-semibold">${d.regStarts}</span>
 
       <span class="text-slate-400 font-semibold text-[11px] uppercase">Deadline</span>
       <span class="text-right text-slate-700 font-semibold">${d.deadline}</span>
 
       <span class="text-slate-400 font-semibold text-[11px] uppercase">Test Date</span>
-      <span class="text-right text-slate-700 font-semibold">${d.test}</span>
+      <span class="text-right text-slate-700 font-semibold">${d.testDate}</span>
 
     </div>
 
