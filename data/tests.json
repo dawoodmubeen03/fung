@@ -12,7 +12,7 @@
         { "subject": "English", "mcqs": 20, "marks": 20 },
         { "subject": "Intelligence", "mcqs": 10, "marks": 10 }
       ],
-      "strategy": "Focus on PTB books and speed practice.",
+      "strategy": "Focus on PTB books. Speed and practice are key.",
       "annualSchedule": [
         { "series": "NET-1", "regStarts": "Dec", "deadline": "Jan", "testDate": "Feb" },
         { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "Apr" },
@@ -33,62 +33,11 @@
         { "subject": "English", "mcqs": 30, "marks": 30 },
         { "subject": "IQ", "mcqs": 20, "marks": 20 }
       ],
-      "strategy": "Focus on analytical + time-based solving. Avoid guessing (negative marking).",
+      "strategy": "Avoid guessing. Negative marking present.",
       "annualSchedule": [
         { "series": "Admission Test", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
       ],
-      "centers": ["Lahore", "Islamabad", "Karachi", "Peshawar"]
-    },
-
-    {
-      "id": "air-university",
-      "name": "Air University Test",
-      "short": "AIR",
-      "negativeMarking": false,
-      "pattern": [
-        { "subject": "Math", "mcqs": 80, "marks": 80 },
-        { "subject": "Physics", "mcqs": 60, "marks": 60 },
-        { "subject": "English", "mcqs": 20, "marks": 20 }
-      ],
-      "strategy": "Focus on basics + conceptual clarity.",
-      "annualSchedule": [
-        { "series": "Fall Intake", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
-      ],
-      "centers": ["Islamabad", "Kamra", "Multan"]
-    },
-
-    {
-      "id": "giki",
-      "name": "GIKI Entry Test",
-      "short": "GIKI",
-      "negativeMarking": false,
-      "pattern": [
-        { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
-        { "subject": "Physics", "mcqs": 60, "marks": 60 },
-        { "subject": "English", "mcqs": 20, "marks": 20 }
-      ],
-      "strategy": "Conceptual questions + time control.",
-      "annualSchedule": [
-        { "series": "Admission Test", "regStarts": "Mar", "deadline": "May", "testDate": "Jul" }
-      ],
-      "centers": ["Topi", "Lahore", "Karachi", "Islamabad"]
-    },
-
-    {
-      "id": "pieas",
-      "name": "PIEAS Entry Test",
-      "short": "PIEAS",
-      "negativeMarking": true,
-      "pattern": [
-        { "subject": "Mathematics", "mcqs": 60, "marks": 60 },
-        { "subject": "Physics", "mcqs": 60, "marks": 60 },
-        { "subject": "Chemistry", "mcqs": 30, "marks": 30 }
-      ],
-      "strategy": "Strong concepts required. Avoid random guessing.",
-      "annualSchedule": [
-        { "series": "Admission Test", "regStarts": "Apr", "deadline": "Jun", "testDate": "Jul" }
-      ],
-      "centers": ["Islamabad", "Karachi", "Lahore"]
+      "centers": ["Lahore", "Islamabad", "Karachi"]
     },
 
     {
@@ -108,18 +57,37 @@
     },
 
     {
-      "id": "pu",
-      "name": "Punjab University Admission",
-      "short": "PU",
+      "id": "pieas",
+      "name": "PIEAS Entry Test",
+      "short": "PIEAS",
+      "negativeMarking": true,
+      "pattern": [
+        { "subject": "Mathematics", "mcqs": 60, "marks": 60 },
+        { "subject": "Physics", "mcqs": 60, "marks": 60 },
+        { "subject": "Chemistry", "mcqs": 30, "marks": 30 }
+      ],
+      "strategy": "Strong conceptual preparation required.",
+      "annualSchedule": [
+        { "series": "Admission Test", "regStarts": "Apr", "deadline": "Jun", "testDate": "Jul" }
+      ],
+      "centers": ["Islamabad", "Karachi", "Lahore"]
+    },
+
+    {
+      "id": "nts-nat",
+      "name": "NTS NAT Test",
+      "short": "NAT",
       "negativeMarking": false,
       "pattern": [
-        { "subject": "Intermediate Marks Based", "mcqs": 0, "marks": 0 }
+        { "subject": "Verbal", "mcqs": 30, "marks": 30 },
+        { "subject": "Quantitative", "mcqs": 30, "marks": 30 },
+        { "subject": "Analytical", "mcqs": 30, "marks": 30 }
       ],
-      "strategy": "Merit is based on academic marks (no entry test for most programs).",
+      "strategy": "Monthly test. Focus on basic concepts.",
       "annualSchedule": [
-        { "series": "Admissions", "regStarts": "Jun", "deadline": "Aug", "testDate": "N/A" }
+        { "series": "Monthly Test", "regStarts": "Every Month", "deadline": "Varies", "testDate": "Monthly" }
       ],
-      "centers": ["Lahore"]
+      "centers": ["Nationwide"]
     }
   ]
 }
