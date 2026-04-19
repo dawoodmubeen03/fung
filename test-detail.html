@@ -203,26 +203,27 @@
             ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
-    document.getElementById('dates-container').innerHTML = current.dates.map(d => `
-  <div class="grid grid-cols-2 p-4 bg-slate-50 rounded-xl border border-slate-100">
-
-    <!-- LEFT SIDE (LABELS) -->
-    <div class="flex flex-col gap-2 text-[10px] font-black uppercase tracking-wider text-slate-400">
-        <span>Registration Opens</span>
-        <span>Deadline</span>
-        <span class="text-blue-600">Test Date</span>
-    </div>
-
-    <!-- RIGHT SIDE (VALUES) -->
-    <div class="flex flex-col gap-2 text-right">
-        <span class="text-xs font-bold text-slate-800">${d.start}</span>
-        <span class="text-xs font-bold text-slate-800">${d.deadline}</span>
-        <span class="text-sm font-black text-blue-600">${d.test}</span>
-    </div>
+  document.getElementById('dates-container').innerHTML = current.dates.map(d => `
+  <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
 
     <!-- TOP TITLE -->
-    <div class="col-span-2 mb-2">
-        <p class="text-[10px] font-black text-blue-600 uppercase tracking-widest">${d.title}</p>
+    <p class="text-xs font-black text-blue-600 uppercase tracking-widest mb-3">
+      ${d.title}
+    </p>
+
+    <!-- GRID CONTENT -->
+    <div class="grid grid-cols-2 gap-y-2 text-sm">
+
+      <!-- LEFT: LABELS -->
+      <span class="text-slate-400 font-bold text-[11px] uppercase">Registration Opens</span>
+      <span class="text-right font-bold text-slate-800">${d.start}</span>
+
+      <span class="text-slate-400 font-bold text-[11px] uppercase">Deadline</span>
+      <span class="text-right font-bold text-slate-800">${d.deadline}</span>
+
+      <span class="text-blue-600 font-bold text-[11px] uppercase">Test Date</span>
+      <span class="text-right font-black text-blue-600">${d.test}</span>
+
     </div>
 
   </div>
