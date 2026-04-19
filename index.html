@@ -1789,29 +1789,20 @@ async function loadDashboardData() {
     try {
         const fetchJSON = async (path) => {
             const res = await fetch(path);
-            if (!res.ok) {
-                console.warn(`⚠️ Missing: ${path}`);
-                return [];
-            }
+            if (!res.ok) return [];
             return await res.json();
         };
 
         const uniDataRaw = await fetchJSON('/data/universities.json');
-        const testDataRaw = await fetchJSON('/data/tests.json');
+        const testDataRaw = await fetchJSON('/data/tests.json'); // This contains {"tests": [...]}
         const fieldDataRaw = await fetchJSON('/data/fields.json');
 
         universityData = uniDataRaw.universities || [];
-        testData = testDataRaw.tests || testDataRaw || [];
-        categoryData = fieldDataRaw.fields || fieldDataRaw || [];
-
-        console.log("✅ ALL DATA:", {
-            universities: universityData,
-            tests: testData,
-            categories: categoryData
-        });
+        // FIX: Explicitly target the .tests array from your JSON
+        testData = testDataRaw.tests || []; 
+        categoryData = fieldDataRaw.fields || [];
 
         renderHorizontalLists();
-
     } catch (err) {
         console.error("❌ Load error:", err);
     }
@@ -2373,35 +2364,34 @@ function renderHorizontalLists() {
 
 
    // ================= TESTS (MATCH CATEGORY SIZE) =================
+// ================= TESTS (MATCHING YOUR JSON STRUCTURE) =================
 ['landing-test-list', 'dashboard-test-list'].forEach(id => {
     const container = document.getElementById(id);
 
     if (container && testData?.length) {
-
         container.innerHTML = testData.map(t => {
-
-            const name = t.name || t.title || t.testName || "TEST";
-            const short = name.split(' ')[0];
+            // Using 'name' from your JSON, and falling back to 'id'
+            const displayName = t.name || "Test";
+            const shortName = t.short || displayName.split(' ')[0];
+            const testId = t.id; // e.g., "net-nust"
 
             return `
             <div class="bg-white rounded-[2rem] p-5 flex flex-col justify-between 
-                        min-w-[260px] md:min-w-[320px] h-[180px] cursor-pointer"
-                 onclick="window.location.href='test-detail.html?name=${encodeURIComponent(name)}'">
+                        min-w-[260px] md:min-w-[320px] h-[180px] cursor-pointer hover:shadow-lg transition-all"
+                 onclick="window.location.href='test-detail.html?id=${testId}'">
 
                 <div>
                     <div class="hollow-text-logo text-4xl mb-2">
-                        ${short}
+                        ${shortName}
                     </div>
-
                     <h4 class="font-bold text-base text-slate-700">
-                        ${name}
+                        ${displayName}
                     </h4>
                 </div>
 
                 <div class="flex justify-end">
                     <div class="arrow-btn">${arrow}</div>
                 </div>
-
             </div>
             `;
         }).join('');
