@@ -4,7 +4,7 @@
       "id": "net-nust",
       "name": "NUST Entry Test",
       "short": "NET",
-      "logoUrl": "/logos/nust-logo.png",
+      "logoUrl": "/logos/nust1.png",
       "negativeMarking": false,
       "pattern": [
         { "subject": "Mathematics", "mcqs": 80, "marks": 80 },
