@@ -163,11 +163,9 @@
   </div>
 <script>
     window.onload = () => {
-        // 1. Get Test name from URL
         const params = new URLSearchParams(window.location.search);
         const testShortName = params.get('name') || "NET";
-        
-        // 2. Your JSON Data
+
         const testData = [
             {
                 "id": "net-nust",
@@ -181,7 +179,7 @@
                     { "subject": "English", "mcqs": 20, "marks": 20 },
                     { "subject": "Intelligence", "mcqs": 10, "marks": 10 }
                 ],
-                "strategy": "Focus on PTB books. Speed and practice are key.",
+                "strategy": "Focus on PTB books. Speed and practice are key. NET is a speed test with 200 questions.",
                 "annualSchedule": [
                     { "series": "NET-1", "regStarts": "Dec", "deadline": "Jan", "testDate": "Feb" },
                     { "series": "NET-2", "regStarts": "Feb", "deadline": "Mar", "testDate": "Apr" },
@@ -201,7 +199,7 @@
                     { "subject": "English", "mcqs": 30, "marks": 30 },
                     { "subject": "IQ", "mcqs": 20, "marks": 20 }
                 ],
-                "strategy": "Avoid guessing. Negative marking present.",
+                "strategy": "Avoid guessing. Negative marking is present. Focus on Advanced Math concepts.",
                 "annualSchedule": [
                     { "series": "Admission Test", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
                 ],
@@ -216,7 +214,7 @@
                     { "subject": "Math", "mcqs": 70, "marks": 70 },
                     { "subject": "English", "mcqs": 30, "marks": 30 }
                 ],
-                "strategy": "Focus on logic + math basics.",
+                "strategy": "Focus on logic and mathematics basics. Time management is crucial.",
                 "annualSchedule": [
                     { "series": "Fall Intake", "regStarts": "May", "deadline": "Jun", "testDate": "Jul" }
                 ],
@@ -232,7 +230,7 @@
                     { "subject": "Physics", "mcqs": 60, "marks": 60 },
                     { "subject": "Chemistry", "mcqs": 30, "marks": 30 }
                 ],
-                "strategy": "Strong conceptual preparation required.",
+                "strategy": "Strong conceptual preparation required. Highly competitive test.",
                 "annualSchedule": [
                     { "series": "Admission Test", "regStarts": "Apr", "deadline": "Jun", "testDate": "Jul" }
                 ],
@@ -248,7 +246,7 @@
                     { "subject": "Quantitative", "mcqs": 30, "marks": 30 },
                     { "subject": "Analytical", "mcqs": 30, "marks": 30 }
                 ],
-                "strategy": "Monthly test. Focus on basic concepts.",
+                "strategy": "Monthly test. Focus on basic concepts and vocabulary.",
                 "annualSchedule": [
                     { "series": "Monthly Test", "regStarts": "Monthly", "deadline": "Varies", "testDate": "Monthly" }
                 ],
@@ -256,11 +254,11 @@
             }
         ];
 
-        // 3. Find the current test based on URL param
-        const current = testData.find(t => t.short === testShortName) || testData[0];
+        // Find the selected test or default to the first one
+        const current = testData.find(t => t.short.toUpperCase() === testShortName.toUpperCase()) || testData[0];
         document.getElementById('test-name').innerText = current.name;
 
-        // 4. Render Pattern Table
+        // Render Pattern Table
         let totalM = 0, totalP = 0;
         document.getElementById('pattern-table-body').innerHTML = current.pattern.map(i => {
             totalM += i.mcqs; totalP += i.marks;
@@ -269,14 +267,19 @@
         
         document.getElementById('pattern-table-footer').innerHTML = `<td class="px-4 py-4 md:px-6">Grand Total</td><td class="text-center">${totalM}</td><td class="text-center">${totalP}</td>`;
 
-        // 5. Render Negative Marking Badge
+        // Render Negative Marking Badge
         document.getElementById('neg-marking-badge').innerHTML = current.negativeMarking 
             ? `<span class="px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-200">Negative Marking: YES</span>`
             : `<span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-green-200">Negative Marking: NO</span>`;
 
-        // 6. Render Schedule Cards
-        document.getElementById('dates-container').innerHTML = current.dates.map(d => {
-            const formatD = (m) => m === "Monthly" || m === "Varies" ? m : `15 ${m}, 2026`;
+        // Render Schedule Cards
+        document.getElementById('dates-container').innerHTML = current.annualSchedule.map(d => {
+            const formatLongDate = (val, day) => {
+                if (val === "Monthly" || val === "Varies") return val;
+                const months = { "Dec": "December", "Jan": "January", "Feb": "February", "Mar": "March", "Apr": "April", "May": "May", "Jun": "June", "Jul": "July" };
+                return `${day} ${months[val] || val}, 2026`;
+            };
+
             return `
             <div class="flex items-center justify-between p-5 bg-slate-50 rounded-xl border border-slate-100">
                 <div class="text-left">
@@ -284,27 +287,27 @@
                 </div>
                 <div class="text-right space-y-2">
                     <div>
-                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest">Registrations Start</p>
-                        <p class="text-xs font-bold text-slate-500">${formatD(d.regStarts)}</p>
+                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest leading-none">Registrations Start</p>
+                        <p class="text-xs font-bold text-slate-500">${formatLongDate(d.regStarts, "01")}</p>
                     </div>
                     <div>
-                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest">Test Date</p>
-                        <p class="text-sm font-bold text-slate-500">${formatD(d.testDate)}</p>
+                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest leading-none">Test Date</p>
+                        <p class="text-sm font-bold text-slate-500">${formatLongDate(d.testDate, "15")}</p>
                     </div>
                     <div>
-                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest">Deadline</p>
-                        <p class="text-xs font-bold text-slate-500">${formatD(d.deadline)}</p>
+                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest leading-none">Deadline</p>
+                        <p class="text-xs font-bold text-slate-500">${formatLongDate(d.deadline, "10")}</p>
                     </div>
                 </div>
             </div>`;
         }).join('');
 
-        // 7. Render Centers
+        // Render Centers
         document.getElementById('centers-container').innerHTML = current.centers.map(c => `
             <span class="px-3 py-1.5 bg-slate-100 text-slate-600 text-[11px] font-bold rounded-lg border border-slate-200">${c}</span>
         `).join('');
 
-        // 8. Strategy
+        // Strategy text
         document.getElementById('prep-guide').innerText = current.strategy;
     };
 </script>
