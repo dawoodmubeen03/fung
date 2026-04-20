@@ -440,6 +440,23 @@
   }
 }
 
+/* ===== PLAN YOUR STUDY - Rainbow Title ===== */
+.plan-your-study-title {
+  font-size: 1.75rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #FF0000, #FF8800, #FFFF00, #00CC44, #3388FF, #8844FF, #FF0088);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+@media (max-width: 640px) {
+  .plan-your-study-title {
+    font-size: 1.35rem;
+  }
+}
+
 .google-border-box {
   border-top: 6px solid #4285F4;
   border-right: 6px solid #EA4335;
@@ -1255,12 +1272,12 @@
 <div class="space-y-10 text-slate-800">
 
 <!-- ================= DASHBOARD REAL-TIME STUDY STATS ================= -->
-<div class="mb-6 flex justify-center">
-  <div class="w-full max-w-[560px] bg-white rounded-2xl p-6 shadow-sm">
+<div class="mb-6">
+  <div class="w-full bg-white rounded-2xl p-6 shadow-sm">
 
-    <!-- Header row -->
+    <!-- Header row: Rainbow "Plan Your Study" title + arrow button -->
     <div class="flex items-center justify-between mb-5">
-      <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Plan Your Study</p>
+      <h2 class="plan-your-study-title">Plan Your Study</h2>
       <button onclick="window.location.href='/study-planner.html'"
               class="flex items-center justify-center w-9 h-9 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors"
               title="Go to Study Planner">
@@ -1270,14 +1287,24 @@
       </button>
     </div>
 
-    <!-- Progress Ring + Stats -->
-    <div class="flex items-center gap-6">
-      <!-- Ring -->
+    <!-- Rainbow Progress Ring (centered) -->
+    <div class="flex justify-center mb-5">
       <div class="relative w-28 h-28 flex-shrink-0">
         <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="rbg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stop-color="#FF0000"/>
+              <stop offset="16%"  stop-color="#FF8800"/>
+              <stop offset="33%"  stop-color="#FFFF00"/>
+              <stop offset="50%"  stop-color="#00CC44"/>
+              <stop offset="66%"  stop-color="#3388FF"/>
+              <stop offset="83%"  stop-color="#8844FF"/>
+              <stop offset="100%" stop-color="#FF0088"/>
+            </linearGradient>
+          </defs>
           <circle cx="50" cy="50" r="42" stroke="#e5e7eb" stroke-width="8" fill="none"/>
           <circle id="dash-progress-ring" cx="50" cy="50" r="42"
-                  stroke="#3b82f6" stroke-width="8" fill="none"
+                  stroke="url(#rbg)" stroke-width="8" fill="none"
                   stroke-linecap="round"
                   stroke-dasharray="263.9"
                   stroke-dashoffset="263.9"/>
@@ -1286,27 +1313,33 @@
           <span id="dash-progress-text" class="text-xl font-black text-slate-800">0%</span>
         </div>
       </div>
+    </div>
 
-      <!-- Stats -->
-      <div class="flex-1 space-y-3">
-        <div>
-          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Subjects</p>
-          <p class="text-lg font-black text-slate-800">
-            <span id="dash-subjects-done">0</span>
-            <span class="text-sm text-slate-400 font-medium"> / <span id="dash-subjects-total">0</span></span>
-          </p>
-        </div>
-        <div>
-          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Chapters Done</p>
-          <p class="text-lg font-black text-slate-800">
-            <span id="dash-chapters-done">0</span>
-            <span class="text-sm text-slate-400 font-medium"> / <span id="dash-chapters-total">0</span></span>
-          </p>
-        </div>
-        <div id="dash-no-data" class="hidden">
-          <p class="text-xs text-slate-400 italic">No study plan yet — start one!</p>
-        </div>
+    <!-- Stats: Horizontal on desktop (sm+), Vertical on mobile -->
+    <div class="flex flex-col sm:flex-row items-center justify-around gap-4">
+      <!-- Subjects -->
+      <div class="text-center">
+        <p class="text-3xl font-black text-slate-800"><span id="dash-subjects-count">0</span></p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Subjects</p>
       </div>
+      <!-- Divider (desktop only) -->
+      <div class="hidden sm:block w-px h-10 bg-slate-200"></div>
+      <!-- Tasks -->
+      <div class="text-center">
+        <p class="text-3xl font-black text-slate-800"><span id="dash-tasks-count">0</span></p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Tasks</p>
+      </div>
+      <!-- Divider (desktop only) -->
+      <div class="hidden sm:block w-px h-10 bg-slate-200"></div>
+      <!-- Chapters Done -->
+      <div class="text-center">
+        <p class="text-3xl font-black text-slate-800"><span id="dash-chapters-done">0</span></p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Chapters Done</p>
+      </div>
+    </div>
+
+    <div id="dash-no-data" class="hidden mt-4">
+      <p class="text-xs text-slate-400 italic text-center">No study plan yet — start one!</p>
     </div>
 
   </div>
@@ -2562,10 +2595,9 @@ function updateDashboardStats(subjects, progress) {
 
     const ring = document.getElementById('dash-progress-ring');
     const txt = document.getElementById('dash-progress-text');
-    const subDoneEl = document.getElementById('dash-subjects-done');
-    const subTotalEl = document.getElementById('dash-subjects-total');
+    const subjCountEl = document.getElementById('dash-subjects-count');
+    const tasksCountEl = document.getElementById('dash-tasks-count');
     const chapDoneEl = document.getElementById('dash-chapters-done');
-    const chapTotalEl = document.getElementById('dash-chapters-total');
     const noData = document.getElementById('dash-no-data');
 
     if (ring) {
@@ -2573,10 +2605,9 @@ function updateDashboardStats(subjects, progress) {
         ring.style.strokeDashoffset = offset;
     }
     if (txt) txt.innerText = pct + '%';
-    if (subDoneEl) subDoneEl.innerText = doneSubjects;
-    if (subTotalEl) subTotalEl.innerText = totalSubjects;
+    if (subjCountEl) subjCountEl.innerText = totalSubjects;
+    if (tasksCountEl) tasksCountEl.innerText = totalChapters;
     if (chapDoneEl) chapDoneEl.innerText = doneChapters;
-    if (chapTotalEl) chapTotalEl.innerText = totalChapters;
     if (noData) noData.classList.toggle('hidden', totalSubjects > 0);
 }
 
