@@ -1522,6 +1522,7 @@ let mcqOptionsVisible = false;
                 'contact': 'contact-page',
                 'category-detail': 'category-detail-page'
             },
+            currentView: 'landing',
           navigate(viewName) {
               window.location.hash = viewName;
   Object.values(this.views).forEach(id => {
@@ -1532,6 +1533,7 @@ let mcqOptionsVisible = false;
   const target = document.getElementById(this.views[viewName]);
   if (target) {
     target.classList.replace('modal-hidden', 'modal-visible');
+    this.currentView = viewName;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // 🔥 Analytics page view
@@ -2556,6 +2558,7 @@ function updateDashboardStats(subjects, progress) {
 
     const pct = totalChapters > 0 ? Math.round((doneChapters / totalChapters) * 100) : 0;
     const circumference = 2 * Math.PI * 42; // r=42
+    const offset = circumference - (pct / 100) * circumference;
 
     const ring = document.getElementById('dash-progress-ring');
     const txt = document.getElementById('dash-progress-text');
@@ -2565,7 +2568,10 @@ function updateDashboardStats(subjects, progress) {
     const chapTotalEl = document.getElementById('dash-chapters-total');
     const noData = document.getElementById('dash-no-data');
 
-    if (ring) { ring.style.strokeDasharray = circumference; ring.style.strokeDashoffset = circumference - (pct / 100) * circumference; }
+    if (ring) {
+        ring.style.strokeDasharray = circumference;
+        ring.style.strokeDashoffset = offset;
+    }
     if (txt) txt.innerText = pct + '%';
     if (subDoneEl) subDoneEl.innerText = doneSubjects;
     if (subTotalEl) subTotalEl.innerText = totalSubjects;
@@ -2596,12 +2602,8 @@ function startDashboardStatsListener(user) {
 window.calcOrigin = 'landing';
 
 function navigateToCalc(origin) {
-    // Determine origin from param or current visible view
-    if (origin) {
-        window.calcOrigin = origin;
-    } else {
-        window.calcOrigin = document.getElementById('dashboard-page').classList.contains('modal-visible') ? 'dashboard' : 'landing';
-    }
+    // Determine origin from param or router's current view state
+    window.calcOrigin = origin || (router.currentView === 'dashboard' ? 'dashboard' : 'landing');
     router.navigate('calculator');
 }
 
