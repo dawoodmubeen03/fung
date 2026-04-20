@@ -349,10 +349,13 @@
 }
     /* --- HORIZONTAL SCROLLING UNIVERSITY NAMES --- */
 .uni-scroll-section {
-    width: 100%;
+    /* Full-bleed: 100vw width, centered by parent flex items-center */
+    width: 100vw;
+    max-width: 100vw;
     overflow: hidden;
     padding: 1.5rem 0;
-    margin: 2rem 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .uni-scroll-row {
@@ -368,12 +371,12 @@
 }
 
 .uni-scroll-track .uni-name {
-    font-size: 2rem;
+    font-size: 1.35rem;
     font-weight: 900;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 0.25rem 1.5rem;
+    padding: 0.2rem 1rem;
     cursor: default;
     transition: color 0.2s ease;
     display: inline-block;
@@ -384,11 +387,11 @@
 }
 
 .uni-scroll-track .uni-sep {
-    font-size: 2rem;
+    font-size: 1.35rem;
     font-weight: 900;
     color: rgba(255,255,255,0.4);
     display: inline-block;
-    padding: 0.25rem 0;
+    padding: 0.2rem 0;
 }
 
 .uni-scroll-left  { animation: uni-scroll-left  30s linear infinite; }
@@ -400,16 +403,26 @@
 @media (max-width: 768px) {
     .uni-scroll-section {
         padding: 1rem 0;
-        margin: 1.5rem 0;
     }
     .uni-scroll-track .uni-name {
-        font-size: 1.15rem;
-        padding: 0.2rem 0.9rem;
-        letter-spacing: 0.05em;
+        font-size: 0.95rem;
+        padding: 0.15rem 0.6rem;
+        letter-spacing: 0.04em;
     }
     .uni-scroll-track .uni-sep {
-        font-size: 1.15rem;
+        font-size: 0.95rem;
     }
+}
+
+/* --- FULL-BLEED SCROLLER WRAPPER (edge-to-edge cards) --- */
+.scroller-full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+}
+.scroller-full-bleed .horizontal-scroller {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
     
 .planner-text-small {
@@ -806,7 +819,7 @@
                 </svg> My Profile
             </button>
 
-            <button onclick="router.navigate('calculator'); closeMenu()" class="w-full flex items-center gap-4 text-slate-600 hover:text-blue-600 py-3 px-4 rounded-xl hover:bg-blue-50 font-medium transition-colors group">
+            <button onclick="navigateToCalc(); closeMenu()" class="w-full flex items-center gap-4 text-slate-600 hover:text-blue-600 py-3 px-4 rounded-xl hover:bg-blue-50 font-medium transition-colors group">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg> Calculator
             </button>
 
@@ -858,35 +871,41 @@
                 <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tight">Your Partner in<br><span class="gradient-text">Academic Success</span></h1>
                 <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">Connect with experienced seniors who help you with admissions, study planning, and Preparation.</p>
                 <div class="flex flex-wrap gap-4 justify-center">
-                    <button onclick="router.navigate('calculator')" class="btn-primary px-10 py-4 rounded-full font-bold">Calculate Aggregate</button>
+                    <button onclick="navigateToCalc('landing')" class="btn-primary px-10 py-4 rounded-full font-bold">Calculate Aggregate</button>
                     <!-- Join Community now moves to external WhatsApp link -->
                     <button onclick="window.open('https://chat.whatsapp.com/IOPGMzbeoeKL1gdubz439B?mode=ems_copy_t', '_blank')" class="glass-panel px-10 py-4 rounded-full font-bold border border-slate-200 !text-slate-800 hover:border-blue-500 transition-all">Join Our Community</button>
                 </div>
             </div>
 
 
-     <div class="max-w-7xl w-full mb-6 px-4">
-        <div class="flex justify-between items-end mb-3">
+     <div class="max-w-7xl w-full mb-6">
+        <div class="flex justify-between items-end mb-3 px-4">
             <h2 class="section-heading">Universities</h2>
             <button onclick="navigateToAll('universities')" class="btn-see-all-landing">See All →</button>
         </div>
-        <div class="horizontal-scroller" id="landing-uni-list"></div>
+        <div class="scroller-full-bleed">
+            <div class="horizontal-scroller" id="landing-uni-list"></div>
+        </div>
     </div>
 
-          <div class="max-w-7xl w-full mb-6 px-4 mt-8">
-        <div class="flex justify-between items-end mb-3">
+          <div class="max-w-7xl w-full mb-6 mt-8">
+        <div class="flex justify-between items-end mb-3 px-4">
             <h2 class="section-heading">Entry Tests</h2>
           <button onclick="navigateToAll('tests')" class="btn-see-all-landing">See All →</button>
         </div>
-        <div class="horizontal-scroller" id="landing-test-list"></div>
+        <div class="scroller-full-bleed">
+            <div class="horizontal-scroller" id="landing-test-list"></div>
+        </div>
     </div>
             
-         <div class="max-w-7xl w-full mb-6 px-4 mt-3">
-        <div class="flex justify-between items-end mb-6">
+         <div class="max-w-7xl w-full mb-6 mt-3">
+        <div class="flex justify-between items-end mb-6 px-4">
             <h2 class="section-heading">Explore Fields</h2>
             <button onclick="navigateDetail('fields')" class="btn-see-all-landing">See All →</button>
         </div>
-        <div class="horizontal-scroller" id="landing-cat-list"></div>
+        <div class="scroller-full-bleed">
+            <div class="horizontal-scroller" id="landing-cat-list"></div>
+        </div>
     </div>
 
             
@@ -1066,6 +1085,16 @@
         <!-- Calculator View -->
        <section id="calculator-page" class="modal-hidden flex-col items-center">
     <div class="max-w-2xl w-full glass-panel calculator-container p-8 rounded-[2.5rem] animate-fade-in-up shadow-2xl">
+        <!-- Back button -->
+        <div class="flex items-center justify-between mb-6">
+            <button id="calc-back-btn" onclick="calcGoBack()"
+                    class="flex items-center gap-2 text-slate-500 hover:text-blue-600 text-xs font-bold uppercase tracking-widest transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back
+            </button>
+        </div>
         <h1 class="text-3xl font-black mb-6 text-center text-slate-900 tracking-tight">Aggregate Calculator</h1>
         <div class="space-y-6">
             <div>
@@ -1180,7 +1209,7 @@
     <!-- Buttons -->
     <div class="flex flex-col md:flex-row gap-2 flex-shrink-0">
 
-      <button onclick="router.navigate('calculator')"
+      <button onclick="navigateToCalc('dashboard')"
         class="px-3 md:px-5 py-1.5 md:py-2 
                bg-blue-600 text-white 
                rounded-full font-bold 
@@ -1225,100 +1254,62 @@
 <!-- ================= DASHBOARD MAIN CONTENT ================= -->
 <div class="space-y-10 text-slate-800">
 
-<!-- ================= DASHBOARD PLANNER + CALENDAR ================= -->
+<!-- ================= DASHBOARD REAL-TIME STUDY STATS ================= -->
 <div class="mb-6 flex justify-center">
+  <div class="w-full max-w-[560px] bg-white rounded-2xl p-6 shadow-sm">
 
-  <div class="w-full max-w-[900px] grid grid-cols-1 md:grid-cols-2 gap-6">
-
-    <!-- LEFT: PROGRESS RING -->
-    <div class="bg-white rounded-2xl p-6 shadow-sm text-center h-full">
-
-      <div class="relative w-28 h-28 mx-auto mb-4">
-        <svg class="w-full h-full transform -rotate-90">
-          <circle cx="50%" cy="50%" r="45"
-                  stroke="#e5e7eb" stroke-width="8" fill="none"/>
-          <circle id="progress-ring"
-                  cx="50%" cy="50%" r="45"
-                  stroke="#3b82f6" stroke-width="8"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-dasharray="283"
-                  stroke-dashoffset="85"/>
+    <!-- Header row -->
+    <div class="flex items-center justify-between mb-5">
+      <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Plan Your Study</p>
+      <button onclick="window.location.href='/study-planner.html'"
+              class="flex items-center justify-center w-9 h-9 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors"
+              title="Go to Study Planner">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
+      </button>
+    </div>
 
+    <!-- Progress Ring + Stats -->
+    <div class="flex items-center gap-6">
+      <!-- Ring -->
+      <div class="relative w-28 h-28 flex-shrink-0">
+        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+          <circle id="dash-progress-ring" cx="50" cy="50" r="42"
+                  stroke="#3b82f6" stroke-width="8" fill="none"
+                  stroke-linecap="round"
+                  stroke-dasharray="263.9"
+                  stroke-dashoffset="263.9"/>
+        </svg>
         <div class="absolute inset-0 flex items-center justify-center">
-          <span id="progress-text" class="text-xl font-bold text-slate-800">
-            72%
-          </span>
+          <span id="dash-progress-text" class="text-xl font-black text-slate-800">0%</span>
         </div>
       </div>
 
-      <h3 class="text-lg font-bold text-slate-800 mb-2">
-        Study Progress
-      </h3>
-
-      <p class="text-sm text-slate-500 mb-4">
-        3 Subjects • 12 Chapters Done
-      </p>
-
-      <button onclick="handlePlannerClick()"
-              class="mx-auto text-blue-600 font-semibold flex items-center gap-1">
-        Continue →
-      </button>
-
-    </div>
-
-    <!-- RIGHT: CALENDAR (PC ONLY) -->
-<div class="hidden md:block bg-white rounded-2xl p-6 shadow-sm h-full">
-
-      <h3 class="text-lg font-bold text-slate-800 mb-4">
-        April 2026
-      </h3>
-
-      <!-- Days -->
-      <div class="grid grid-cols-7 text-center text-xs text-slate-400 mb-2">
-        <span>SU</span><span>MO</span><span>TU</span><span>WE</span><span>TH</span><span>FR</span><span>SA</span>
+      <!-- Stats -->
+      <div class="flex-1 space-y-3">
+        <div>
+          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Subjects</p>
+          <p class="text-lg font-black text-slate-800">
+            <span id="dash-subjects-done">0</span>
+            <span class="text-sm text-slate-400 font-medium"> / <span id="dash-subjects-total">0</span></span>
+          </p>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Chapters Done</p>
+          <p class="text-lg font-black text-slate-800">
+            <span id="dash-chapters-done">0</span>
+            <span class="text-sm text-slate-400 font-medium"> / <span id="dash-chapters-total">0</span></span>
+          </p>
+        </div>
+        <div id="dash-no-data" class="hidden">
+          <p class="text-xs text-slate-400 italic">No study plan yet — start one!</p>
+        </div>
       </div>
-
-      <!-- Dates -->
-      <div class="grid grid-cols-7 gap-2 text-center text-sm">
-
-        <!-- Example dates -->
-        <span></span><span></span><span></span>
-        <span>1</span><span>2</span><span>3</span><span>4</span>
-
-        <span>5</span><span>6</span><span>7</span><span>8</span>
-        <span>9</span><span>10</span><span>11</span>
-
-        <span>12</span><span>13</span><span>14</span>
-        <span class="border rounded-full p-1">15</span>
-        <span class="border rounded-full p-1">16</span>
-
-        <span class="bg-blue-600 text-white rounded-full p-1">17</span>
-        <span>18</span>
-
-        <span>19</span><span>20</span><span>21</span><span>22</span>
-        <span>23</span><span>24</span><span>25</span>
-
-        <span>26</span><span>27</span><span>28</span>
-        <span>29</span><span>30</span>
-
-      </div>
-
-      <!-- Legend -->
-      <div class="flex gap-4 mt-4 text-xs text-slate-500">
-        <span class="flex items-center gap-1">
-          <span class="w-3 h-3 bg-blue-600 rounded-full"></span> Today
-        </span>
-        <span class="flex items-center gap-1">
-          <span class="w-3 h-3 border rounded-full"></span> Scheduled
-        </span>
-      </div>
-
     </div>
 
   </div>
-
 </div>
   <!-- ================= UNIVERSITIES ================= -->
 <div class="w-full mb-6">
@@ -1326,7 +1317,9 @@
         <h3 class="section-heading">Explore Universities</h3>
        <button onclick="navigateToAll('universities')" class="btn-see-all-landing">See All →</button>
     </div>
-    <div class="horizontal-scroller" id="dashboard-uni-list"></div>
+    <div class="scroller-full-bleed">
+        <div class="horizontal-scroller" id="dashboard-uni-list"></div>
+    </div>
 </div>
 
  <div class="w-full mb-6">
@@ -1334,7 +1327,9 @@
         <h3 class="section-heading">Preparation Hub</h3>
      <button onclick="navigateToAll('tests')" class="btn-see-all-landing">See All →</button>
     </div>
-    <div class="horizontal-scroller" id="dashboard-test-list"></div>
+    <div class="scroller-full-bleed">
+        <div class="horizontal-scroller" id="dashboard-test-list"></div>
+    </div>
 </div>
     
      <!-- ================= fields================= -->
@@ -1343,7 +1338,9 @@
         <h3 class="section-heading">Engineering Disciplines</h3>
      <button onclick="navigateToAll('fields')" class="btn-see-all-landing">See All →</button>
         </div>
-    <div class="horizontal-scroller" id="dashboard-cat-list"></div>
+    <div class="scroller-full-bleed">
+        <div class="horizontal-scroller" id="dashboard-cat-list"></div>
+    </div>
 </div>
 
   <!-- ================= RESOURCES ================= -->
@@ -1352,7 +1349,9 @@
         <h3 class="section-heading">Study Resources</h3>
         <button onclick="navigateToAll('resources')" class="btn-see-all-landing">See All →</button>
     </div>
-    <div class="horizontal-scroller" id="dashboard-resource-list"></div>
+    <div class="scroller-full-bleed">
+        <div class="horizontal-scroller" id="dashboard-resource-list"></div>
+    </div>
 </div>
 
     
@@ -1523,6 +1522,7 @@ let mcqOptionsVisible = false;
                 'contact': 'contact-page',
                 'category-detail': 'category-detail-page'
             },
+            currentView: 'landing',
           navigate(viewName) {
               window.location.hash = viewName;
   Object.values(this.views).forEach(id => {
@@ -1533,6 +1533,7 @@ let mcqOptionsVisible = false;
   const target = document.getElementById(this.views[viewName]);
   if (target) {
     target.classList.replace('modal-hidden', 'modal-visible');
+    this.currentView = viewName;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // 🔥 Analytics page view
@@ -1812,6 +1813,8 @@ if (testDropdown) {
     const currentHash = window.location.hash.replace('#', '');
 
     if (!user) {
+        // Stop any active stats listener on logout
+        if (dashStatsUnsubscribe) { dashStatsUnsubscribe(); dashStatsUnsubscribe = null; }
         if (currentHash === "" || currentHash === "landing") {
             router.navigate('landing');
             hideLoader();
@@ -1822,6 +1825,9 @@ if (testDropdown) {
         window.location.href = "/login.html";
         return;
     }
+
+    // Start real-time stats listener for logged-in user
+    startDashboardStatsListener(user);
 
     // Navigate to the correct authenticated view
     if (currentHash && router.views[currentHash]) {
@@ -2366,13 +2372,6 @@ function handlePlannerClick() {
 </script>
   
     <script>
-lottie.loadAnimation({
-  container: document.getElementById('lottie-animation-dashboard'),
-  renderer: 'svg',
-  loop: true,
-  autoplay: true,
-  path: '/assets/lottie/stats-animation.json'
-});
 
 async function loadData() {
     try {
@@ -2419,7 +2418,7 @@ function renderHorizontalLists() {
                     <div class="p-4 flex flex-col flex-1">
                         <div>
                             <h3 class="font-bold text-slate-800">${uni.name}</h3>
-                            <p class="text-xs text-slate-500 mt-1 line-clamp-2 text-justify">
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-3 text-justify">
                                 ${uni.intro || ''}
                             </p>
                         </div>
@@ -2528,32 +2527,94 @@ if (resourceContainer && resourceData?.length) {
     `).join('');
 }
 }  
-function setProgress(percent) {
-  const circle = document.getElementById("progress-ring");
-  const text = document.getElementById("progress-text");
 
-  const radius = 45;
-  const circumference = 2 * Math.PI * radius;
+// ============================================================
+// REAL-TIME DASHBOARD STUDY STATS (Firestore Listener)
+// ============================================================
+let dashStatsUnsubscribe = null;
 
-  const offset = circumference - (percent / 100) * circumference;
+function updateDashboardStats(subjects, progress) {
+    const totalSubjects = subjects.length;
+    let totalChapters = 0;
+    let doneChapters = 0;
+    let doneSubjects = 0;
 
-  circle.style.strokeDasharray = circumference;
-  circle.style.strokeDashoffset = offset;
+    subjects.forEach(s => {
+        let subTotal = 0, subDone = 0;
+        if (s && s.parts) {
+            s.parts.forEach((p, pi) => {
+                p.chapters.forEach((_, ci) => {
+                    totalChapters++;
+                    subTotal++;
+                    if (progress[`${s.id}_${pi}_${ci}`]) {
+                        doneChapters++;
+                        subDone++;
+                    }
+                });
+            });
+        }
+        if (subTotal > 0 && subDone === subTotal) doneSubjects++;
+    });
 
-  text.innerText = percent + "%";
+    const pct = totalChapters > 0 ? Math.round((doneChapters / totalChapters) * 100) : 0;
+    const circumference = 2 * Math.PI * 42; // r=42
+    const offset = circumference - (pct / 100) * circumference;
+
+    const ring = document.getElementById('dash-progress-ring');
+    const txt = document.getElementById('dash-progress-text');
+    const subDoneEl = document.getElementById('dash-subjects-done');
+    const subTotalEl = document.getElementById('dash-subjects-total');
+    const chapDoneEl = document.getElementById('dash-chapters-done');
+    const chapTotalEl = document.getElementById('dash-chapters-total');
+    const noData = document.getElementById('dash-no-data');
+
+    if (ring) {
+        ring.style.strokeDasharray = circumference;
+        ring.style.strokeDashoffset = offset;
+    }
+    if (txt) txt.innerText = pct + '%';
+    if (subDoneEl) subDoneEl.innerText = doneSubjects;
+    if (subTotalEl) subTotalEl.innerText = totalSubjects;
+    if (chapDoneEl) chapDoneEl.innerText = doneChapters;
+    if (chapTotalEl) chapTotalEl.innerText = totalChapters;
+    if (noData) noData.classList.toggle('hidden', totalSubjects > 0);
 }
 
-// Example
-setProgress(72);
+function startDashboardStatsListener(user) {
+    if (dashStatsUnsubscribe) { dashStatsUnsubscribe(); dashStatsUnsubscribe = null; }
+    if (!user || !window.firebase) return;
+    try {
+        const db = firebase.firestore();
+        dashStatsUnsubscribe = db.collection('users').doc(user.uid).onSnapshot(doc => {
+            if (doc.exists) {
+                const data = doc.data();
+                updateDashboardStats(data.subjects || [], data.progress || {});
+            } else {
+                updateDashboardStats([], {});
+            }
+        }, err => console.warn('Dashboard stats listener error:', err));
+    } catch (e) { console.warn('Firestore not ready for stats listener:', e); }
+}
 
-    
-lottie.loadAnimation({
-  container: document.getElementById('lottie-animation-dashboard'),
-  renderer: 'svg',
-  loop: true,
-  autoplay: true,
-  path: '/assets/lottie/stats-animation.json'
-});
+// ============================================================
+// CALCULATOR ORIGIN TRACKING
+// ============================================================
+window.calcOrigin = 'landing';
+
+function navigateToCalc(origin) {
+    // Determine origin from param or router's current view state
+    window.calcOrigin = origin || (router.currentView === 'dashboard' ? 'dashboard' : 'landing');
+    router.navigate('calculator');
+}
+
+function calcGoBack() {
+    if (window.calcOrigin === 'dashboard') {
+        router.navigate('dashboard');
+    } else {
+        router.navigate('landing');
+    }
+}
+
 function navigateDetail(type) {
     navigateToAll(type);
 }
