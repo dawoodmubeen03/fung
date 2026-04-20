@@ -925,7 +925,7 @@
   <div class="w-16 h-[6px] bg-blue-500 rounded-full"></div>
 
   <!-- Description -->
- <p class="text-[10px] md:text-base text-gray-600 leading-tight md:leading-relaxed max-w-md" style="text-align:justify">
+ <p class="text-[10px] md:text-base text-gray-600 leading-tight md:leading-relaxed max-w-md text-justify">
     Don’t just study—study smart. Our intelligent planner helps you organize subjects, 
     track chapter progress, and manage your time effectively for competitive entry tests.
   </p>
@@ -1037,7 +1037,7 @@
                 <h2 class="text-xl md:text-3xl font-black text-slate-900 mb-3 tracking-tight text-center md:text-left">
                     Our <span class="gradient-text">Mission</span>
                 </h2>
-                <p class="text-[11px] md:text-sm text-slate-600 leading-relaxed mb-5" style="text-align:justify">
+                <p class="text-[11px] md:text-sm text-slate-600 leading-relaxed mb-5 text-justify">
                     FUNGEP is more than just a platform; it's a student-led initiative designed to bridge the gap between academic potential and university success. We empower juniors by connecting them with experienced seniors who have already navigated the complexities of admissions and study planning.
                 </p>
                 
@@ -1969,9 +1969,9 @@ function navigateToAll(type) {
             return `
                 <div class="data-card bg-white w-full flex flex-col">
                     <h4 class="font-bold text-lg text-slate-500">${item.title}</h4>
-                    <p class="text-xs text-slate-500 mt-2 line-clamp-4" style="text-align:justify">${item.desc}</p>
+                    <p class="text-xs text-slate-500 mt-2 line-clamp-4 text-justify">${item.desc}</p>
                     <div class="mt-auto flex justify-end">
-                        <button onclick="window.open('${item.link}', '_blank')"
+                        <button onclick="window.open('${item.link}', '_blank', 'noopener,noreferrer')"
                                 class="drive-btn" title="Open in Google Drive">
                             ${DriveIconSVG}
                         </button>
@@ -2419,7 +2419,7 @@ function renderHorizontalLists() {
                     <div class="p-4 flex flex-col flex-1">
                         <div>
                             <h3 class="font-bold text-slate-800">${uni.name}</h3>
-                            <p class="text-xs text-slate-500 mt-1 line-clamp-2" style="text-align:justify">
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-2 text-justify">
                                 ${uni.intro || ''}
                             </p>
                         </div>
@@ -2517,9 +2517,9 @@ if (resourceContainer && resourceData?.length) {
     resourceContainer.innerHTML = resourceData.map(r => `
         <div class="data-card bg-white min-w-[190px] max-w-[190px] flex flex-col">
             <h4 class="font-bold text-slate-500">${r.title}</h4>
-            <p class="text-xs text-slate-500 mt-2 line-clamp-4" style="text-align:justify">${r.desc}</p>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-4 text-justify">${r.desc}</p>
             <div class="mt-auto flex justify-end pt-2">
-                <button onclick="window.open('${r.link}', '_blank')"
+                <button onclick="window.open('${r.link}', '_blank', 'noopener,noreferrer')"
                         class="drive-btn" title="Open in Google Drive">
                     ${DriveIconSVG}
                 </button>
