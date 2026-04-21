@@ -2648,6 +2648,10 @@ function seeAllGoBack() {
 // ============================================================
 // SEARCH OVERLAY
 // ============================================================
+function _escHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
 function openSearch() {
     const overlay = document.getElementById('search-overlay');
     if (!overlay) return;
@@ -2655,6 +2659,8 @@ function openSearch() {
     const input = document.getElementById('search-overlay-input');
     if (input) { input.value = ''; input.focus(); }
     showSearchSuggestions('');
+    // Remove first to avoid accumulating duplicate listeners
+    document.removeEventListener('keydown', _searchKeydown);
     document.addEventListener('keydown', _searchKeydown);
 }
 
@@ -2712,7 +2718,11 @@ function showSearchSuggestions(query) {
     });
 
     if (results.length === 0) {
-        el.innerHTML = `<p class="text-center text-slate-400 py-6 text-sm">No results found for "<strong>${query}</strong>"</p>`;
+        const noEl = document.createElement('p');
+        noEl.className = 'text-center text-slate-400 py-6 text-sm';
+        noEl.textContent = `No results found for "${query}"`;
+        el.innerHTML = '';
+        el.appendChild(noEl);
         return;
     }
 
@@ -2724,8 +2734,8 @@ function showSearchSuggestions(query) {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
             </svg>
             <div class="flex-1 min-w-0">
-                <p class="text-sm font-semibold text-slate-800 truncate">${r.label}</p>
-                <p class="text-[10px] text-slate-400">${r.type}</p>
+                <p class="text-sm font-semibold text-slate-800 truncate">${_escHtml(r.label)}</p>
+                <p class="text-[10px] text-slate-400">${_escHtml(r.type)}</p>
             </div>
             <svg class="w-4 h-4 text-slate-300 group-hover:text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
@@ -2763,7 +2773,7 @@ function runOverlaySearch(query) {
     const countEl = document.getElementById('detail-count');
 
     if (!gridEl) return;
-    titleEl.innerText = `Search: "${query}"`;
+    titleEl.textContent = `Search: "${query}"`;
 
     const matched = [
         ...(universityData || []).filter(u => match(u.name) || match(u.intro)).map(d => ({ type: 'universities', data: d })),
@@ -2775,7 +2785,11 @@ function runOverlaySearch(query) {
     countEl.innerText = `${matched.length} Results Found`;
 
     if (matched.length === 0) {
-        gridEl.innerHTML = `<p class="col-span-full text-center py-10 text-slate-400">No results found for "<strong>${query}</strong>"</p>`;
+        const noEl = document.createElement('p');
+        noEl.className = 'col-span-full text-center py-10 text-slate-400';
+        noEl.textContent = `No results found for "${query}"`;
+        gridEl.innerHTML = '';
+        gridEl.appendChild(noEl);
         router.navigate('category-detail');
         return;
     }
@@ -2783,11 +2797,11 @@ function runOverlaySearch(query) {
     gridEl.innerHTML = matched.map(entry => {
         const item = entry.data;
         if (entry.type === 'universities') {
-            return `<div class="uni-card bg-white !w-full !h-[360px] flex flex-col cursor-pointer" onclick="openUni('${item.id}')">
-                <img src="${item.image}" class="h-[150px] object-cover" onerror="this.src='/funglogo.jpeg'">
+            return `<div class="uni-card bg-white !w-full !h-[360px] flex flex-col cursor-pointer" onclick="openUni('${_escHtml(item.id)}')">
+                <img src="${_escHtml(item.image)}" class="h-[150px] object-cover" onerror="this.src='/funglogo.jpeg'">
                 <div class="p-4 flex flex-col flex-1">
-                    <h3 class="font-bold text-slate-700">${item.name}</h3>
-                    <p class="text-xs text-slate-500 mt-2 line-clamp-3">${item.intro || ''}</p>
+                    <h3 class="font-bold text-slate-700">${_escHtml(item.name)}</h3>
+                    <p class="text-xs text-slate-500 mt-2 line-clamp-3">${_escHtml(item.intro)}</p>
                     <div class="mt-auto flex justify-end"><div class="arrow-btn">${arrow}</div></div>
                 </div>
             </div>`;
@@ -2798,25 +2812,25 @@ function runOverlaySearch(query) {
             const logoUrl = item.logoUrl || '';
             return `<div class="data-card bg-white w-full flex flex-col cursor-pointer"
                          onclick="window.location.href='test-detail.html?name=${encodeURIComponent(name)}'">
-                ${logoUrl ? `<img src="${logoUrl}" alt="${short} logo" class="test-logo-img" onerror="this.style.display='none'">` : `<div class="test-text-container"><span class="font-black text-2xl text-blue-600 uppercase">${short}</span></div>`}
-                <h4 class="font-bold text-lg text-slate-700">${name}</h4>
+                ${logoUrl ? `<img src="${_escHtml(logoUrl)}" alt="${_escHtml(short)} logo" class="test-logo-img" onerror="this.style.display='none'">` : `<div class="test-text-container"><span class="font-black text-2xl text-blue-600 uppercase">${_escHtml(short)}</span></div>`}
+                <h4 class="font-bold text-lg text-slate-700">${_escHtml(name)}</h4>
                 <div class="mt-auto flex justify-end"><div class="arrow-btn">${arrow}</div></div>
             </div>`;
         }
         if (entry.type === 'resources') {
             return `<div class="data-card bg-white w-full flex flex-col">
-                <h4 class="font-bold text-lg text-slate-500">${item.title}</h4>
-                <p class="text-xs text-slate-500 mt-2 line-clamp-4 text-justify">${item.desc}</p>
+                <h4 class="font-bold text-lg text-slate-500">${_escHtml(item.title)}</h4>
+                <p class="text-xs text-slate-500 mt-2 line-clamp-4 text-justify">${_escHtml(item.desc)}</p>
                 <div class="mt-auto flex justify-end">
-                    <button onclick="window.open('${item.link}','_blank','noopener,noreferrer')" class="drive-btn" title="Open in Google Drive">${DriveIconSVG}</button>
+                    <button onclick="window.open('${_escHtml(item.link)}','_blank','noopener,noreferrer')" class="drive-btn" title="Open in Google Drive">${DriveIconSVG}</button>
                 </div>
             </div>`;
         }
         // fields
         return `<div class="data-card bg-white w-full flex flex-col cursor-pointer"
                      onclick="window.location.href='field-detail.html?name=${encodeURIComponent(item.name)}'">
-            <img src="${item.icon}" class="w-16 h-16 mb-4" onerror="this.src='/funglogo.jpeg'">
-            <h4 class="font-bold text-lg text-slate-700">${item.name}</h4>
+            <img src="${_escHtml(item.icon)}" class="w-16 h-16 mb-4" onerror="this.src='/funglogo.jpeg'">
+            <h4 class="font-bold text-lg text-slate-700">${_escHtml(item.name)}</h4>
             <div class="mt-auto flex justify-end"><div class="arrow-btn">${arrow}</div></div>
         </div>`;
     }).join('');
@@ -2840,9 +2854,12 @@ function runOverlaySearch(query) {
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
           </svg>
           <input id="search-overlay-input"
-                 type="text"
+                 type="search"
                  placeholder="Search universities, tests, resources…"
                  class="flex-1 text-slate-800 text-sm font-medium outline-none bg-transparent"
+                 aria-label="Search universities, tests, and resources"
+                 role="searchbox"
+                 autocomplete="off"
                  oninput="showSearchSuggestions(this.value)"
                  onkeydown="if(event.key==='Enter'){runOverlaySearch(this.value)}">
           <button type="button" onclick="closeSearch()"
