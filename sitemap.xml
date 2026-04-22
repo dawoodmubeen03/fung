@@ -3,7 +3,37 @@
 
 <url>
   <loc>https://fungep.app/</loc>
+  <lastmod>2026-04-22</lastmod>
+  <changefreq>daily</changefreq>
   <priority>1.0</priority>
+</url>
+
+<url>
+  <loc>https://fungep.app/study-planner.html</loc>
+  <lastmod>2026-04-22</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://fungep.app/login.html</loc>
+  <lastmod>2026-04-22</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
+</url>
+
+<url>
+  <loc>https://fungep.app/privacy.html</loc>
+  <lastmod>2026-04-22</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+<url>
+  <loc>https://fungep.app/terms.html</loc>
+  <lastmod>2026-04-22</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
 </url>
 
 </urlset>

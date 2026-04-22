@@ -122,6 +122,133 @@ body{background:#0f172a;color:#1e293b;font-family:'Space Grotesk',sans-serif;ove
 #chapter-sheet-overlay {
     z-index: 940 !important;
 }
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+
+/* Navbar: reduce padding on small screens */
+@media (max-width: 640px) {
+  #sp-nav .max-w-6xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .gradient-text { font-size: 1.4rem; }
+}
+
+/* Main content: reduce horizontal padding on mobile */
+@media (max-width: 640px) {
+  main.pt-28 {
+    padding-top: 5.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Floating nav: smaller icons on mobile */
+@media (max-width: 480px) {
+  .nav-icon-btn { width: 44px; height: 44px; }
+  .nav-icon-btn svg { width: 20px; height: 20px; }
+  .floating-nav { gap: 4px; padding: 6px; }
+}
+
+/* Home tab: stack the progress card vertically on mobile */
+@media (max-width: 640px) {
+  #tab-home .flex.flex-col.md\\:flex-row {
+    flex-direction: column !important;
+  }
+  #tab-home .grid.grid-cols-3 {
+    width: 100% !important;
+  }
+  /* Reduce overall percentage font size */
+  #overall-pct-text { font-size: 2rem; }
+}
+
+/* Task day filter buttons: smaller on mobile */
+@media (max-width: 480px) {
+  .task-day-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
+
+/* Calendar tab: stack calendar + schedule panel on mobile */
+@media (max-width: 1023px) {
+  #tab-calendar .flex.flex-col.lg\\:flex-row {
+    flex-direction: column !important;
+  }
+  #tab-calendar .glass.rounded-\\[2rem\\].p-6.w-full.lg\\:w-\\[400px\\] {
+    width: 100% !important;
+  }
+}
+
+/* Schedule panel timeline: reduce left padding on mobile */
+@media (max-width: 640px) {
+  #timeline-container {
+    padding-left: 4rem !important;
+    padding-right: 0.5rem !important;
+    max-height: 400px !important;
+  }
+  .timeline-label {
+    left: -52px !important;
+    width: 45px !important;
+    font-size: 10px !important;
+  }
+  .timeline-hour { height: 90px; }
+}
+
+/* Week strip: smaller on mobile */
+@media (max-width: 480px) {
+  #week-strip .day-pill {
+    font-size: 11px;
+    padding: 0.35rem 0.25rem;
+  }
+}
+
+/* Schedule item modal: full-width on mobile */
+@media (max-width: 640px) {
+  #schedule-item-modal .glass {
+    border-radius: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  #schedule-item-modal .grid.grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Focus tab: constrain timer on small screens */
+@media (max-width: 400px) {
+  #tab-focus .relative.w-64.h-64 {
+    width: 220px !important;
+    height: 220px !important;
+  }
+  #tab-focus .relative.w-64.h-64 svg {
+    width: 220px !important;
+    height: 220px !important;
+  }
+  #timer-display { font-size: 3rem; }
+}
+
+/* Bottom sheet: better touch target */
+@media (max-width: 640px) {
+  .bottom-sheet {
+    border-radius: 1.75rem 1.75rem 0 0;
+  }
+  .bottom-sheet .p-6 {
+    padding: 1.25rem;
+  }
+}
+
+/* Subject modal: full screen feel on small devices */
+@media (max-width: 480px) {
+  #subject-modal .glass {
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+  }
+  #subject-modal .grid.grid-cols-2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+}
   
 </style>
 </head>
