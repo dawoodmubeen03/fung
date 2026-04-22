@@ -2664,8 +2664,8 @@ function openSearch() {
     if (!overlay) return;
     overlay.classList.remove('hidden');
     // Restart slide-down animation
-    const panel = overlay.querySelector('[style*="animation"]');
-    if (panel) { panel.style.animation = 'none'; panel.offsetHeight; panel.style.animation = ''; }
+    const panel = document.getElementById('search-panel');
+    if (panel) { panel.classList.remove('search-slide-down'); panel.offsetHeight; panel.classList.add('search-slide-down'); }
     const input = document.getElementById('search-overlay-input');
     if (input) { input.value = ''; input.focus(); }
     showSearchSuggestions('');
@@ -2685,6 +2685,13 @@ function _searchKeydown(e) {
     if (e.key === 'Escape') closeSearch();
 }
 
+function setPopularSearch(btn) {
+    const q = btn.dataset.query || '';
+    const input = document.getElementById('search-overlay-input');
+    if (input) input.value = q;
+    showSearchSuggestions(q);
+}
+
 function showSearchSuggestions(query) {
     const el = document.getElementById('search-suggestions');
     if (!el) return;
@@ -2696,8 +2703,8 @@ function showSearchSuggestions(query) {
             <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2 pt-1">Popular Searches</p>
             <div class="divide-y divide-slate-50">
                 ${popular.map(s => `<button type="button"
+                    onclick="setPopularSearch(this)"
                     data-query="${s.replace(/"/g,'&quot;')}"
-                    onclick="(function(b){document.getElementById('search-overlay-input').value=b.dataset.query;showSearchSuggestions(b.dataset.query);})(this)"
                     class="w-full flex items-center gap-3 px-2 py-2.5 hover:bg-blue-50 transition-all text-left group rounded-xl">
                     <svg class="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
                     <span class="text-sm font-semibold text-slate-700 group-hover:text-blue-600">${s}</span>
@@ -2859,8 +2866,7 @@ function runOverlaySearch(query) {
   <!-- Blurred backdrop (non-clickable) -->
   <div class="absolute inset-0 backdrop-blur-sm bg-slate-900/40 pointer-events-none"></div>
   <!-- Full-width search panel sliding from top -->
-  <div class="relative z-10 w-full bg-white shadow-2xl"
-       style="animation: searchSlideDown 0.2s ease-out;">
+  <div id="search-panel" class="relative z-10 w-full bg-white shadow-2xl search-slide-down">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <!-- Input row with only × close button -->
       <div class="flex items-center gap-3 py-4 border-b border-slate-100">
@@ -2892,6 +2898,7 @@ function runOverlaySearch(query) {
   from { transform: translateY(-100%); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
+.search-slide-down { animation: searchSlideDown 0.2s ease-out; }
 </style>
 
 </body>
