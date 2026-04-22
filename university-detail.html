@@ -215,7 +215,9 @@ setInterval(() => changeSlide('merit', 1), 5500);
 
 window.onload = async () => {
     const params = new URLSearchParams(window.location.search);
-    const uniId = params.get('id');
+    // Support both ?id= query param and /universities/:slug path
+    const pathMatch = window.location.pathname.match(/^\/universities\/(.+)$/);
+    const uniId = params.get('id') || (pathMatch && pathMatch[1]) || null;
 
     // 1. Check if ID exists in URL
     if (!uniId || uniId === 'undefined') {

@@ -190,16 +190,16 @@ body{background:#0f172a;color:#1e293b;font-family:'Space Grotesk',sans-serif;ove
           </div>
           <div class="grid grid-cols-3 gap-3 md:w-64">
             <div class="bg-blue-50 rounded-2xl p-3 text-center border border-blue-100">
-              <div class="text-2xl font-black text-blue-600" id="stat-subs-done">0</div>
-              <div class="text-[9px] font-bold text-blue-400 uppercase tracking-wider mt-1">Subjects<br>Done</div>
+              <div class="text-xl font-black text-blue-600" id="stat-subs-done">0/0</div>
+              <div class="text-[9px] font-bold text-blue-400 uppercase tracking-wider mt-1">subjects</div>
             </div>
             <div class="bg-green-50 rounded-2xl p-3 text-center border border-green-100">
-              <div class="text-2xl font-black text-green-600" id="stat-chaps-done">0</div>
-              <div class="text-[9px] font-bold text-green-400 uppercase tracking-wider mt-1">Chapters<br>Done</div>
+              <div class="text-xl font-black text-green-600" id="stat-chaps-done">0/0</div>
+              <div class="text-[9px] font-bold text-green-400 uppercase tracking-wider mt-1">chapters</div>
             </div>
             <div class="bg-purple-50 rounded-2xl p-3 text-center border border-purple-100">
-              <div class="text-2xl font-black text-purple-600" id="stat-total-chaps">0</div>
-              <div class="text-[9px] font-bold text-purple-400 uppercase tracking-wider mt-1">Total<br>Chapters</div>
+              <div class="text-xl font-black text-purple-600" id="stat-total-chaps">0/0</div>
+              <div class="text-[9px] font-bold text-purple-400 uppercase tracking-wider mt-1">tasks</div>
             </div>
           </div>
         </div>
@@ -518,7 +518,7 @@ body{background:#0f172a;color:#1e293b;font-family:'Space Grotesk',sans-serif;ove
 </main>
 
 <!-- PAGE LOADER -->
-<div id="page-loader" class="fixed inset-0 bg-white z-[500] flex items-center justify-center transition-opacity duration-500">
+<div id="page-loader" class="fixed inset-0 bg-white z-[500] flex items-center justify-center transition-opacity duration-150">
   <div class="relative flex items-center justify-center">
     <div class="absolute w-24 h-24 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
     <img src="/funglogo.jpeg" onerror="this.src='https://via.placeholder.com/64?text=F'" class="w-16 h-16 rounded-full shadow-lg">
@@ -642,7 +642,7 @@ function getSubjStats(s){ let total=0,done=0; if(!s||!s.parts) return {total:0,d
 function getTotalStats(){ let t=0,d=0; userSubjects.forEach(s=>{ const st=getSubjStats(s); t+=st.total; d+=st.done; }); return {total:t,done:d,pct:t?Math.round(d/t*100):0}; }
 function formatTimeByMinutes(m){ const h=Math.floor(m/60); const min=m%60; const ampm=h>=12?'pm':'am'; return `${h%12||12}:${String(min).padStart(2,'0')}${ampm}`; }
 function formatTime(t){ const [h,m]=t.split(':').map(Number); const ampm=h>=12?'pm':'am'; return `${h%12||12}:${String(m).padStart(2,'0')}${ampm}`; }
-function hideLoader(){ const l=document.getElementById('page-loader'); if(l){ l.style.opacity='0'; setTimeout(()=>l.remove(),400); } }
+function hideLoader(){ const l=document.getElementById('page-loader'); if(l){ l.style.opacity='0'; setTimeout(()=>l.remove(),150); } }
 
 // ======= TAB SWITCHING =======
 function switchTab(tab) {
@@ -973,13 +973,13 @@ function renderHome(){
   if(chapLbl) chapLbl.textContent = `${ts.done} / ${ts.total} chapters done`;
 
   const subDone = document.getElementById('stat-subs-done');
-  if(subDone) subDone.textContent = userSubjects.filter(s => getSubjStats(s).pct === 100).length;
+  if(subDone) subDone.textContent = `${userSubjects.filter(s => getSubjStats(s).pct === 100).length}/${userSubjects.length}`;
 
   const chapDone = document.getElementById('stat-chaps-done');
-  if(chapDone) chapDone.textContent = ts.done;
+  if(chapDone) chapDone.textContent = `${ts.done}/${ts.total}`;
 
   const totalChap = document.getElementById('stat-total-chaps');
-  if(totalChap) totalChap.textContent = ts.total;
+  if(totalChap) { const todayKey = new Date().toISOString().split('T')[0]; const todayTasks = (scheduleEntries[todayKey]||[]).length; const allTasks = Object.values(scheduleEntries).reduce((s,e)=>s+e.length,0); totalChap.textContent = `${todayTasks}/${allTasks}`; }
 
   const grid = document.getElementById('subj-grid'); 
   if(!grid) return;
@@ -1145,29 +1145,6 @@ function submitInputModal() {
   closeInputModal();
 }
 
-  function addCustomSubject() {
-  openInputModal("Enter Subject Name", function(name) {
-
-    const newSubj = {
-      id: "custom_" + Date.now(),
-      name: name,
-      icon: "📘",
-      color: "#3b82f6",
-      bg: "#dbeafe",
-      parts: [
-        {
-          name: "Your Chapters",
-          chapters: []
-        }
-      ]
-    };
-
-    userSubjects.push(newSubj);
-    saveData();
-    renderAll();
-  });
-}
-  
 function deleteCurrentSubject() {
   if (!activeSheetSubjId) return;
 

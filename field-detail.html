@@ -153,8 +153,13 @@
     function initializeFieldDetails() {
       const params = new URLSearchParams(window.location.search);
       const nameParam = params.get('name');
+      // Support /programs/:slug path
+      const pathMatch = window.location.pathname.match(/^\/programs\/(.+)$/);
+      const pathSlug = pathMatch && pathMatch[1];
 
-      const current = fields.find(f => f.name === nameParam) || fields[0];
+      const current = fields.find(f => f.name === nameParam)
+        || (pathSlug && fields.find(f => f.name.toLowerCase().replace(/\s+/g,'-') === pathSlug.toLowerCase() || f.name.toLowerCase() === pathSlug.toLowerCase()))
+        || fields[0];
 
       if (!current) {
         document.body.innerHTML = '<p>Field not found</p>';

@@ -1308,16 +1308,16 @@
       </div>
       <div class="grid grid-cols-3 gap-3 md:w-64">
         <div class="bg-blue-50 rounded-2xl p-3 text-center border border-blue-100">
-          <div class="text-2xl font-black text-blue-600" id="dash-subs-done">0</div>
-          <div class="text-[9px] font-bold text-blue-400 uppercase tracking-wider mt-1">Subjects<br>Done</div>
+          <div class="text-xl font-black text-blue-600" id="dash-subs-done">0/0</div>
+          <div class="text-[9px] font-bold text-blue-400 uppercase tracking-wider mt-1">subjects</div>
         </div>
         <div class="bg-green-50 rounded-2xl p-3 text-center border border-green-100">
-          <div class="text-2xl font-black text-green-600" id="dash-chaps-done">0</div>
-          <div class="text-[9px] font-bold text-green-400 uppercase tracking-wider mt-1">Chapters<br>Done</div>
+          <div class="text-xl font-black text-green-600" id="dash-chaps-done">0/0</div>
+          <div class="text-[9px] font-bold text-green-400 uppercase tracking-wider mt-1">chapters</div>
         </div>
         <div class="bg-purple-50 rounded-2xl p-3 text-center border border-purple-100">
-          <div class="text-2xl font-black text-purple-600" id="dash-total-chaps">0</div>
-          <div class="text-[9px] font-bold text-purple-400 uppercase tracking-wider mt-1">Total<br>Chapters</div>
+          <div class="text-xl font-black text-purple-600" id="dash-total-chaps">0/0</div>
+          <div class="text-[9px] font-bold text-purple-400 uppercase tracking-wider mt-1">tasks</div>
         </div>
       </div>
     </div>
@@ -2213,10 +2213,11 @@ function hideLoader() {
   if (!loader) return; // 🔥 prevents crash
 
   loader.style.opacity = '0';
+  loader.style.transition = 'opacity 0.15s ease';
 
   setTimeout(() => {
     loader.remove(); // better than display:none
-  }, 100);
+  }, 150);
 }
         
     </script>
@@ -2226,7 +2227,7 @@ function hideLoader() {
 <div id="page-loader"
      class="fixed inset-0 bg-white z-[500]
             flex items-center justify-center
-            transition-opacity duration-500">
+            transition-opacity duration-150">
 
   <div class="relative flex items-center justify-center">
 
@@ -2552,7 +2553,7 @@ if (resourceContainer && resourceData?.length) {
 // ============================================================
 let dashStatsUnsubscribe = null;
 
-function updateDashboardStats(subjects, progress) {
+function updateDashboardStats(subjects, progress, schedule) {
     const totalSubjects = subjects.length;
     let totalChapters = 0;
     let doneChapters = 0;
@@ -2588,9 +2589,15 @@ function updateDashboardStats(subjects, progress) {
     if (pctEl) pctEl.innerText = pct + '%';
     if (barEl) barEl.style.width = pct + '%';
     if (chapLblEl) chapLblEl.innerText = `${doneChapters} / ${totalChapters} chapters done`;
-    if (subsDoneEl) subsDoneEl.innerText = doneSubjects;
-    if (chapsDoneEl) chapsDoneEl.innerText = doneChapters;
-    if (totalChapsEl) totalChapsEl.innerText = totalChapters;
+    if (subsDoneEl) subsDoneEl.innerText = `${doneSubjects}/${totalSubjects}`;
+    if (chapsDoneEl) chapsDoneEl.innerText = `${doneChapters}/${totalChapters}`;
+    if (totalChapsEl) {
+        const sch = schedule || {};
+        const todayKey = new Date().toISOString().split('T')[0];
+        const todayTasks = (sch[todayKey] || []).length;
+        const allTasks = Object.values(sch).reduce((s, e) => s + e.length, 0);
+        totalChapsEl.innerText = `${todayTasks}/${allTasks}`;
+    }
     if (noData) noData.classList.toggle('hidden', totalSubjects > 0);
 }
 
@@ -2602,9 +2609,9 @@ function startDashboardStatsListener(user) {
         dashStatsUnsubscribe = db.collection('users').doc(user.uid).onSnapshot(doc => {
             if (doc.exists) {
                 const data = doc.data();
-                updateDashboardStats(data.subjects || [], data.progress || {});
+                updateDashboardStats(data.subjects || [], data.progress || {}, data.schedule || {});
             } else {
-                updateDashboardStats([], {});
+                updateDashboardStats([], {}, {});
             }
         }, err => console.warn('Dashboard stats listener error:', err));
     } catch (e) { console.warn('Firestore not ready for stats listener:', e); }
@@ -2656,6 +2663,9 @@ function openSearch() {
     const overlay = document.getElementById('search-overlay');
     if (!overlay) return;
     overlay.classList.remove('hidden');
+    // Restart slide-down animation
+    const panel = overlay.querySelector('[style*="animation"]');
+    if (panel) { panel.style.animation = 'none'; panel.offsetHeight; panel.style.animation = ''; }
     const input = document.getElementById('search-overlay-input');
     if (input) { input.value = ''; input.focus(); }
     showSearchSuggestions('');
@@ -2683,11 +2693,15 @@ function showSearchSuggestions(query) {
     if (!q) {
         const popular = ['NUST', 'FAST', 'UET', 'ECAT', 'MDCAT', 'Computer Science', 'Electrical Engineering', 'Merit List'];
         el.innerHTML = `
-            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3 px-1">Popular Searches</p>
-            <div class="flex flex-wrap gap-2 px-1">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2 pt-1">Popular Searches</p>
+            <div class="divide-y divide-slate-50">
                 ${popular.map(s => `<button type="button"
-                    onclick="document.getElementById('search-overlay-input').value='${s}';showSearchSuggestions('${s}')"
-                    class="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-600 text-xs font-semibold rounded-full transition-all">${s}</button>`
+                    data-query="${s.replace(/"/g,'&quot;')}"
+                    onclick="(function(b){document.getElementById('search-overlay-input').value=b.dataset.query;showSearchSuggestions(b.dataset.query);})(this)"
+                    class="w-full flex items-center gap-3 px-2 py-2.5 hover:bg-blue-50 transition-all text-left group rounded-xl">
+                    <svg class="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+                    <span class="text-sm font-semibold text-slate-700 group-hover:text-blue-600">${s}</span>
+                </button>`
                 ).join('')}
             </div>`;
         return;
@@ -2842,40 +2856,43 @@ function runOverlaySearch(query) {
 
 <!-- ========= SEARCH OVERLAY ========= -->
 <div id="search-overlay" class="fixed inset-0 z-[180] hidden" role="dialog" aria-modal="true" aria-label="Search">
-  <!-- Blurred backdrop -->
-  <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onclick="closeSearch()"></div>
-  <!-- Search panel -->
-  <div class="relative z-10 w-full px-4 pt-24 pb-6">
-    <div class="max-w-2xl mx-auto">
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-        <!-- Input row -->
-        <div class="flex items-center gap-3 px-4 py-4 border-b border-slate-100">
-          <svg class="w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-          </svg>
-          <input id="search-overlay-input"
-                 type="search"
-                 placeholder="Search universities, tests, resources…"
-                 class="flex-1 text-slate-800 text-sm font-medium outline-none bg-transparent"
-                 aria-label="Search universities, tests, and resources"
-                 role="searchbox"
-                 autocomplete="off"
-                 oninput="showSearchSuggestions(this.value)"
-                 onkeydown="if(event.key==='Enter'){runOverlaySearch(this.value)}">
-          <button type="button" onclick="closeSearch()"
-                  class="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-all flex-shrink-0"
-                  aria-label="Close search">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
-        <!-- Suggestions / Results -->
-        <div id="search-suggestions" class="max-h-[60vh] overflow-y-auto p-3"></div>
+  <!-- Blurred backdrop (non-clickable) -->
+  <div class="absolute inset-0 backdrop-blur-sm bg-slate-900/40 pointer-events-none"></div>
+  <!-- Full-width search panel sliding from top -->
+  <div class="relative z-10 w-full bg-white shadow-2xl"
+       style="animation: searchSlideDown 0.2s ease-out;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <!-- Input row with only × close button -->
+      <div class="flex items-center gap-3 py-4 border-b border-slate-100">
+        <svg class="w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+        </svg>
+        <input id="search-overlay-input"
+               type="search"
+               placeholder="Search universities, tests, resources…"
+               class="flex-1 text-slate-800 text-sm font-medium outline-none bg-transparent"
+               aria-label="Search universities, tests, and resources"
+               role="searchbox"
+               autocomplete="off"
+               oninput="showSearchSuggestions(this.value)"
+               onkeydown="if(event.key==='Enter'){runOverlaySearch(this.value)}">
+        <button type="button" onclick="closeSearch()"
+                class="p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-all flex-shrink-0 font-bold text-lg leading-none"
+                aria-label="Close search">
+          ×
+        </button>
       </div>
+      <!-- Suggestions list -->
+      <div id="search-suggestions" class="max-h-[70vh] overflow-y-auto py-2"></div>
     </div>
   </div>
 </div>
+<style>
+@keyframes searchSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+</style>
 
 </body>
 </html>
